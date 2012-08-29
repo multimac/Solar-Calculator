@@ -8,7 +8,7 @@ public class SolarPowerCalculatorServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		
-    	//server up the output file
+    	//serve up the output file
     	resp.sendRedirect("/output.jsp");
         
     }
