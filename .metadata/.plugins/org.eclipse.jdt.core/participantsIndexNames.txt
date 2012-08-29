@@ -1,5 +1,0 @@
-INDEX VERSION 1.126
-C:\Users\KAS\Dropbox\UNI\INB372\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3651771252.index
-\SolarPowerCalculator\src
-C:\Users\KAS\Dropbox\UNI\INB372\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2450194517.index
-\SolarPowerCalculator_AppEngine\src
