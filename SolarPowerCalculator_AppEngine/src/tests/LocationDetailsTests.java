@@ -27,8 +27,8 @@ public class LocationDetailsTests {
 	
 	@Test (expected=CalculatorException.class)
 	public void initWithTimeLessThan24Hours()  throws CalculatorException {
-		LocationDetails testLocation = new LocationDetails(-5);
-		assertEquals(testLocation.getDaylightHours(), -5);
+		LocationDetails testLocation = new LocationDetails(-5.0);
+		assertEquals(testLocation.getDaylightHours(), -5.0, 0);
 	}
 
 }
