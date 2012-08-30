@@ -12,7 +12,7 @@ public class SystemConfiguration {
 	
 	// Class Variables
 	private int panelCount; // Whole Number
-	private int panelOutput; //  Wh
+	private int panelOutput; //  Wh 
 	
 	private static double inverterEfficiency = 0.96;
 	
