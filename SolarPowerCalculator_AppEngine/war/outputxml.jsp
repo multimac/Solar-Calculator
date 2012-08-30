@@ -6,7 +6,7 @@ double output = 0.0;
 //ToDo: add validation
 if (request.getParameter("numpanels") != null) {
 	int numpanels = Integer.parseInt(request.getParameter("numpanels"));
-	int daylighthours = Integer.parseInt(request.getParameter("daylighthours"));
+	float daylighthours = Float.parseFloat(request.getParameter("daylighthours"));
 	float hourlyusage = Float.parseFloat(request.getParameter("hourlyusage"));
 	int paneloutput = Integer.parseInt(request.getParameter("paneloutput"));
 	float panelefficiency = Float.parseFloat(request.getParameter("panelefficiency"));

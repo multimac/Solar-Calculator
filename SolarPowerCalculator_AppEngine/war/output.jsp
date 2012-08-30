@@ -27,7 +27,7 @@
          </tr>
          <tr>
             <td>Daylight Hours</td>
-            <td><input name="daylighthours" value="4" /></td>
+            <td><input name="daylighthours" value="4.5" /></td>
          </tr>
          <tr>
             <td>Daytime Hourly Usage</td>
@@ -42,7 +42,7 @@
          </tr>
          <tr>
             <td>Panel Output (Wh)</td>
-            <td><input name="panelOutput" value="4950" /></td>
+            <td><input name="paneloutput" value="4950" /></td>
          </tr>
          <tr>
             <td>Panel Efficiency</td>
@@ -66,15 +66,15 @@
 //ToDo: add validation
 if (request.getParameter("numpanels") != null) {
 	int numpanels = Integer.parseInt(request.getParameter("numpanels"));
-	int daylighthours = Integer.parseInt(request.getParameter("daylighthours"));
-	float hourlyusage = Float.parseFloat(request.getParameter("hourlyusage"));
-	int panelOutput = Integer.parseInt(request.getParameter("panelOutput"));
-	float panelefficiency = Float.parseFloat(request.getParameter("panelefficiency"));
-	float inverterefficiency = Float.parseFloat(request.getParameter("inverterefficiency"));
+	double daylighthours = Double.parseDouble(request.getParameter("daylighthours"));
+	double hourlyusage = Double.parseDouble(request.getParameter("hourlyusage"));
+	int paneloutput = Integer.parseInt(request.getParameter("paneloutput"));
+	double panelefficiency = Double.parseDouble(request.getParameter("panelefficiency"));
+	double inverterefficiency = Double.parseDouble(request.getParameter("inverterefficiency"));
 	
 	//Create a system, and calculate output
 	LocationDetails location = new LocationDetails(daylighthours);
-	SystemConfiguration system = new SystemConfiguration(panelOutput, numpanels);
+	SystemConfiguration system = new SystemConfiguration(paneloutput, numpanels);
 	double output = SolarOutput.calculateDailyOutput(location, system);
 	
 	//Print output
