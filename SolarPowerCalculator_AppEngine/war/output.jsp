@@ -3,26 +3,51 @@
 <%@ page import="environmentalSpecifications.LocationDetails"%>
 <%@ page import="environmentalSpecifications.SystemConfiguration"%>
 
+
+<%
+//Process input
+double output = 21.384;//placeholder value
+
+//ToDo: add validation
+if (request.getParameter("numpanels") != null) {
+	int numpanels = Integer.parseInt(request.getParameter("numpanels"));
+	double daylighthours = Double.parseDouble(request.getParameter("daylighthours"));
+	double hourlyusage = Double.parseDouble(request.getParameter("hourlyusage"));
+	int paneloutput = Integer.parseInt(request.getParameter("paneloutput"));
+	double panelefficiency = Double.parseDouble(request.getParameter("panelefficiency"));
+	double inverterefficiency = Double.parseDouble(request.getParameter("inverterefficiency"));
+	
+	//Create a system, and calculate output
+	LocationDetails location = new LocationDetails(daylighthours);
+	SystemConfiguration system = new SystemConfiguration(paneloutput, numpanels);
+	
+	output = SolarOutput.calculateDailyOutput(location, system);
+}
+%>
+
+
 <html>
 <head>
-<title>Solar Output Calculator</title>
-<link rel="stylesheet" type="text/css" href="css/mainstyle.css" />
-<script type="text/javascript" src="js/validatesolaroutput.js"></script>
+ <title>Solar Output Calculator</title>
+ <link rel="stylesheet" type="text/css" href="css/mainstyle.css" />
+ <script type="text/javascript" src="js/validatesolaroutput.js"></script>
 </head>
 <body>
 
-<h1>Output Calculator</h1>
 
-<form name="output" action="output.jsp" method="get" onsubmit="return validate();">
-<table border="0">
+
+<div id="container">
+<h1>Electrical Output Calculator</h1>
+<form name="output" action="output.jsp" method="get" onSubmit="return validate();">
+<table id="inputtable">
  <tr>
  	<td>
-    	<table border="1" style="border-collapse:collapse; border-style:solid">
-         <tr style="background-color:#CCC">
+    	<table id="systemconf">
+         <tr class="header">
             <td colspan="2"><b>System Configuration</b></td>
          </tr>
          <tr>
-            <td>Num Panels</td>
+            <td class="labels">Num Panels</td>
             <td><input name="numpanels" value="1" /></td>
          </tr>
          <tr>
@@ -36,12 +61,12 @@
         </table>
     </td>
     <td>
-    	<table border="1" style="border-collapse:collapse; border-style:solid">
-         <tr style="background-color:#CCC">
+    	<table id="systemstats">
+         <tr class="header">
             <td colspan="2"><b>System Statistics</b></td>
          </tr>
          <tr>
-            <td>Panel Output (Wh)</td>
+            <td class="labels">Panel Output (W/h)</td>
             <td><input name="paneloutput" value="4950" /></td>
          </tr>
          <tr>
@@ -56,31 +81,15 @@
     </td>
  </tr>
  <tr>
- 	<td colspan="2"><center><input type="submit" value="Submit"/></center></td>
+ 	<td colspan="2"><input type="submit" value="Calculate" class="calc"/></td>
+ </tr>
+ <tr>
+ 	<td colspan="2"><b>Output: </b><% out.print(output);%>KWh</td>
  </tr>
 </table>
 </form>
 
-<%
-
-//ToDo: add validation
-if (request.getParameter("numpanels") != null) {
-	int numpanels = Integer.parseInt(request.getParameter("numpanels"));
-	double daylighthours = Double.parseDouble(request.getParameter("daylighthours"));
-	double hourlyusage = Double.parseDouble(request.getParameter("hourlyusage"));
-	int paneloutput = Integer.parseInt(request.getParameter("paneloutput"));
-	double panelefficiency = Double.parseDouble(request.getParameter("panelefficiency"));
-	double inverterefficiency = Double.parseDouble(request.getParameter("inverterefficiency"));
-	
-	//Create a system, and calculate output
-	LocationDetails location = new LocationDetails(daylighthours);
-	SystemConfiguration system = new SystemConfiguration(paneloutput, numpanels);
-	double output = SolarOutput.calculateDailyOutput(location, system);
-	
-	//Print output
-	out.print("<b>Output:</b> "+output);
-}
-%>
+</div>
 
 </body>
 </html>
