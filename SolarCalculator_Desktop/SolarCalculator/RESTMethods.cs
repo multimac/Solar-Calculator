@@ -20,7 +20,7 @@ namespace SolarCalculator
         Text_XML,
     }
 
-    static class HttpMethods
+    static class RESTMethods
     {
         private static string[] contentTypes = { "text/*", "text/html", "text/xml" };
 
@@ -30,16 +30,16 @@ namespace SolarCalculator
         }
         public static string Request(Uri target, RequestMethod method, ContentType type, byte[] data)
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(target);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(target); // Perform a GET request for the site
             request.Method = method.ToString();
             
             Stream stream;
-            if (method == RequestMethod.POST)
+            if (method == RequestMethod.POST) // Set the ContentType and ContentLength required for doing a POST
             {
                 request.ContentType = contentTypes[(int)type];
                 request.ContentLength = data.Length;
 
-                stream = request.GetRequestStream();
+                stream = request.GetRequestStream(); // Upload data for POST
                 stream.Write(data, 0, data.Length);
                 stream.Close();
             }
@@ -47,7 +47,7 @@ namespace SolarCalculator
             HttpWebResponse response;
             try
             {
-                response = (HttpWebResponse)request.GetResponse();
+                response = (HttpWebResponse)request.GetResponse(); // Retrieve the response from the server
             }
             catch { return null; }
             stream = response.GetResponseStream();
@@ -56,8 +56,7 @@ namespace SolarCalculator
             int count = 0;
 
             byte[] buffer = new byte[4196];
-
-            do
+            do // Read the response into a string
             {
                 count = stream.Read(buffer, 0, buffer.Length);
 

@@ -35,12 +35,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtNumberOfPanels = new System.Windows.Forms.TextBox();
-            this.txtInverterEfficiency = new System.Windows.Forms.TextBox();
-            this.txtPanelEfficiency = new System.Windows.Forms.TextBox();
-            this.txtSystemSize = new System.Windows.Forms.TextBox();
-            this.txtDaytimeUsage = new System.Windows.Forms.TextBox();
-            this.txtHoursOfDaylight = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -49,13 +43,27 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.txtImportPrice = new System.Windows.Forms.TextBox();
-            this.txtExportPrice = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
+            this.numHoursOfDaylight = new System.Windows.Forms.NumericUpDown();
+            this.numDaytimeUsage = new System.Windows.Forms.NumericUpDown();
+            this.numImportPrice = new System.Windows.Forms.NumericUpDown();
+            this.numExportPrice = new System.Windows.Forms.NumericUpDown();
+            this.numPanelOutput = new System.Windows.Forms.NumericUpDown();
+            this.numPanelEfficiency = new System.Windows.Forms.NumericUpDown();
+            this.numInverterEfficiency = new System.Windows.Forms.NumericUpDown();
+            this.numNumberOfPanels = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.numHoursOfDaylight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDaytimeUsage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numImportPrice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numExportPrice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numPanelOutput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numPanelEfficiency)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numInverterEfficiency)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numNumberOfPanels)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -70,10 +78,10 @@
             // 
             // btnCalculate
             // 
-            this.btnCalculate.Location = new System.Drawing.Point(400, 410);
+            this.btnCalculate.Location = new System.Drawing.Point(394, 172);
             this.btnCalculate.Name = "btnCalculate";
             this.btnCalculate.Size = new System.Drawing.Size(100, 40);
-            this.btnCalculate.TabIndex = 3;
+            this.btnCalculate.TabIndex = 9;
             this.btnCalculate.Text = "Calculate";
             this.btnCalculate.UseVisualStyleBackColor = true;
             this.btnCalculate.Click += new System.EventHandler(this.Calculate);
@@ -104,9 +112,9 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(310, 40);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(150, 20);
+            this.label4.Size = new System.Drawing.Size(144, 20);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Panel Output (KWh)";
+            this.label4.Text = "Panel Output (W/h)";
             // 
             // label5
             // 
@@ -128,53 +136,11 @@
             this.label6.TabIndex = 8;
             this.label6.Text = "Inverter Efficiency (%)";
             // 
-            // txtNumberOfPanels
-            // 
-            this.txtNumberOfPanels.Location = new System.Drawing.Point(485, 130);
-            this.txtNumberOfPanels.Name = "txtNumberOfPanels";
-            this.txtNumberOfPanels.Size = new System.Drawing.Size(100, 20);
-            this.txtNumberOfPanels.TabIndex = 9;
-            // 
-            // txtInverterEfficiency
-            // 
-            this.txtInverterEfficiency.Location = new System.Drawing.Point(485, 100);
-            this.txtInverterEfficiency.Name = "txtInverterEfficiency";
-            this.txtInverterEfficiency.Size = new System.Drawing.Size(100, 20);
-            this.txtInverterEfficiency.TabIndex = 10;
-            // 
-            // txtPanelEfficiency
-            // 
-            this.txtPanelEfficiency.Location = new System.Drawing.Point(485, 70);
-            this.txtPanelEfficiency.Name = "txtPanelEfficiency";
-            this.txtPanelEfficiency.Size = new System.Drawing.Size(100, 20);
-            this.txtPanelEfficiency.TabIndex = 11;
-            // 
-            // txtSystemSize
-            // 
-            this.txtSystemSize.Location = new System.Drawing.Point(485, 40);
-            this.txtSystemSize.Name = "txtSystemSize";
-            this.txtSystemSize.Size = new System.Drawing.Size(100, 20);
-            this.txtSystemSize.TabIndex = 12;
-            // 
-            // txtDaytimeUsage
-            // 
-            this.txtDaytimeUsage.Location = new System.Drawing.Point(185, 70);
-            this.txtDaytimeUsage.Name = "txtDaytimeUsage";
-            this.txtDaytimeUsage.Size = new System.Drawing.Size(100, 20);
-            this.txtDaytimeUsage.TabIndex = 13;
-            // 
-            // txtHoursOfDaylight
-            // 
-            this.txtHoursOfDaylight.Location = new System.Drawing.Point(185, 40);
-            this.txtHoursOfDaylight.Name = "txtHoursOfDaylight";
-            this.txtHoursOfDaylight.Size = new System.Drawing.Size(100, 20);
-            this.txtHoursOfDaylight.TabIndex = 14;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(124, 420);
+            this.label7.Location = new System.Drawing.Point(118, 182);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(203, 20);
             this.label7.TabIndex = 15;
@@ -184,7 +150,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(579, 420);
+            this.label8.Location = new System.Drawing.Point(573, 182);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(192, 20);
             this.label8.TabIndex = 16;
@@ -194,7 +160,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(10, 460);
+            this.label9.Location = new System.Drawing.Point(4, 222);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(198, 20);
             this.label9.TabIndex = 17;
@@ -204,7 +170,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(10, 490);
+            this.label10.Location = new System.Drawing.Point(4, 252);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(215, 20);
             this.label10.TabIndex = 18;
@@ -214,7 +180,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(10, 520);
+            this.label11.Location = new System.Drawing.Point(4, 282);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(204, 20);
             this.label11.TabIndex = 19;
@@ -224,7 +190,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(460, 520);
+            this.label12.Location = new System.Drawing.Point(454, 282);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(175, 20);
             this.label12.TabIndex = 22;
@@ -234,7 +200,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(460, 490);
+            this.label13.Location = new System.Drawing.Point(454, 252);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(186, 20);
             this.label13.TabIndex = 21;
@@ -244,25 +210,11 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(460, 460);
+            this.label14.Location = new System.Drawing.Point(454, 222);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(169, 20);
             this.label14.TabIndex = 20;
             this.label14.Text = "Money Saved Per Day:";
-            // 
-            // txtImportPrice
-            // 
-            this.txtImportPrice.Location = new System.Drawing.Point(185, 100);
-            this.txtImportPrice.Name = "txtImportPrice";
-            this.txtImportPrice.Size = new System.Drawing.Size(100, 20);
-            this.txtImportPrice.TabIndex = 26;
-            // 
-            // txtExportPrice
-            // 
-            this.txtExportPrice.Location = new System.Drawing.Point(185, 130);
-            this.txtExportPrice.Name = "txtExportPrice";
-            this.txtExportPrice.Size = new System.Drawing.Size(100, 20);
-            this.txtExportPrice.TabIndex = 25;
             // 
             // label15
             // 
@@ -314,16 +266,103 @@
             this.label19.TabIndex = 29;
             this.label19.Text = "Other Information";
             // 
+            // numHoursOfDaylight
+            // 
+            this.numHoursOfDaylight.Location = new System.Drawing.Point(184, 40);
+            this.numHoursOfDaylight.Maximum = new decimal(new int[] {
+            24,
+            0,
+            0,
+            0});
+            this.numHoursOfDaylight.Name = "numHoursOfDaylight";
+            this.numHoursOfDaylight.Size = new System.Drawing.Size(120, 20);
+            this.numHoursOfDaylight.TabIndex = 30;
+            // 
+            // numDaytimeUsage
+            // 
+            this.numDaytimeUsage.Location = new System.Drawing.Point(184, 70);
+            this.numDaytimeUsage.Maximum = new decimal(new int[] {
+            24,
+            0,
+            0,
+            0});
+            this.numDaytimeUsage.Name = "numDaytimeUsage";
+            this.numDaytimeUsage.Size = new System.Drawing.Size(120, 20);
+            this.numDaytimeUsage.TabIndex = 31;
+            // 
+            // numImportPrice
+            // 
+            this.numImportPrice.Location = new System.Drawing.Point(184, 100);
+            this.numImportPrice.Name = "numImportPrice";
+            this.numImportPrice.Size = new System.Drawing.Size(120, 20);
+            this.numImportPrice.TabIndex = 32;
+            // 
+            // numExportPrice
+            // 
+            this.numExportPrice.Location = new System.Drawing.Point(184, 130);
+            this.numExportPrice.Name = "numExportPrice";
+            this.numExportPrice.Size = new System.Drawing.Size(120, 20);
+            this.numExportPrice.TabIndex = 33;
+            // 
+            // numPanelOutput
+            // 
+            this.numPanelOutput.Increment = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.numPanelOutput.Location = new System.Drawing.Point(487, 40);
+            this.numPanelOutput.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numPanelOutput.Name = "numPanelOutput";
+            this.numPanelOutput.Size = new System.Drawing.Size(120, 20);
+            this.numPanelOutput.TabIndex = 34;
+            // 
+            // numPanelEfficiency
+            // 
+            this.numPanelEfficiency.Location = new System.Drawing.Point(487, 70);
+            this.numPanelEfficiency.Name = "numPanelEfficiency";
+            this.numPanelEfficiency.Size = new System.Drawing.Size(120, 20);
+            this.numPanelEfficiency.TabIndex = 35;
+            // 
+            // numInverterEfficiency
+            // 
+            this.numInverterEfficiency.Location = new System.Drawing.Point(487, 100);
+            this.numInverterEfficiency.Name = "numInverterEfficiency";
+            this.numInverterEfficiency.Size = new System.Drawing.Size(120, 20);
+            this.numInverterEfficiency.TabIndex = 36;
+            // 
+            // numNumberOfPanels
+            // 
+            this.numNumberOfPanels.Location = new System.Drawing.Point(487, 130);
+            this.numNumberOfPanels.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.numNumberOfPanels.Name = "numNumberOfPanels";
+            this.numNumberOfPanels.Size = new System.Drawing.Size(120, 20);
+            this.numNumberOfPanels.TabIndex = 37;
+            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 612);
+            this.ClientSize = new System.Drawing.Size(884, 318);
+            this.Controls.Add(this.numNumberOfPanels);
+            this.Controls.Add(this.numInverterEfficiency);
+            this.Controls.Add(this.numPanelEfficiency);
+            this.Controls.Add(this.numPanelOutput);
+            this.Controls.Add(this.numExportPrice);
+            this.Controls.Add(this.numImportPrice);
+            this.Controls.Add(this.numDaytimeUsage);
+            this.Controls.Add(this.numHoursOfDaylight);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
-            this.Controls.Add(this.txtImportPrice);
-            this.Controls.Add(this.txtExportPrice);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label12);
@@ -334,12 +373,6 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.txtHoursOfDaylight);
-            this.Controls.Add(this.txtDaytimeUsage);
-            this.Controls.Add(this.txtSystemSize);
-            this.Controls.Add(this.txtPanelEfficiency);
-            this.Controls.Add(this.txtInverterEfficiency);
-            this.Controls.Add(this.txtNumberOfPanels);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -350,6 +383,14 @@
             this.Location = new System.Drawing.Point(300, 20);
             this.Name = "GUI";
             this.Text = "Solar Calculator";
+            ((System.ComponentModel.ISupportInitialize)(this.numHoursOfDaylight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDaytimeUsage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numImportPrice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numExportPrice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numPanelOutput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numPanelEfficiency)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numInverterEfficiency)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numNumberOfPanels)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -364,11 +405,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtNumberOfPanels;
-        private System.Windows.Forms.TextBox txtInverterEfficiency;
-        private System.Windows.Forms.TextBox txtSystemSize;
-        private System.Windows.Forms.TextBox txtDaytimeUsage;
-        private System.Windows.Forms.TextBox txtHoursOfDaylight;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
@@ -377,14 +413,19 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txtImportPrice;
-        private System.Windows.Forms.TextBox txtExportPrice;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox txtPanelEfficiency;
+        private System.Windows.Forms.NumericUpDown numHoursOfDaylight;
+        private System.Windows.Forms.NumericUpDown numDaytimeUsage;
+        private System.Windows.Forms.NumericUpDown numImportPrice;
+        private System.Windows.Forms.NumericUpDown numExportPrice;
+        private System.Windows.Forms.NumericUpDown numPanelOutput;
+        private System.Windows.Forms.NumericUpDown numPanelEfficiency;
+        private System.Windows.Forms.NumericUpDown numInverterEfficiency;
+        private System.Windows.Forms.NumericUpDown numNumberOfPanels;
     }
 }
 
