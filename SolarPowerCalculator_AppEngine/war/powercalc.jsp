@@ -6,8 +6,8 @@
 
 <%
 //Process input
-double grossOutput = 21.384;//placeholder value
-double netOutput = 21.384;//placeholder value
+double grossOutput = 0;//placeholder value
+double netOutput = 0;//placeholder value
 
 //Default values, store in database instead
 int numpanels = 2;
