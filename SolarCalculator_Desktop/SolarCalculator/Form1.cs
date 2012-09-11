@@ -19,6 +19,7 @@ namespace SolarCalculator
         const string TemplateOfflineUri = "http://localhost:8888/outputxml.jsp?numpanels={0}&daylighthours={1}&hourlyusage={2}&paneloutput={3}&panelefficiency={4}&inverterefficiency={5}";
         const string TemplateOnlineUri = "http://solarpanelcalc.appspot.com/outputxml.jsp?numpanels={0}&daylighthours={1}&hourlyusage={2}&paneloutput={3}&panelefficiency={4}&inverterefficiency={5}";
 
+
         public GUI()
         {
             InitializeComponent();
@@ -52,7 +53,7 @@ namespace SolarCalculator
             string systemOutput; // Create an XmlReader to parse the reponse from the server
             using (XmlReader reader = XmlReader.Create(new StringReader(xmlInput)))
             {
-                reader.ReadToFollowing("output"); // Move to the output tag
+                reader.ReadToFollowing("grossoutput"); // Move to the output tag
                 systemOutput = reader.ReadElementContentAsString(); // Read the content from that tag as a string
             }
             
