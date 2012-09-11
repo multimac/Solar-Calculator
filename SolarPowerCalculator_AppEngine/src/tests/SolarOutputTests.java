@@ -23,7 +23,7 @@ public class SolarOutputTests {
 
 	@Before
 	public void initObjects() throws CalculatorException {
-		testSystem = new SystemConfiguration(250, 2, 96);
+		testSystem = new SystemConfiguration(250, 2, 0.96);
 		testLocation = new LocationDetails(4.5, 300);
 	}
 	
@@ -38,5 +38,7 @@ public class SolarOutputTests {
 	@Test public void calculateMonthlyOutputStandardValues() {
 		assertEquals(64800, SolarOutput.calculateMonthlyOutput(testLocation, testSystem), delta);
 	}
+	
+	
 
 }
