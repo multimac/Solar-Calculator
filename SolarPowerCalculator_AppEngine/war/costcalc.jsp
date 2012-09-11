@@ -20,12 +20,15 @@ double inverterefficiency = 0.96;
 if (request.getParameter("numpanels") != null) {
 	numpanels = Integer.parseInt(request.getParameter("numpanels"));
 	paneloutput = Integer.parseInt(request.getParameter("paneloutput"));
-	
-	//Create a system, and calculate cost
-	SystemConfiguration system = new SystemConfiguration(paneloutput, numpanels, inverterefficiency);
-	
-	cost = SolarOutput.calculateSystemCost(system);
 }
+
+//Create a system, and calculate cost
+SystemConfiguration system = new SystemConfiguration(paneloutput, numpanels, inverterefficiency);
+
+cost = SolarOutput.calculateSystemCost(system);
+
+//Round output values
+cost = Math.round(cost * 100.0) / 100.0;
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -77,7 +80,7 @@ if (request.getParameter("numpanels") != null) {
                         <td colspan="2"><b>System Statistics</b></td>
                      </tr>
                      <tr>
-                        <td class="labels">Panel Output (W/h)</td>
+                        <td class="labels">Panel Output Wh</td>
                         <td><input name="paneloutput" value="<%=paneloutput%>" /></td>
                      </tr>
                     </table>

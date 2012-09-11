@@ -33,6 +33,10 @@ SystemConfiguration system = new SystemConfiguration(paneloutput, numpanels, inv
 
 grossOutput = SolarOutput.calculateGrossDailyOutput(location, system) / 1000;
 netOutput = SolarOutput.calculateNetDailyOutput(location, system) / 1000;
+
+//Round output values
+grossOutput = Math.round(grossOutput * 100.0) / 100.0;
+netOutput = Math.round(netOutput * 100.0) / 100.0;
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
