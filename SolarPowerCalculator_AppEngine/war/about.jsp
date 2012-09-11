@@ -42,7 +42,7 @@
             Solar Power Calculator Assignment 2012 sem2<br/><br/>
             
             <b>Panther-Rabbit Thingy</b><br/>
-            Brendon Park - 0400667842<br/>
+            Brendon Park - N8305242<br/>
 			David Symons - N8444427<br/>
 			Glen-Andrew Thomson - N7207999<br/>
 			Sean Burnett - N8102210<br/>
