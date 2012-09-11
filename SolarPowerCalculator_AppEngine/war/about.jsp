@@ -1,3 +1,14 @@
+<%@ page contentType="text/html" pageEncoding="UTF-8" language="java"%>
+<%@ page import="powerCalculations.SolarOutput" %>
+<%@ page import="environmentalSpecifications.LocationDetails"%>
+<%@ page import="environmentalSpecifications.SystemConfiguration"%>
+
+
+<%
+//Process input
+
+%>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -27,11 +38,16 @@
 		
 			<!-- Page Content -->
         	<br/>
-            <b>Panther-Rabbit Thingy Solar Calculator</b><br/><br/>
-            <font style="font-size: 80%">
-            Power: Calculate system power output<br/>
-            Cost: Calculate system cost
-            </font>
+            <b>INB372 Agile Software Development</b><br/>
+            Solar Power Calculator Assignment 2012 sem2<br/><br/>
+            
+            <b>Panther-Rabbit Thingy</b><br/>
+            Brendon Park - 0400667842<br/>
+			David Symons - N8444427<br/>
+			Glen-Andrew Thomson - N7207999<br/>
+			Sean Burnett - N8102210<br/>
+			Kierren Small - N8101621<br/>
+			            
             <!-- Page Content -->
             
         </td>

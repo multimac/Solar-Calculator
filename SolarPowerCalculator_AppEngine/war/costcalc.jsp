@@ -1,3 +1,14 @@
+<%@ page contentType="text/html" pageEncoding="UTF-8" language="java"%>
+<%@ page import="powerCalculations.SolarOutput" %>
+<%@ page import="environmentalSpecifications.LocationDetails"%>
+<%@ page import="environmentalSpecifications.SystemConfiguration"%>
+
+
+<%
+//Process input
+
+%>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -27,11 +38,7 @@
 		
 			<!-- Page Content -->
         	<br/>
-            <b>Panther-Rabbit Thingy Solar Calculator</b><br/><br/>
-            <font style="font-size: 80%">
-            Power: Calculate system power output<br/>
-            Cost: Calculate system cost
-            </font>
+            
             <!-- Page Content -->
             
         </td>

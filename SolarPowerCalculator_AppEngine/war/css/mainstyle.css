@@ -1,3 +1,7 @@
+body {
+	font-family: Verdana, Verdana, Geneva, sans-serif;
+}
+
 
 /* table styles */
 table {
@@ -14,17 +18,35 @@ td.labels {
 
 
 /* page content */
-#container {	
-	width: 600px ;
+#container {
+	width: 671px;
+	margin-top: 10%;
 	margin-left: auto;
 	margin-right: auto;
-	}
+}
+
+#template {
+	width:671px;
+	height:198px;
+	padding:0px;
+	spacing:0px;
+	border:0px;
+	border-spacing:0px;
+    border-collapse:collapse;
+
+}
+
+#template td {
+	padding:0px;
+	spacing:0px;
+	border:0px;
+}
 	
 h1 {
 	font-size:20px;
 	margin:auto;
 	text-align:center;
-	}
+}
 
 /* data input */
 #inputtable {
@@ -32,20 +54,23 @@ h1 {
     margin-right: auto;
 	width: 500px;
 	border: 0px solid;
+	font-size:80%;
 }
 
 #systemconf {
 	margin-left: auto;
     margin-right: auto;
-	width: 250px;
+	width: 240px;
 	border: 1px solid;
+	font-size:100%;
 }
 
 #systemstats {
 	margin-left: auto;
     margin-right: auto;
-	width: 250px;
+	width: 240px;
 	border: 1px solid;
+	font-size:100%;
 }
 
 
@@ -61,3 +86,34 @@ input {
 }
 
 
+
+
+.powercalclink {
+	display: block;
+	width: 104px;
+	height: 32px;
+	background: url('../images/TB_Power.jpg') bottom;
+}
+.powercalclink:hover {
+	background: url('../images/TB_Power_Blue.jpg') bottom;
+}
+
+.costcalclink {
+	display: block;
+	width: 104px;
+	height: 32px;
+	background: url('../images/TB_Cost.jpg') bottom;
+}
+.costcalclink:hover {
+	background: url('../images/TB_Cost_Blue.jpg') bottom;
+}
+
+.aboutlink {
+	display: block;
+	width: 64px;
+	height: 32px;
+	background: url('../images/TB_About.jpg') bottom;
+}
+.aboutlink:hover {
+	background: url('../images/TB_About_Blue.jpg') bottom;
+}
