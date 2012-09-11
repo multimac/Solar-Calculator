@@ -13,16 +13,15 @@ public class SystemConfiguration {
 	// Class Variables
 	private int panelCount; // Whole Number
 	private int panelOutput; //  Wh 
-	
-	private static double inverterEfficiency = 0.96;
+	private double inverterEfficiency; // Percentage
 	
 	/**
-	 *  Initializes a new instance of SystemConfiguration
+	 *  Initialises a new instance of SystemConfiguration
 	 * @param panelOutput - The raw output of the panel in Wh
 	 * @param panelCount - The number of panels in the configuration
+	 * @param inverterEfficiency - Inverter efficiency 0-1
 	 */
-	public SystemConfiguration (int panelOutput, int panelCount) throws CalculatorException {
-		
+	public SystemConfiguration (int panelOutput, int panelCount, double inverterEfficiency) throws CalculatorException {
 		if (panelCount <= 0)
 			throw new CalculatorException ("Panel count should be greater than 0");
 		else
@@ -32,6 +31,13 @@ public class SystemConfiguration {
 			throw new CalculatorException ("Panel output should be greater than 0");
 		else
 			this.panelOutput = panelOutput;
+		
+		if (inverterEfficiency <= 0.0)
+			throw new CalculatorException ("Inverter efficiency should be greater than 0");
+		else if (inverterEfficiency > 1.0)
+			throw new CalculatorException ("Inverter efficiency should be less than than 1");
+		else
+			this.inverterEfficiency = inverterEfficiency;
 	}
 	
 	/**
@@ -53,12 +59,10 @@ public class SystemConfiguration {
 	
 	/**
 	 * Gets the efficiency of the inverter
-	 * @return efficiency of the inverter
+	 * @return efficiency of the inverter normalised to 0-1
 	 */
 	public double getInverterEfficiency() {
-		
 		return inverterEfficiency;
-		
 	}
 	
 }

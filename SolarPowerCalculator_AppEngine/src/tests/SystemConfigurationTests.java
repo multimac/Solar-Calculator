@@ -18,23 +18,22 @@ import solarPowerCalculator.CalculatorException;
 public class SystemConfigurationTests {
 
 	//Class Variables
-	int defaultOutput = 200; //Wh
-	int defaultPanelCount = 5; //Amount
+	int defaultOutput = 250; //Wh
+	int defaultPanelCount = 2; //Amount
+	double defaultInverter = 0.96; //Efficiency
+	
 	SystemConfiguration system;
 
 	@Before
 	public void initWithRegularCountAndOutput() throws CalculatorException {
-		system = new SystemConfiguration(defaultOutput, defaultPanelCount);
+		system = new SystemConfiguration(defaultOutput, defaultPanelCount, defaultInverter);
 	}
 	
+	
+	//Test Panels
 	@Test (expected=CalculatorException.class)
 	public void initWithNegativePanels() throws CalculatorException {
-		SystemConfiguration system = new SystemConfiguration(200,-5);
-	}
-	
-	@Test (expected=CalculatorException.class)
-	public void initWithNegativeOutput() throws CalculatorException {
-		SystemConfiguration system = new SystemConfiguration(-200,5);
+		SystemConfiguration system = new SystemConfiguration(defaultOutput, -5, defaultInverter);
 	}
 	
 	@Test public void getPanelCountTest() throws CalculatorException{
@@ -45,18 +44,37 @@ public class SystemConfigurationTests {
 		assertEquals(system.getPanelOutput(), defaultOutput);
 	}
 	
-	
-	@Test public void multiSystemGetOutput() throws CalculatorException {
-		SystemConfiguration systemTwo = new SystemConfiguration(250, 3);
-		assertEquals(system.getPanelOutput(), defaultOutput);
-		assertEquals(systemTwo.getPanelOutput(), 250);
-	}
-	
 	@Test public void multiSystemGetPanelCount() throws CalculatorException {
-		SystemConfiguration systemTwo = new SystemConfiguration(250, 3);
+		SystemConfiguration systemTwo = new SystemConfiguration(300, 3, 0.95);
 		assertEquals(system.getPanelCount(), defaultPanelCount);
 		assertEquals(systemTwo.getPanelCount(), 3);
 	}
+	
+	
+	//Test Output
+	@Test (expected=CalculatorException.class)
+	public void initWithNegativeOutput() throws CalculatorException {
+		SystemConfiguration system = new SystemConfiguration(-200, defaultPanelCount, defaultInverter);
+	}
+	
+	@Test public void multiSystemGetOutput() throws CalculatorException {
+		SystemConfiguration systemTwo = new SystemConfiguration(300, 3, 0.95);
+		assertEquals(system.getPanelOutput(), defaultOutput);
+		assertEquals(systemTwo.getPanelOutput(), 300);
+	}
+	
+	
+	//Test Inverter
+	@Test (expected=CalculatorException.class)
+	public void initWithNegativeInverter() throws CalculatorException {
+		SystemConfiguration system = new SystemConfiguration(defaultOutput, defaultPanelCount, -2.0);
+	}
+	
+	@Test (expected=CalculatorException.class)
+	public void initWithGreaterInverter() throws CalculatorException {
+		SystemConfiguration system = new SystemConfiguration(defaultOutput, defaultPanelCount, 5);
+	}
+	
 	
 
 }

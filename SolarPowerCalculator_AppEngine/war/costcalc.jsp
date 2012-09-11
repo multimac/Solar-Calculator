@@ -6,7 +6,26 @@
 
 <%
 //Process input
+double cost = 0;
 
+//Default values, store in database instead
+int numpanels = 2;
+double daylighthours = 4.5;
+int hourlyusage = 300;
+int paneloutput = 250;
+double panelefficiency = 100;
+double inverterefficiency = 0.96;
+
+//ToDo: add validation
+if (request.getParameter("numpanels") != null) {
+	numpanels = Integer.parseInt(request.getParameter("numpanels"));
+	paneloutput = Integer.parseInt(request.getParameter("paneloutput"));
+	
+	//Create a system, and calculate cost
+	SystemConfiguration system = new SystemConfiguration(paneloutput, numpanels, inverterefficiency);
+	
+	cost = SolarOutput.calculateSystemCost(system);
+}
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -35,9 +54,44 @@
 	<tr>
 		<td style="vertical-align:text-top"><img src="images/TC0.jpg" width="167" height="95" alt=""></td>
 		<td colspan="8">
-		
-			<!-- Page Content -->
+            
+            <!-- Page Content -->
         	<br/>
+            <form name="output" action="costcalc.jsp" method="post" onSubmit="return validate();">
+            <table id="inputtable">
+             <tr>
+                <td>
+                    <table id="systemconf">
+                     <tr class="header">
+                        <td colspan="2"><b>System Configuration</b></td>
+                     </tr>
+                     <tr>
+                        <td class="labels">Num Panels</td>
+                        <td><input name="numpanels" value="<%=numpanels%>" /></td>
+                     </tr>
+                    </table>
+                </td>
+                <td>
+                    <table id="systemstats">
+                     <tr class="header">
+                        <td colspan="2"><b>System Statistics</b></td>
+                     </tr>
+                     <tr>
+                        <td class="labels">Panel Output (W/h)</td>
+                        <td><input name="paneloutput" value="<%=paneloutput%>" /></td>
+                     </tr>
+                    </table>
+                </td>
+             </tr>
+             <tr>
+                <td colspan="2"><input type="submit" value="Calculate" class="calc"/></td>
+             </tr>
+             <tr>
+                <td colspan="2"><b>Output: </b>$<% out.print(cost);%></td>
+             </tr>
+            </table>
+            </form>
+            <!-- Page Content -->
             
             <!-- Page Content -->
             

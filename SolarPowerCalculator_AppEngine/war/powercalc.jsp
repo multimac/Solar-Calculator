@@ -6,30 +6,33 @@
 
 <%
 //Process input
-double output = 21.384;//placeholder value
+double grossOutput = 21.384;//placeholder value
+double netOutput = 21.384;//placeholder value
 
-int numpanels = 1;
+//Default values, store in database instead
+int numpanels = 2;
 double daylighthours = 4.5;
-double hourlyusage = 1;
-int paneloutput = 4950;
+int hourlyusage = 300;
+int paneloutput = 250;
 double panelefficiency = 100;
-double inverterefficiency = 96;
+double inverterefficiency = 0.96;
 
 //ToDo: add validation
 if (request.getParameter("numpanels") != null) {
 	numpanels = Integer.parseInt(request.getParameter("numpanels"));
 	daylighthours = Double.parseDouble(request.getParameter("daylighthours"));
-	hourlyusage = Double.parseDouble(request.getParameter("hourlyusage"));
+	hourlyusage = Integer.parseInt(request.getParameter("hourlyusage"));
 	paneloutput = Integer.parseInt(request.getParameter("paneloutput"));
 	panelefficiency = Double.parseDouble(request.getParameter("panelefficiency"));
-	inverterefficiency = Double.parseDouble(request.getParameter("inverterefficiency"));
-	
-	//Create a system, and calculate output
-	LocationDetails location = new LocationDetails(daylighthours);
-	SystemConfiguration system = new SystemConfiguration(paneloutput, numpanels);
-	
-	output = SolarOutput.calculateDailyOutput(location, system);
+	inverterefficiency = Double.parseDouble(request.getParameter("inverterefficiency")) * 0.01;
 }
+
+//Create a system, and calculate output
+LocationDetails location = new LocationDetails(daylighthours, hourlyusage);
+SystemConfiguration system = new SystemConfiguration(paneloutput, numpanels, inverterefficiency);
+
+grossOutput = SolarOutput.calculateGrossDailyOutput(location, system) / 1000;
+netOutput = SolarOutput.calculateNetDailyOutput(location, system) / 1000;
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -61,7 +64,7 @@ if (request.getParameter("numpanels") != null) {
 		
 			<!-- Page Content -->
         	<br/>
-            <form name="output" action="powercalc.jsp" method="get" onSubmit="return validate();">
+            <form name="output" action="powercalc.jsp" method="post" onSubmit="return validate();">
             <table id="inputtable">
              <tr>
                 <td>
@@ -70,7 +73,7 @@ if (request.getParameter("numpanels") != null) {
                         <td colspan="2"><b>System Configuration</b></td>
                      </tr>
                      <tr>
-                        <td class="labels">Num Panels</td>
+                        <td class="labels">Number of Panels</td>
                         <td><input name="numpanels" value="<%=numpanels%>" /></td>
                      </tr>
                      <tr>
@@ -78,7 +81,7 @@ if (request.getParameter("numpanels") != null) {
                         <td><input name="daylighthours" value="<%=daylighthours%>" /></td>
                      </tr>
                      <tr>
-                        <td>Daytime Hourly Usage</td>
+                        <td>Hourly Usage Wh</td>
                         <td><input name="hourlyusage" value="<%=hourlyusage%>" /></td>
                      </tr>
                     </table>
@@ -89,16 +92,16 @@ if (request.getParameter("numpanels") != null) {
                         <td colspan="2"><b>System Statistics</b></td>
                      </tr>
                      <tr>
-                        <td class="labels">Panel Output (W/h)</td>
+                        <td class="labels">Panel Output Wh</td>
                         <td><input name="paneloutput" value="<%=paneloutput%>" /></td>
                      </tr>
                      <tr>
-                        <td>Panel Efficiency</td>
+                        <td>Panel Efficiency %</td>
                         <td><input name="panelefficiency" value="<%=panelefficiency%>" /></td>
                      </tr>
                      <tr>
-                        <td>Inverter Efficiency</td>
-                        <td><input name="inverterefficiency" value="<%=inverterefficiency%>" /></td>
+                        <td>Inverter Efficiency %</td>
+                        <td><input name="inverterefficiency" value="<%=inverterefficiency*100.0%>" /></td>
                      </tr>
                     </table>
                 </td>
@@ -107,7 +110,10 @@ if (request.getParameter("numpanels") != null) {
                 <td colspan="2"><input type="submit" value="Calculate" class="calc"/></td>
              </tr>
              <tr>
-                <td colspan="2"><b>Output: </b><% out.print(output);%>KWh</td>
+                <td colspan="2"><b>Gross Daily Output: </b><% out.print(grossOutput);%> KWh</td>
+             </tr>
+             <tr>
+                <td colspan="2"><b>Net Daily Output: </b><% out.print(netOutput);%> KWh</td>
              </tr>
             </table>
             </form>

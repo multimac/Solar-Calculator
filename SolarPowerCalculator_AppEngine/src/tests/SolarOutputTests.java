@@ -23,20 +23,20 @@ public class SolarOutputTests {
 
 	@Before
 	public void initObjects() throws CalculatorException {
-		testSystem = new SystemConfiguration(200, 5);
-		testLocation = new LocationDetails(5);
+		testSystem = new SystemConfiguration(250, 2, 96);
+		testLocation = new LocationDetails(4.5, 300);
 	}
 	
-	@Test public void calculatorHourlyOutputStandardValues() {
-		assertEquals(SolarOutput.calculateHourlyOutput(testSystem), 0.96, delta);
+	@Test public void calculateHourlyOutputStandardValues() {
+		assertEquals(480, SolarOutput.calculateHourlyOutput(testSystem), delta);
 	}
 	
 	@Test public void calculateDailyOutputStandardValues() {
-		assertEquals(SolarOutput.calculateDailyOutput(testLocation, testSystem), 4.8, delta);
+		assertEquals(2160, SolarOutput.calculateGrossDailyOutput(testLocation, testSystem), delta);
 	}
 	
 	@Test public void calculateMonthlyOutputStandardValues() {
-		assertEquals(SolarOutput.calculateMonthlyOutput(testLocation, testSystem), 144, delta);
+		assertEquals(64800, SolarOutput.calculateMonthlyOutput(testLocation, testSystem), delta);
 	}
 
 }

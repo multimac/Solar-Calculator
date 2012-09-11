@@ -9,26 +9,42 @@ import solarPowerCalculator.CalculatorException;
 
 /**
  * Tests for the LocationDetails Class
- * @author Brendon
  *
  */
 @SuppressWarnings("unused")
 public class LocationDetailsTests {
 
+	//Test dayLightHours
+	
 	@Test
-	public void initWithGoodTime() throws CalculatorException {
-		LocationDetails testLocation = new LocationDetails(5);
-	}	
+	public void initWithGoodDayLightHours() throws CalculatorException {
+		LocationDetails testLocation = new LocationDetails(5, 0);
+	}
 
 	@Test (expected=CalculatorException.class)
-	public void initWitTimeGreaterThan24Hours()  throws CalculatorException {
-		LocationDetails testLocation = new LocationDetails(60);
+	public void initWithGoodDayLightHoursGreaterThan24()  throws CalculatorException {
+		LocationDetails testLocation = new LocationDetails(60, 1);
 	}
 	
 	@Test (expected=CalculatorException.class)
-	public void initWithTimeLessThan24Hours()  throws CalculatorException {
-		LocationDetails testLocation = new LocationDetails(-5.0);
+	public void initWithTimeLessThanZeroHours()  throws CalculatorException {
+		LocationDetails testLocation = new LocationDetails(-5.0, 0);
 		assertEquals(testLocation.getDaylightHours(), -5.0, 0);
 	}
+	
+	
+	//Test hourlyUsage
+	
+	@Test
+	public void initWithGoodUsage() throws CalculatorException {
+		LocationDetails testLocation = new LocationDetails(0, 300);
+	}
+
+	@Test (expected=CalculatorException.class)
+	public void initWithUsageLessThanZero()  throws CalculatorException {
+		LocationDetails testLocation = new LocationDetails(0, -20);
+	}
+	
+	
 
 }
