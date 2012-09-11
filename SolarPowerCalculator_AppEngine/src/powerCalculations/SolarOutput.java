@@ -50,6 +50,16 @@ public class SolarOutput {
 		return calculateDailyOutput(location, system)*30;
 		
 	}
+	
+	/**
+	 * 
+	 * Calculates the expected system cost based on the system rating
+	 * @param system PanelConfiguration the solar panel system configuration
+	 * @return The expected dollar cost of the system
+	 */
+	public static double calculateSystemCost(SystemConfiguration system) {
+		return (system.getPanelCount() * system.getPanelOutput() * 1700) + 1000;
+	}
 
 	
 }
