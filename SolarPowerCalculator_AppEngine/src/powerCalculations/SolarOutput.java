@@ -61,11 +61,9 @@ public class SolarOutput {
 	 * @return The expected dollar cost of the system
 	 */
 	public static double calculateSystemCost(SystemConfiguration system) {
-		
 		double hourlyRawOutput = system.getPanelCount() * system.getPanelOutput();
 		int installCost = 1000;
 		return hourlyRawOutput + calculateInverterCost(hourlyRawOutput)  + installCost;
-		
 	}
 
 	/**
@@ -74,7 +72,6 @@ public class SolarOutput {
 	 * @return expected cost of an inverter to match output
 	 */
 	private static double calculateInverterCost(double systemOutput) {
-		
 		return -0.00004211*(systemOutput *systemOutput) + 1.06954219*systemOutput + 269.44442;
 	}
 
