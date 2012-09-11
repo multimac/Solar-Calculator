@@ -1,5 +1,7 @@
 package powerCalculations;
 
+import java.text.DecimalFormat;
+
 import environmentalSpecifications.*;
 
 /**
@@ -64,7 +66,9 @@ public class SolarOutput {
 		
 		double hourlyRawOutput = system.getPanelCount() * system.getPanelOutput();
 		int installCost = 1000;
-		return hourlyRawOutput + calculateInverterCost(hourlyRawOutput)  + installCost;
+		double rawCost = hourlyRawOutput + calculateInverterCost(hourlyRawOutput)  + installCost;
+		DecimalFormat decFormat = new DecimalFormat("#.##");
+	    return Double.valueOf(decFormat.format(rawCost));
 		
 	}
 

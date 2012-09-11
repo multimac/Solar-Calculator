@@ -20,6 +20,7 @@ public class SolarOutputTests {
 	private SystemConfiguration testSystem;
 	private LocationDetails testLocation;
 	private double delta = 0;
+	private double moneyDelta = 0.01;
 
 	@Before
 	public void initObjects() throws CalculatorException {
@@ -37,6 +38,36 @@ public class SolarOutputTests {
 	
 	@Test public void calculateMonthlyOutputStandardValues() {
 		assertEquals(64800, SolarOutput.calculateMonthlyOutput(testLocation, testSystem), delta);
+	}
+	
+	@Test public void calculate1KWSystemCost() throws CalculatorException {
+		testSystem = new SystemConfiguration(250, 4, 0.96);
+		assertEquals(3296.88, SolarOutput.calculateSystemCost(testSystem), moneyDelta);
+		
+	}
+	
+	@Test public void calculate2KWSystemCost() throws CalculatorException {
+		testSystem = new SystemConfiguration(500, 4, 0.96);
+		assertEquals(5240.09, SolarOutput.calculateSystemCost(testSystem), moneyDelta);
+		
+	}
+	
+	@Test public void calculate3KWSystemCost() throws CalculatorException {
+		testSystem = new SystemConfiguration(300, 10, 0.96);
+		assertEquals(7099.08, SolarOutput.calculateSystemCost(testSystem), moneyDelta);
+		
+	}
+	
+	@Test public void calculate4KWSystemCost() throws CalculatorException {
+		testSystem = new SystemConfiguration(400, 10, 0.96);
+		assertEquals(8873.85, SolarOutput.calculateSystemCost(testSystem), moneyDelta);
+		
+	}
+	
+	@Test public void calculate5KWSystemCost() throws CalculatorException {
+		testSystem = new SystemConfiguration(250, 20, 0.96);
+		assertEquals(10564.41, SolarOutput.calculateSystemCost(testSystem), moneyDelta);
+		
 	}
 	
 	
