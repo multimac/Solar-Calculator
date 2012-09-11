@@ -1,0 +1,51 @@
+what,kind,bundleId,bundleVersion,description,time
+started,bundle,com.google.gdt.eclipse.login,3.1.0.v201208080120-rel-r37,"com.google.gdt.eclipse.login",1347335725292
+started,bundle,com.google.gdt.eclipse.managedapis,3.1.0.v201208080120-rel-r37,"com.google.gdt.eclipse.managedapis",1347335725292
+started,bundle,com.google.gdt.eclipse.maven,3.1.0.v201208080120-rel-r37,"com.google.gdt.eclipse.maven",1347335725292
+started,bundle,com.google.gdt.eclipse.platform.e37,3.1.0.v201208080120-rel-r37,"com.google.gdt.eclipse.platform.e37",1347335725292
+started,bundle,com.google.gdt.eclipse.suite,3.1.0.v201208080120-rel-r37,"com.google.gdt.eclipse.suite",1347335725292
+started,bundle,com.google.gdt.eclipse.suite.ext,3.1.0.v201208080120-rel-r37,"com.google.gdt.eclipse.suite.ext",1347335725292
+started,bundle,com.google.gwt.eclipse.core,3.1.0.v201208080120-rel-r37,"com.google.gwt.eclipse.core",1347335725292
+started,bundle,org.eclipse.mylyn.bugzilla.core,3.7.1.v20120425-0100,"org.eclipse.mylyn.bugzilla.core",1347335725292
+started,bundle,org.eclipse.mylyn.bugzilla.ui,3.7.1.v20120425-0100,"org.eclipse.mylyn.bugzilla.ui",1347335725292
+started,bundle,org.eclipse.mylyn.commons.core,3.7.1.v20120425-0100,"org.eclipse.mylyn.commons.core",1347335725292
+started,bundle,org.eclipse.mylyn.commons.net,3.7.1.v20120425-0100,"org.eclipse.mylyn.commons.net",1347335725292
+started,bundle,org.eclipse.mylyn.commons.notifications.core,0.9.1.v20120425-0100,"org.eclipse.mylyn.commons.notifications.core",1347335725292
+started,bundle,org.eclipse.mylyn.commons.notifications.feed,0.9.1.v20120425-0100,"org.eclipse.mylyn.commons.notifications.feed",1347335725292
+started,bundle,org.eclipse.mylyn.commons.ui,3.7.1.v20120425-0100,"org.eclipse.mylyn.commons.ui",1347335725292
+started,bundle,org.eclipse.mylyn.commons.workbench,3.7.1.v20120425-0100,"org.eclipse.mylyn.commons.workbench",1347335725292
+started,bundle,org.eclipse.mylyn.context.core,3.7.1.v20120425-0100,"org.eclipse.mylyn.context.core",1347335725292
+started,bundle,org.eclipse.mylyn.context.tasks.ui,3.7.1.v20120425-0100,"org.eclipse.mylyn.context.tasks.ui",1347335725292
+started,bundle,org.eclipse.mylyn.monitor.ui,3.7.1.v20120425-0100,"org.eclipse.mylyn.monitor.ui",1347335725292
+started,bundle,org.eclipse.mylyn.tasks.ui,3.7.1.v20120425-0100,"org.eclipse.mylyn.tasks.ui",1347335725292
+started,bundle,org.eclipse.mylyn.team.ui,3.7.1.v20120425-0100,"org.eclipse.mylyn.team.ui",1347335725292
+os,sysinfo,,,"win32",1347335725295
+arch,sysinfo,,,"x86_64",1347335725295
+ws,sysinfo,,,"win32",1347335725295
+locale,sysinfo,,,"en_US",1347335725295
+processors,sysinfo,,,"8",1347335725295
+java.runtime.name,sysinfo,,,"Java(TM) SE Runtime Environment",1347335725295
+java.runtime.version,sysinfo,,,"1.7.0-b147",1347335725295
+java.specification.name,sysinfo,,,"Java Platform API Specification",1347335725295
+java.specification.vendor,sysinfo,,,"Oracle Corporation",1347335725295
+java.specification.version,sysinfo,,,"1.7",1347335725295
+java.vendor,sysinfo,,,"Oracle Corporation",1347335725295
+java.version,sysinfo,,,"1.7.0",1347335725295
+java.vm.info,sysinfo,,,"mixed mode",1347335725295
+java.vm.name,sysinfo,,,"Java HotSpot(TM) 64-Bit Server VM",1347335725295
+java.vm.specification.name,sysinfo,,,"Java Virtual Machine Specification",1347335725295
+java.vm.specification.vendor,sysinfo,,,"Oracle Corporation",1347335725295
+java.vm.specification.version,sysinfo,,,"1.7",1347335725295
+java.vm.vendor,sysinfo,,,"Oracle Corporation",1347335725295
+java.vm.version,sysinfo,,,"21.0-b17",1347335725295
+activated,view,org.eclipse.ui.ide,3.7.0.v20110928-1505,"org.eclipse.ui.views.AllMarkersView",1347335726910
+deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1347335730182
+activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1347335732630
+executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.window.preferences",1347335732642
+activated,view,org.eclipse.ui.navigator.resources,3.4.300.v20110928-1505,"org.eclipse.ui.navigator.ProjectExplorer",1347335733285
+started,bundle,org.eclipse.wst.ws.service.policy.ui,1.0.300.v201108240515,"org.eclipse.wst.ws.service.policy.ui",1347335733441
+started,bundle,org.eclipse.wst.ws.service.policy,1.0.303.v201009221810,"org.eclipse.wst.ws.service.policy",1347335733442
+started,bundle,org.eclipse.wst.command.env,1.0.409.v201004211805,"org.eclipse.wst.command.env",1347335733449
+started,bundle,org.eclipse.wst.ws,1.1.203.v201004211805,"org.eclipse.wst.ws",1347335733450
+started,bundle,org.eclipse.compare,3.5.202.R37x_v20111109-0800,"org.eclipse.compare",1347335733535
+deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1347335734396
