@@ -1,25 +1,25 @@
 //Placeholder file for javascript validation
 
-function validate() {
-	return true;
+//Main function calling validation rules
+function formValidation() {
+	
+	var dlh = document.output.daylighthours;
+	
+	if (!daylight_validation(dlh)){	
+		return false;
+	}	
 }
 
-
-
-
-
-function validateStr() {
-	return true;
-}
-
-function validateInt() {
-	return true;
-}
-
-function validateFloat() {
-	return true;
-}
-
-function validateDouble() {
+//Validation functions
+//Function to validate daylight hours, no negatives, between 0 and 24
+function daylight_validation(dlh) {
+	
+	var dlh_val = document.output.daylighthours.value;
+	
+	if (dlh_val == 0 || dlh_val > 24) {
+		alert("Daylight hours must be greater than 0 and less than 24.")
+		dlh_val.focus(); //Give focus to problem
+		return false;
+	}
 	return true;
 }
