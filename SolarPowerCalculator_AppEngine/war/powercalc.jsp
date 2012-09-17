@@ -68,7 +68,7 @@ netOutput = Math.round(netOutput * 100.0) / 100.0;
 		
 			<!-- Page Content -->
         	<br/>
-            <form name="output" action="powercalc.jsp" method="post" onSubmit="return validate();">
+            <form name="output" action="powercalc.jsp" method="post" onSubmit="return formValidation();">
             <table id="inputtable">
              <tr>
                 <td>
