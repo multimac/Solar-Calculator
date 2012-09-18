@@ -51,7 +51,7 @@ if (request.getParameter("numpanels") != null) {
 			<!-- Page Content -->
         	<br/>
         	<div id="errorBox"></div>
-            <form name="output" action="powercalc.jsp" method="post" onSubmit="return formValidation()">
+            <form name="output" action="powercalc.jsp" method="post" onSubmit="if (formValidation()) {postPowerCalc();} return false;">
             <table id="inputtable">
              <tr>
                 <td>
