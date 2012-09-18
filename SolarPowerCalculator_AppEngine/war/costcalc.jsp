@@ -1,34 +1,15 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" language="java"%>
-<%@ page import="powerCalculations.SolarOutput" %>
-<%@ page import="environmentalSpecifications.LocationDetails"%>
-<%@ page import="environmentalSpecifications.SystemConfiguration"%>
-
 
 <%
-//Process input
-double cost = 0;
-
 //Default values, store in database instead
 int numpanels = 2;
-double daylighthours = 4.5;
-int hourlyusage = 300;
 int paneloutput = 250;
-double panelefficiency = 100;
-double inverterefficiency = 0.96;
 
 //ToDo: add validation
 if (request.getParameter("numpanels") != null) {
 	numpanels = Integer.parseInt(request.getParameter("numpanels"));
 	paneloutput = Integer.parseInt(request.getParameter("paneloutput"));
 }
-
-//Create a system, and calculate cost
-SystemConfiguration system = new SystemConfiguration(paneloutput, numpanels, inverterefficiency);
-
-cost = SolarOutput.calculateSystemCost(system);
-
-//Round output values
-cost = Math.round(cost * 100.0) / 100.0;
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -37,6 +18,7 @@ cost = Math.round(cost * 100.0) / 100.0;
  <title>Solar Output Calculator</title>
  <link rel="stylesheet" type="text/css" href="css/mainstyle.css" />
  <script type="text/javascript" src="js/validatesolaroutput.js"></script>
+ <script type="text/javascript" src="js/ajax.js"></script>
 </head>
 <body>
 
@@ -60,7 +42,7 @@ cost = Math.round(cost * 100.0) / 100.0;
             
             <!-- Page Content -->
         	<br/>
-            <form name="output" action="costcalc.jsp" method="post" onSubmit="return validate();">
+            <form name="output" action="costcalc.jsp" method="post" onSubmit="if (formValidation()) {postCostCalc();} return false;">
             <table id="inputtable">
              <tr>
                 <td>
@@ -90,7 +72,7 @@ cost = Math.round(cost * 100.0) / 100.0;
                 <td colspan="2"><input type="submit" value="Calculate" class="calc"/></td>
              </tr>
              <tr>
-                <td colspan="2"><b>Output: </b>$<% out.print(cost);%></td>
+                <td colspan="2"><div id="cost"></div></td>
              </tr>
             </table>
             </form>

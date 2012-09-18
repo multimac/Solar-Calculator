@@ -1,14 +1,6 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" language="java"%>
-<%@ page import="powerCalculations.SolarOutput" %>
-<%@ page import="environmentalSpecifications.LocationDetails"%>
-<%@ page import="environmentalSpecifications.SystemConfiguration"%>
-
 
 <%
-//Process input
-double grossOutput = 0;//placeholder value
-double netOutput = 0;//placeholder value
-
 //Default values, store in database instead
 int numpanels = 2;
 double daylighthours = 4.5;
@@ -26,17 +18,6 @@ if (request.getParameter("numpanels") != null) {
 	panelefficiency = Double.parseDouble(request.getParameter("panelefficiency"));
 	inverterefficiency = Double.parseDouble(request.getParameter("inverterefficiency")) * 0.01;
 }
-
-//Create a system, and calculate output
-LocationDetails location = new LocationDetails(daylighthours, hourlyusage);
-SystemConfiguration system = new SystemConfiguration(paneloutput, numpanels, inverterefficiency);
-
-grossOutput = SolarOutput.calculateGrossDailyOutput(location, system) / 1000;
-netOutput = SolarOutput.calculateNetDailyOutput(location, system) / 1000;
-
-//Round output values
-grossOutput = Math.round(grossOutput * 100.0) / 100.0;
-netOutput = Math.round(netOutput * 100.0) / 100.0;
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -45,6 +26,7 @@ netOutput = Math.round(netOutput * 100.0) / 100.0;
  <title>Solar Output Calculator</title>
  <link rel="stylesheet" type="text/css" href="css/mainstyle.css" />
  <script type="text/javascript" src="js/validatesolaroutput.js"></script>
+ <script type="text/javascript" src="js/ajax.js"></script>
 </head>
 <body>
 
@@ -68,7 +50,7 @@ netOutput = Math.round(netOutput * 100.0) / 100.0;
 		
 			<!-- Page Content -->
         	<br/>
-            <form name="output" action="powercalc.jsp" method="post" onSubmit="return formValidation();">
+            <form name="output" action="powercalc.jsp" method="post" onSubmit="if (formValidation()) {postPowerCalc();} return false;">
             <table id="inputtable">
              <tr>
                 <td>
@@ -114,10 +96,10 @@ netOutput = Math.round(netOutput * 100.0) / 100.0;
                 <td colspan="2"><input type="submit" value="Calculate" class="calc"/></td>
              </tr>
              <tr>
-                <td colspan="2"><b>Gross Daily Output: </b><% out.print(grossOutput);%> KWh</td>
+                <td colspan="2"><div id="grossoutput"></div></td>
              </tr>
              <tr>
-                <td colspan="2"><b>Net Daily Output: </b><% out.print(netOutput);%> KWh</td>
+                <td colspan="2"><div id="netoutput"></div></td>
              </tr>
             </table>
             </form>
