@@ -1,17 +1,9 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" language="java"%>
-
 <%
 //Default values, store in database instead
 int numpanels = 2;
 int paneloutput = 250;
-
-//ToDo: add validation
-if (request.getParameter("numpanels") != null) {
-	numpanels = Integer.parseInt(request.getParameter("numpanels"));
-	paneloutput = Integer.parseInt(request.getParameter("paneloutput"));
-}
 %>
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -72,12 +64,13 @@ if (request.getParameter("numpanels") != null) {
                 <td colspan="2"><input type="submit" value="Calculate" class="calc"/></td>
              </tr>
              <tr>
+                <td colspan="2"><div id="errorBox"></div></td>
+             </tr>
+             <tr>
                 <td colspan="2"><div id="cost"></div></td>
              </tr>
             </table>
             </form>
-            <!-- Page Content -->
-            
             <!-- Page Content -->
             
         </td>

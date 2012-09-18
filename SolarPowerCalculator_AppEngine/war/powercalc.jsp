@@ -1,5 +1,4 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" language="java"%>
-
 <%
 //Default values, store in database instead
 int numpanels = 2;
@@ -8,18 +7,7 @@ int hourlyusage = 300;
 int paneloutput = 250;
 double panelefficiency = 100;
 double inverterefficiency = 0.96;
-
-//ToDo: add validation
-if (request.getParameter("numpanels") != null) {
-	numpanels = Integer.parseInt(request.getParameter("numpanels"));
-	daylighthours = Double.parseDouble(request.getParameter("daylighthours"));
-	hourlyusage = Integer.parseInt(request.getParameter("hourlyusage"));
-	paneloutput = Integer.parseInt(request.getParameter("paneloutput"));
-	panelefficiency = Double.parseDouble(request.getParameter("panelefficiency"));
-	inverterefficiency = Double.parseDouble(request.getParameter("inverterefficiency")) * 0.01;
-}
 %>
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -50,7 +38,6 @@ if (request.getParameter("numpanels") != null) {
 		
 			<!-- Page Content -->
         	<br/>
-        	<div id="errorBox"></div>
             <form name="output" action="powercalc.jsp" method="post" onSubmit="if (formValidation()) {postPowerCalc();} return false;">
             <table id="inputtable">
              <tr>
@@ -95,6 +82,9 @@ if (request.getParameter("numpanels") != null) {
              </tr>
              <tr>
                 <td colspan="2"><input type="submit" value="Calculate" class="calc"/></td>
+             </tr>
+             <tr>
+                <td colspan="2"><div id="errorBox"></div></td>
              </tr>
              <tr>
                 <td colspan="2"><div id="grossoutput"></div></td>
