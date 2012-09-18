@@ -17,7 +17,7 @@ function daylight_validation(dlh) {
 	
 	var dlh_val = document.output.daylighthours.value;
 
-	if ((dlh_val == 0) || (dlh_val > 24)) {
+	if ((dlh_val <= 0) || (dlh_val > 24)) {
 		alert("Daylight hours must be greater than 0 and less than 24.")
 		dlh.focus(); //Give focus to problem
 		return false;

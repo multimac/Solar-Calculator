@@ -383,6 +383,7 @@
             this.Location = new System.Drawing.Point(300, 20);
             this.Name = "GUI";
             this.Text = "Solar Calculator";
+            this.Load += new System.EventHandler(this.GUI_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numHoursOfDaylight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDaytimeUsage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numImportPrice)).EndInit();
