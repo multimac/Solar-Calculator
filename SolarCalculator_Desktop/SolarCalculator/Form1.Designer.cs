@@ -56,6 +56,8 @@
             this.numPanelEfficiency = new System.Windows.Forms.NumericUpDown();
             this.numInverterEfficiency = new System.Windows.Forms.NumericUpDown();
             this.numNumberOfPanels = new System.Windows.Forms.NumericUpDown();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numHoursOfDaylight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDaytimeUsage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numImportPrice)).BeginInit();
@@ -78,7 +80,7 @@
             // 
             // btnCalculate
             // 
-            this.btnCalculate.Location = new System.Drawing.Point(394, 172);
+            this.btnCalculate.Location = new System.Drawing.Point(273, 172);
             this.btnCalculate.Name = "btnCalculate";
             this.btnCalculate.Size = new System.Drawing.Size(100, 40);
             this.btnCalculate.TabIndex = 9;
@@ -140,7 +142,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(118, 182);
+            this.label7.Location = new System.Drawing.Point(4, 181);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(203, 20);
             this.label7.TabIndex = 15;
@@ -150,7 +152,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(573, 182);
+            this.label8.Location = new System.Drawing.Point(454, 181);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(192, 20);
             this.label8.TabIndex = 16;
@@ -347,11 +349,33 @@
             this.numNumberOfPanels.Size = new System.Drawing.Size(120, 20);
             this.numNumberOfPanels.TabIndex = 37;
             // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(772, 268);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(100, 40);
+            this.btnExit.TabIndex = 38;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(772, 222);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(100, 40);
+            this.btnBack.TabIndex = 39;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 318);
+            this.Controls.Add(this.btnBack);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.numNumberOfPanels);
             this.Controls.Add(this.numInverterEfficiency);
             this.Controls.Add(this.numPanelEfficiency);
@@ -381,9 +405,10 @@
             this.Controls.Add(this.btnCalculate);
             this.Controls.Add(this.label1);
             this.Location = new System.Drawing.Point(300, 20);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "GUI";
             this.Text = "Solar Calculator";
-            this.Load += new System.EventHandler(this.GUI_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numHoursOfDaylight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDaytimeUsage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numImportPrice)).EndInit();
@@ -427,6 +452,8 @@
         private System.Windows.Forms.NumericUpDown numPanelEfficiency;
         private System.Windows.Forms.NumericUpDown numInverterEfficiency;
         private System.Windows.Forms.NumericUpDown numNumberOfPanels;
+        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnBack;
     }
 }
 

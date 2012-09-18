@@ -31,7 +31,7 @@
             this.btnBack = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.lblSysCon = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblSysCost = new System.Windows.Forms.Label();
             this.lblSysStat = new System.Windows.Forms.Label();
             this.btnCalc = new System.Windows.Forms.Button();
             this.lblNumPan = new System.Windows.Forms.Label();
@@ -44,46 +44,49 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(12, 250);
+            this.btnBack.Location = new System.Drawing.Point(11, 161);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(85, 39);
             this.btnBack.TabIndex = 0;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(279, 250);
+            this.btnExit.Location = new System.Drawing.Point(279, 161);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(86, 39);
             this.btnExit.TabIndex = 1;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // lblSysCon
             // 
             this.lblSysCon.AutoSize = true;
             this.lblSysCon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.lblSysCon.Location = new System.Drawing.Point(12, 33);
+            this.lblSysCon.Location = new System.Drawing.Point(8, 9);
             this.lblSysCon.Name = "lblSysCon";
             this.lblSysCon.Size = new System.Drawing.Size(181, 20);
             this.lblSysCon.TabIndex = 2;
             this.lblSysCon.Text = "System Configuration";
             // 
-            // label2
+            // lblSysCost
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 180);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "label2";
+            this.lblSysCost.AutoSize = true;
+            this.lblSysCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblSysCost.Location = new System.Drawing.Point(7, 129);
+            this.lblSysCost.Name = "lblSysCost";
+            this.lblSysCost.Size = new System.Drawing.Size(103, 20);
+            this.lblSysCost.TabIndex = 3;
+            this.lblSysCost.Text = "System Cost:";
             // 
             // lblSysStat
             // 
             this.lblSysStat.AutoSize = true;
             this.lblSysStat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.lblSysStat.Location = new System.Drawing.Point(220, 33);
+            this.lblSysStat.Location = new System.Drawing.Point(217, 9);
             this.lblSysStat.Name = "lblSysStat";
             this.lblSysStat.Size = new System.Drawing.Size(148, 20);
             this.lblSysStat.TabIndex = 4;
@@ -91,18 +94,19 @@
             // 
             // btnCalc
             // 
-            this.btnCalc.Location = new System.Drawing.Point(12, 123);
+            this.btnCalc.Location = new System.Drawing.Point(11, 78);
             this.btnCalc.Name = "btnCalc";
             this.btnCalc.Size = new System.Drawing.Size(86, 39);
             this.btnCalc.TabIndex = 7;
             this.btnCalc.Text = "Calculate";
             this.btnCalc.UseVisualStyleBackColor = true;
+            this.btnCalc.Click += new System.EventHandler(this.btnCalc_Click);
             // 
             // lblNumPan
             // 
             this.lblNumPan.AutoSize = true;
             this.lblNumPan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblNumPan.Location = new System.Drawing.Point(12, 63);
+            this.lblNumPan.Location = new System.Drawing.Point(8, 29);
             this.lblNumPan.Name = "lblNumPan";
             this.lblNumPan.Size = new System.Drawing.Size(135, 20);
             this.lblNumPan.TabIndex = 8;
@@ -112,7 +116,7 @@
             // 
             this.lblPanOut.AutoSize = true;
             this.lblPanOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblPanOut.Location = new System.Drawing.Point(221, 63);
+            this.lblPanOut.Location = new System.Drawing.Point(217, 29);
             this.lblPanOut.Name = "lblPanOut";
             this.lblPanOut.Size = new System.Drawing.Size(147, 20);
             this.lblPanOut.TabIndex = 9;
@@ -120,14 +124,14 @@
             // 
             // numNumPan
             // 
-            this.numNumPan.Location = new System.Drawing.Point(16, 97);
+            this.numNumPan.Location = new System.Drawing.Point(12, 52);
             this.numNumPan.Name = "numNumPan";
             this.numNumPan.Size = new System.Drawing.Size(120, 20);
             this.numNumPan.TabIndex = 10;
             // 
             // numPanOut
             // 
-            this.numPanOut.Location = new System.Drawing.Point(224, 97);
+            this.numPanOut.Location = new System.Drawing.Point(221, 52);
             this.numPanOut.Name = "numPanOut";
             this.numPanOut.Size = new System.Drawing.Size(120, 20);
             this.numPanOut.TabIndex = 11;
@@ -136,14 +140,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(377, 301);
+            this.ClientSize = new System.Drawing.Size(377, 212);
             this.Controls.Add(this.numPanOut);
             this.Controls.Add(this.numNumPan);
             this.Controls.Add(this.lblPanOut);
             this.Controls.Add(this.lblNumPan);
             this.Controls.Add(this.btnCalc);
             this.Controls.Add(this.lblSysStat);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblSysCost);
             this.Controls.Add(this.lblSysCon);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnBack);
@@ -164,7 +168,7 @@
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label lblSysCon;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblSysCost;
         private System.Windows.Forms.Label lblSysStat;
         private System.Windows.Forms.Button btnCalc;
         private System.Windows.Forms.Label lblNumPan;

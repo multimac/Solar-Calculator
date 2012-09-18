@@ -16,8 +16,8 @@ namespace SolarCalculator
     {
         public delegate void StringDelegate(string input);
 
-        const string TemplateOfflineUri = "http://localhost:8888/outputxml.jsp?numpanels={0}&daylighthours={1}&hourlyusage={2}&paneloutput={3}&panelefficiency={4}&inverterefficiency={5}";
-        const string TemplateOnlineUri = "http://solarpanelcalc.appspot.com/outputxml.jsp?numpanels={0}&daylighthours={1}&hourlyusage={2}&paneloutput={3}&panelefficiency={4}&inverterefficiency={5}";
+        const string TemplateOfflineUri = "http://localhost:8888/powercalcxml.jsp?numpanels={0}&daylighthours={1}&hourlyusage={2}&paneloutput={3}&panelefficiency={4}&inverterefficiency={5}";
+        const string TemplateOnlineUri = "http://solarpanelcalc.appspot.com/powercalcxml.jsp?numpanels={0}&daylighthours={1}&hourlyusage={2}&paneloutput={3}&panelefficiency={4}&inverterefficiency={5}";
 
 
         public GUI()
@@ -36,7 +36,7 @@ namespace SolarCalculator
         {
             string uriString = uriTarget as string;
             if (uriString == null)
-                throw new Exception("Booo...");
+                throw new Exception("Cannot be null.");
 
             string xmlInput = RESTMethods.Request(new Uri(uriString), RequestMethod.GET);
 
@@ -90,6 +90,30 @@ namespace SolarCalculator
             thread.IsBackground = true;
 
             thread.Start(GenerateUriString());
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to close?", "Confirm Close", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                e.Cancel = false;
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            var MainMenu = new MainMenu();
+            this.Hide();
+            MainMenu.Show();
         }
     }
 }
