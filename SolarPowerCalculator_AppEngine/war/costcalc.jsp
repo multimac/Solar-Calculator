@@ -42,7 +42,7 @@ if (request.getParameter("numpanels") != null) {
             
             <!-- Page Content -->
         	<br/>
-            <form name="output" action="costcalc.jsp" method="post" onSubmit="if (formValidation()) {postCostCalc();} return false;">
+            <form name="output" action="costcalc.jsp" method="post" onSubmit="if (true) {postCostCalc();} return false;">
             <table id="inputtable">
              <tr>
                 <td>
