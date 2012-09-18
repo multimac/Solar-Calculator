@@ -67,7 +67,7 @@ if (request.getParameter("numpanels") != null) {
                         <td><input name="daylighthours" value="<%=daylighthours%>" /></td>
                      </tr>
                      <tr>
-                        <td>Hourly Usage Wh</td>
+                        <td>Daily Usage Wh</td>
                         <td><input name="hourlyusage" value="<%=hourlyusage%>" /></td>
                      </tr>
                     </table>
@@ -78,11 +78,11 @@ if (request.getParameter("numpanels") != null) {
                         <td colspan="2"><b>System Statistics</b></td>
                      </tr>
                      <tr>
-                        <td class="labels">Panel Output Wh</td>
+                        <td class="labels">Panel Output W</td>
                         <td><input name="paneloutput" value="<%=paneloutput%>" /></td>
                      </tr>
                      <tr>
-                        <td>Panel Efficiency %</td>
+                        <td>Panel Degradation %</td>
                         <td><input name="panelefficiency" value="<%=panelefficiency%>" /></td>
                      </tr>
                      <tr>
