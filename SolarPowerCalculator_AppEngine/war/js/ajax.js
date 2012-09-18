@@ -19,9 +19,11 @@ function postPowerCalc() {
 				
 				var grossOutput = x[0].getElementsByTagName('grossoutput')[0].firstChild.nodeValue;
 				var netOutput = x[0].getElementsByTagName('netoutput')[0].firstChild.nodeValue;
+				var error = x[0].getElementsByTagName('error')[0].firstChild.nodeValue;
 				
 				document.getElementById("grossoutput").innerHTML = "<b>Gross Daily Output: </b>" + grossOutput + " Kwh";
 				document.getElementById("netoutput").innerHTML = "<b>Net Daily Output: </b>" + netOutput + " Kwh";
+				
 			}
 		}
 		
