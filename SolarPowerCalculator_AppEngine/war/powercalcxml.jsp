@@ -50,6 +50,9 @@ else {
 	grossOutput = SolarOutput.calculateGrossDailyOutput(location, system) / 1000;
 	netOutput = SolarOutput.calculateNetDailyOutput(location, system) / 1000;
 	
+	//Round to 2 decimal places
+	grossOutput = Math.round(grossOutput*100.0)/100.0;
+	netOutput = Math.round(netOutput*100.0)/100.0;
 }
 
 %><solorcalculator><grossoutput><%out.print(grossOutput);%></grossoutput><netoutput><%out.print(netOutput);%></netoutput><error><%out.print(error);%></error></solorcalculator>
