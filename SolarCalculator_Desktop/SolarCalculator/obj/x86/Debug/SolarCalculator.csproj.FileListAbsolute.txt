@@ -9,3 +9,14 @@ C:\Users\Ima\Documents\GitHub\Solar-Calculator\SolarCalculator_Desktop\SolarCalc
 C:\Users\Ima\Documents\GitHub\Solar-Calculator\SolarCalculator_Desktop\SolarCalculator\obj\x86\Debug\SolarCalculator.exe
 C:\Users\Ima\Documents\GitHub\Solar-Calculator\SolarCalculator_Desktop\SolarCalculator\obj\x86\Debug\SolarCalculator.pdb
 C:\Users\Ima\Documents\GitHub\Solar-Calculator\SolarCalculator_Desktop\SolarCalculator\obj\x86\Debug\SolarCalculator.CostCalculation.resources
+C:\Users\KAS\Desktop\SolarCalculator_Desktop\SolarCalculator\obj\x86\Debug\SolarCalculator.exe
+C:\Users\KAS\Desktop\SolarCalculator_Desktop\SolarCalculator\obj\x86\Debug\SolarCalculator.pdb
+C:\Users\KAS\Desktop\SolarCalculator_Desktop\SolarCalculator\bin\Debug\SolarCalculator.exe
+C:\Users\KAS\Desktop\SolarCalculator_Desktop\SolarCalculator\bin\Debug\SolarCalculator.pdb
+C:\Users\KAS\Desktop\SolarCalculator_Desktop\SolarCalculator\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\KAS\Desktop\SolarCalculator_Desktop\SolarCalculator\obj\x86\Debug\SolarCalculator.CostCalculation.resources
+C:\Users\KAS\Desktop\SolarCalculator_Desktop\SolarCalculator\obj\x86\Debug\SolarCalculator.GUI.resources
+C:\Users\KAS\Desktop\SolarCalculator_Desktop\SolarCalculator\obj\x86\Debug\SolarCalculator.MainMenu.resources
+C:\Users\KAS\Desktop\SolarCalculator_Desktop\SolarCalculator\obj\x86\Debug\SolarCalculator.Properties.Resources.resources
+C:\Users\KAS\Desktop\SolarCalculator_Desktop\SolarCalculator\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\KAS\Desktop\SolarCalculator_Desktop\SolarCalculator\obj\x86\Debug\GenerateResource.write.1.tlog

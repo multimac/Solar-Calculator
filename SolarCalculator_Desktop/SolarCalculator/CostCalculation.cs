@@ -107,14 +107,17 @@ namespace SolarCalculator
 
         private void CostCalculation_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to close?", "Confirm Close", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            /*if (MessageBox.Show("Are you sure you want to close?", "Confirm Close", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 e.Cancel = false;
             }
             else
             {
                 e.Cancel = true;
-            }
+            }*/
+            var MainMenu = new MainMenu();
+            this.Hide();
+            MainMenu.Show();
         }
     }
 }

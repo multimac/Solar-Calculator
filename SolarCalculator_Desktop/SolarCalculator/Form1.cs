@@ -99,18 +99,17 @@ namespace SolarCalculator
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to close?", "Confirm Close", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                e.Cancel = false;
-            }
-            else
-            {
-                e.Cancel = true;
-            }
+
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
+            var MainMenu = new MainMenu();
+            this.Hide();
+            MainMenu.Show();
+        }
+
+        private void GUI_FormClosed(object sender, FormClosedEventArgs e) {
             var MainMenu = new MainMenu();
             this.Hide();
             MainMenu.Show();

@@ -409,6 +409,7 @@
             this.MinimizeBox = false;
             this.Name = "GUI";
             this.Text = "Solar Calculator";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GUI_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.numHoursOfDaylight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDaytimeUsage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numImportPrice)).EndInit();

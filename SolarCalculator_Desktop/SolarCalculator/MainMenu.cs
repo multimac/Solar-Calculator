@@ -37,14 +37,16 @@ namespace SolarCalculator
 
         private void MainMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to close?", "Confirm Close", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            Application.Exit();
+            /*if (MessageBox.Show("Are you sure you want to close?", "Confirm Close", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 e.Cancel = false;
+                
             }
             else
             {
                 e.Cancel = true;
-            }
+            }*/
         }
     }
 }
