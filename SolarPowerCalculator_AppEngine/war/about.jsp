@@ -19,51 +19,22 @@
 <body>
 
 <div id="container">
-<table id="template" cellpadding="0" cellspacing="0">
-	<tr>
-		<td colspan="9"><img src="images/TA0.jpg" width="671" height="70" alt=""></td></tr>
-	<tr>
-		<td width="185" colspan="2"><img src="images/TB0.jpg" width="185" height="32" alt=""></td>
-		<td width="104"><a class="powercalclink" href="powercalc.jsp"></a></td>
-		<td width="10"><img src="images/TB1.jpg" width="10" height="32" alt=""></td>
-		<td width="104"><a class="costcalclink" href="costcalc.jsp"></a></td>
-		<td width="10"><img src="images/TB2.jpg" width="10" height="32" alt=""></td>
-		<td width="64"><a class="aboutlink" href="about.jsp"></a></td>
-		<td width="194"><img src="images/TB3.jpg" width="194" height="32" alt=""></td>
-        <td width="100%"></td>
-	</tr>
-	<tr>
-		<td style="vertical-align:text-top"><img src="images/TC0.jpg" width="167" height="95" alt=""></td>
-		<td colspan="8">
-		
-			<!-- Page Content -->
-        	<br/>
-            <b>INB372 Agile Software Development</b><br/>
-            Solar Power Calculator Assignment 2012 sem2<br/><br/>
+<div id="template">
+	<img src="images/TA0.jpg" width="671" height="70" alt=""><img src="images/TB0.jpg" width="185" height="32" alt=""><a class="powercalclink" href="powercalc.jsp"></a><img src="images/TB1.jpg" width="10" height="32" alt=""><a class="costcalclink" href="costcalc.jsp"></a><img src="images/TB2.jpg" width="10" height="32" alt=""><a class="aboutlink" href="about.jsp"></a><img src="images/TB3.jpg" width="194" height="32" alt=""><img src="images/TC0.jpg" align="top" width="167" height="95" alt="">
+
+		<div class="text">
+		<br/>
+        <b>INB372 Agile Software Development</b><br/>
+        Solar Power Calculator Assignment 2012 sem2<br/><br/>
             
-            <b>Panther-Rabbit Thingy</b><br/>
-            Brendon Park - N8305242<br/>
-			David Symons - N8444427<br/>
-			Glen-Andrew Thomson - N7207999<br/>
-			Sean Burnett - N8102210<br/>
-			Kierren Small - N8101621<br/>
-			            
-            <!-- Page Content -->
-            
-        </td>
-	</tr>
-	<tr>
-		<td><img src="images/spacer.gif" width="167" height="1" alt=""></td>
-		<td><img src="images/spacer.gif" width="18" height="1" alt=""></td>
-		<td><img src="images/spacer.gif" width="104" height="1" alt=""></td>
-		<td><img src="images/spacer.gif" width="10" height="1" alt=""></td>
-		<td><img src="images/spacer.gif" width="104" height="1" alt=""></td>
-		<td><img src="images/spacer.gif" width="10" height="1" alt=""></td>
-		<td><img src="images/spacer.gif" width="64" height="1" alt=""></td>
-		<td><img src="images/spacer.gif" width="194" height="1" alt=""></td>
-        <td></td>
-	</tr>
-</table>
+        <b>Panther-Rabbit Thingy</b><br/>
+        Brendon Park - N8305242<br/>
+		David Symons - N8444427<br/>
+		Glen-Andrew Thomson - N7207999<br/>
+		Sean Burnett - N8102210<br/>
+		Kierren Small - N8101621<br/>
+		</div>	
+</div>
 </div>
 
 </body>
