@@ -6,7 +6,7 @@ double netOutput = 0;//placeholder value
 //Default values, store in database instead
 int numpanels = 2;
 double daylighthours = 4.5;
-int hourlyusage = 300;
+double monthlyconsumption = 18;
 int paneloutput = 250;
 double panelefficiency = 100;
 double inverterefficiency = 0.96;
@@ -22,8 +22,8 @@ if (!Validator.IsInteger(request.getParameter("numpanels"))) {
 else if (!Validator.IsDouble(request.getParameter("daylighthours"))) {
 	error = "Daylight Hoyrs must be valid number.";
 }
-else if (!Validator.IsInteger(request.getParameter("hourlyusage"))) {
-	error = "Houtly Usage must be a whole number.";
+else if (!Validator.IsDouble(request.getParameter("monthlyconsumption"))) {
+	error = "Monthly Consumption must be a valid number.";
 }
 else if (!Validator.IsInteger(request.getParameter("paneloutput"))) {
 	error = "Panel Output must be a whole number.";
@@ -38,17 +38,17 @@ else {
 	
 	numpanels = Integer.parseInt(request.getParameter("numpanels"));
 	daylighthours = Double.parseDouble(request.getParameter("daylighthours"));
-	hourlyusage = Integer.parseInt(request.getParameter("hourlyusage"));
+	monthlyconsumption = Double.parseDouble(request.getParameter("monthlyconsumption"));
 	paneloutput = Integer.parseInt(request.getParameter("paneloutput"));
 	panelefficiency = Double.parseDouble(request.getParameter("panelefficiency"));
 	inverterefficiency = Double.parseDouble(request.getParameter("inverterefficiency")) * 0.01;
 
 	//Create a system, and calculate output
-	LocationDetails location = new LocationDetails(daylighthours, hourlyusage);
+	LocationDetails location = new LocationDetails(daylighthours, monthlyconsumption);
 	SystemConfiguration system = new SystemConfiguration(paneloutput, numpanels, inverterefficiency);
 	
-	grossOutput = SolarOutput.calculateGrossDailyOutput(location, system) / 1000;
-	netOutput = SolarOutput.calculateNetDailyOutput(location, system) / 1000;
+	grossOutput = SolarOutput.calculateGrossDailyOutput(location, system);
+	netOutput = SolarOutput.calculateNetDailyOutput(location, system);
 	
 	//Round to 2 decimal places
 	grossOutput = Math.round(grossOutput*100.0)/100.0;

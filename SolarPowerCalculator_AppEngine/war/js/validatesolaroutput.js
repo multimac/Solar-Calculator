@@ -16,9 +16,9 @@ function formValidation() {
 		errorList.push("<li>Daylight hours should be a number between 0 and 24.</li>");
 	}
 	
-	if(!validHourlyUsage()) {
+	if(!validMonthlyConsumption()) {
 		inputError = true;
-		errorList.push("<li>Hourly usage should be a number greater than or equal to 0.</li>");
+		errorList.push("<li>Monthly consumption should be a number greater than or equal to 0.</li>");
 	}
 	
 	
@@ -80,9 +80,9 @@ function validNumPanels() {
 	return false;
 }
 
-function validHourlyUsage() {
-	var hourlyUsage = document.output.hourlyusage.value;
-	if (hourlyUsage >= 0 && isNaN(hourlyUsage) == false) {
+function validMonthlyConsumption() {
+	var MonthlyConsumption = document.output.monthlyconsumption.value;
+	if (MonthlyConsumption >= 0 && isNaN(MonthlyConsumption) == false) {
 		return true;
 	}
 	return false;

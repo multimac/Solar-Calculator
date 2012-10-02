@@ -11,7 +11,7 @@ public class LocationDetails {
 
 	// Class Variables
 	private double daylightHours; // Hours
-	private int hourlyUsage; // Watt Hours
+	private double monthlyConsumption; // Killowatt Hours
 	private static double hoursInDay = 24; //Hours
 	
 	/**
@@ -19,16 +19,16 @@ public class LocationDetails {
 	 * @param daylightHours hours of daylight system is exposed to
 	 * @throws CalculatorException if daylightHours exceeds hoursInDay
 	 */
-	public LocationDetails (double daylightHours, int hourlyUsage) throws CalculatorException {
+	public LocationDetails (double daylightHours, double monthlyConsumption) throws CalculatorException {
 		if (daylightHours > hoursInDay || daylightHours < 0)
 			throw new CalculatorException("daylightHours exceeds limits");
 		else
 			this.daylightHours = daylightHours;
 		
-		if (hourlyUsage < 0)
-			throw new CalculatorException("hourlyUsage cannot be lower than 0");
+		if (monthlyConsumption < 0)
+			throw new CalculatorException("monthlyconsumption cannot be lower than 0");
 		else
-			this.hourlyUsage = hourlyUsage;
+			this.monthlyConsumption = monthlyConsumption;
 	}
 	
 	/**
@@ -40,11 +40,11 @@ public class LocationDetails {
 	}
 	
 	/**
-	 *  Gets the number of Wh consumed each hour
-	 * @return Wh consumed each hour
+	 *  Gets the number of KWh consumed each day
+	 * @return KWh consumed each day
 	 */
-	public int getHourlyUsage () {
-		return hourlyUsage;
+	public double getMonthlyConsumption () {
+		return monthlyConsumption;
 	}
 	
 }

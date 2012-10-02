@@ -28,7 +28,7 @@ int paneloutput = 250;
                     <div class="systemstats">
                      <div class="header"><b>System Statistics</b></div>
 					 <div class="labels">
-					 <span class="inputs">Panel Output Wh<input name="paneloutput" value="<%=paneloutput%>" /></span>
+					 <span class="inputs">Panel Output W<input name="paneloutput" value="<%=paneloutput%>" /></span>
 					 </div>
                     </div>
 					<input type="submit" value="Calculate" class="calc"/>

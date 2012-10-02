@@ -19,7 +19,7 @@ public class SolarOutputTests {
 
 	private SystemConfiguration testSystem;
 	private LocationDetails testLocation;
-	private double delta = 0;
+	private double delta = 0.01;
 	private double moneyDelta = 0.01;
 
 	@Before
@@ -33,11 +33,11 @@ public class SolarOutputTests {
 	}
 	
 	@Test public void calculateDailyOutputStandardValues() {
-		assertEquals(2160, SolarOutput.calculateGrossDailyOutput(testLocation, testSystem), delta);
+		assertEquals(2.16, SolarOutput.calculateGrossDailyOutput(testLocation, testSystem), delta);
 	}
 	
 	@Test public void calculateMonthlyOutputStandardValues() {
-		assertEquals(64800, SolarOutput.calculateMonthlyOutput(testLocation, testSystem), delta);
+		assertEquals(64.8, SolarOutput.calculateMonthlyOutput(testLocation, testSystem), delta);
 	}
 	
 	@Test public void calculate1KWSystemCost() throws CalculatorException {

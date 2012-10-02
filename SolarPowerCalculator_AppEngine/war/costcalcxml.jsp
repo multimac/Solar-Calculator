@@ -5,7 +5,7 @@ double cost = 0;
 //Default values, store in database instead
 int numpanels = 2;
 double daylighthours = 4.5;
-int hourlyusage = 300;
+int monthlyconsumption = 540;
 int paneloutput = 250;
 double panelefficiency = 100;
 double inverterefficiency = 0.96;

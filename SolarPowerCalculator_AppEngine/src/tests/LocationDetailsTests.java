@@ -33,15 +33,15 @@ public class LocationDetailsTests {
 	}
 	
 	
-	//Test hourlyUsage
+	//Test Monthly Consumption
 	
 	@Test
-	public void initWithGoodUsage() throws CalculatorException {
+	public void initWithSafeConsumption() throws CalculatorException {
 		LocationDetails testLocation = new LocationDetails(0, 300);
 	}
 
 	@Test (expected=CalculatorException.class)
-	public void initWithUsageLessThanZero()  throws CalculatorException {
+	public void initWithConsumptionLessThanZero()  throws CalculatorException {
 		LocationDetails testLocation = new LocationDetails(0, -20);
 	}
 	

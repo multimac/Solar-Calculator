@@ -4,7 +4,7 @@ function postPowerCalc() {
 	var params = "";
 	params += "numpanels=" + encodeURIComponent(document.getElementsByName("numpanels")[0].value);
 	params += "&daylighthours=" + encodeURIComponent(document.getElementsByName("daylighthours")[0].value);
-	params += "&hourlyusage=" + encodeURIComponent(document.getElementsByName("hourlyusage")[0].value);
+	params += "&monthlyconsumption=" + encodeURIComponent(document.getElementsByName("monthlyconsumption")[0].value);
 	params += "&paneloutput=" + encodeURIComponent(document.getElementsByName("paneloutput")[0].value);
 	params += "&panelefficiency=" + encodeURIComponent(document.getElementsByName("panelefficiency")[0].value);
 	params += "&inverterefficiency=" + encodeURIComponent(document.getElementsByName("inverterefficiency")[0].value);

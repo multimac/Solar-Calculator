@@ -12,12 +12,12 @@ public class SystemConfiguration {
 	
 	// Class Variables
 	private int panelCount; // Whole Number
-	private int panelOutput; //  Wh 
+	private int panelOutput; //  W 
 	private double inverterEfficiency; // Percentage
 	
 	/**
 	 *  Initialises a new instance of SystemConfiguration
-	 * @param panelOutput - The raw output of the panel in Wh
+	 * @param panelOutput - The raw output of the panel in W
 	 * @param panelCount - The number of panels in the configuration
 	 * @param inverterEfficiency - Inverter efficiency 0-1
 	 */
@@ -50,7 +50,7 @@ public class SystemConfiguration {
 	
 	/**
 	 * Gets the output of a single solar panel in the system
-	 * @return The specified panel output in Wh
+	 * @return The specified panel output in W
 	 */
 	public int getPanelOutput () {
 		return panelOutput;

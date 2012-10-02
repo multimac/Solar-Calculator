@@ -1,9 +1,9 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" language="java"%>
 <%
 //Default values, store in database instead
-int numpanels = 2;
+int numpanels = 5;
 double daylighthours = 4.5;
-int hourlyusage = 300;
+double monthlyconsumption = 540;
 int paneloutput = 250;
 double panelefficiency = 100;
 double inverterefficiency = 0.96;
@@ -28,7 +28,7 @@ double inverterefficiency = 0.96;
                      <div class="labels">
 						<div class="inputs">Number of Panels<input name="numpanels" value="<%=numpanels%>" /></div>
 						<div class="inputs">Daylight Hours<input name="daylighthours" value="<%=daylighthours%>" /></div>
-                        <div class="inputs">Daily Usage Wh<input name="hourlyusage" value="<%=hourlyusage%>" /></div>
+                        <div class="inputs">Monthly Usage KWh<input name="monthlyconsumption" value="<%=monthlyconsumption%>" /></div>
                     </div>
 			</div>
             <div class="systemstats">

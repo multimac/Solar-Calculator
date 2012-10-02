@@ -4,13 +4,14 @@ import java.text.DecimalFormat;
 
 import environmentalSpecifications.*;
 
+
 /**
  * SolarOutput is responsible for all calculations relating to energy output of a system
- * 
- * All metrics in Watts or WattHours
  *
  */
 public class SolarOutput {	
+	
+	private static int wattsInKilowatt = 1000;
 	
 	/**
 	 * Calculates the hourly output of a system in Wh
@@ -31,7 +32,7 @@ public class SolarOutput {
 	 * @return The daily of output of the system in KWh
 	 */
 	public static double calculateGrossDailyOutput(LocationDetails location, SystemConfiguration system) {
-		return calculateHourlyOutput(system) * location.getDaylightHours();
+		return calculateHourlyOutput(system) * location.getDaylightHours() / wattsInKilowatt;
 	}
 	
 	/**
@@ -42,7 +43,7 @@ public class SolarOutput {
 	 * @return The daily of output of the system in KWh
 	 */
 	public static double calculateNetDailyOutput(LocationDetails location, SystemConfiguration system) {
-		return calculateHourlyOutput(system) * location.getDaylightHours() - location.getHourlyUsage() * location.getDaylightHours();
+		return calculateGrossDailyOutput(location, system) - (location.getMonthlyConsumption() / 30);
 	}
 	
 	/**
