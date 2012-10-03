@@ -12,6 +12,7 @@ import environmentalSpecifications.*;
 public class SolarOutput {	
 	
 	private static int wattsInKilowatt = 1000;
+	private static DecimalFormat decFormat = new DecimalFormat("#.##");
 	
 	/**
 	 * Calculates the hourly output of a system in Wh
@@ -67,7 +68,7 @@ public class SolarOutput {
 		double hourlyRawOutput = system.getPanelCount() * system.getPanelOutput();
 		int installCost = 1000;
 		double rawCost = hourlyRawOutput + calculateInverterCost(hourlyRawOutput)  + installCost;
-		DecimalFormat decFormat = new DecimalFormat("#.##");
+		//DecimalFormat decFormat = new DecimalFormat("#.##");
 	    return Double.valueOf(decFormat.format(rawCost));
 	}
 
@@ -78,6 +79,17 @@ public class SolarOutput {
 	 */
 	private static double calculateInverterCost(double systemOutput) {
 		return -0.00004211*(systemOutput *systemOutput) + 1.06954219*systemOutput + 269.44442;
+	}
+	/**
+	 * 
+	 * @param system
+	 * @param location
+	 * @return the dollar value that the system is generating per month
+	 */
+	public static double calculateOutputValue(SystemConfiguration system, LocationDetails location) {
+		//0.08 is the hardwired value of the feed-in rate but should be a user input
+		double outputValue = calculateMonthlyOutput(location, system)*0.08;
+		return Double.valueOf(decFormat.format(outputValue));
 	}
 
 	
