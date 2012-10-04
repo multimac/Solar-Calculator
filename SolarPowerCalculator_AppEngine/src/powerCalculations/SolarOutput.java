@@ -88,7 +88,7 @@ public class SolarOutput {
 	 */
 	public static double calculateOutputValue(SystemConfiguration system, LocationDetails location) {
 		//0.08 is the hardwired value of the feed-in rate but should be a user input
-		double outputValue = calculateMonthlyOutput(location, system)*0.08;
+		double outputValue = calculateMonthlyOutput(location, system)*(location.getExportRate()/100);
 		return Double.valueOf(decFormat.format(outputValue));
 	}
 
