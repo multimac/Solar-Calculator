@@ -18,17 +18,17 @@ public class LocationDetailsTests {
 	
 	@Test
 	public void initWithGoodDayLightHours() throws CalculatorException {
-		LocationDetails testLocation = new LocationDetails(5, 0);
+		LocationDetails testLocation = new LocationDetails(5, 0, 8);
 	}
 
 	@Test (expected=CalculatorException.class)
 	public void initWithGoodDayLightHoursGreaterThan24()  throws CalculatorException {
-		LocationDetails testLocation = new LocationDetails(60, 1);
+		LocationDetails testLocation = new LocationDetails(60, 1, 8);
 	}
 	
 	@Test (expected=CalculatorException.class)
 	public void initWithTimeLessThanZeroHours()  throws CalculatorException {
-		LocationDetails testLocation = new LocationDetails(-5.0, 0);
+		LocationDetails testLocation = new LocationDetails(-5.0, 0, 8);
 		assertEquals(testLocation.getDaylightHours(), -5.0, 0);
 	}
 	
@@ -37,12 +37,12 @@ public class LocationDetailsTests {
 	
 	@Test
 	public void initWithSafeConsumption() throws CalculatorException {
-		LocationDetails testLocation = new LocationDetails(0, 300);
+		LocationDetails testLocation = new LocationDetails(0, 300, 8);
 	}
 
 	@Test (expected=CalculatorException.class)
 	public void initWithConsumptionLessThanZero()  throws CalculatorException {
-		LocationDetails testLocation = new LocationDetails(0, -20);
+		LocationDetails testLocation = new LocationDetails(0, -20, 8);
 	}
 	
 	
