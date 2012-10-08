@@ -25,7 +25,7 @@ public class SolarOutputTests {
 	@Before
 	public void initObjects() throws CalculatorException {
 		testSystem = new SystemConfiguration(250, 2, 0.96);
-		testLocation = new LocationDetails(4.5, 300);
+		testLocation = new LocationDetails(4.5, 300, 8);
 	}
 	
 	@Test public void calculateHourlyOutputStandardValues() {
@@ -40,6 +40,10 @@ public class SolarOutputTests {
 		assertEquals(64.8, SolarOutput.calculateMonthlyOutput(testLocation, testSystem), delta);
 	}
 	
+	
+	//------------------- COST CALCULATIONS ------------------------------------------------------------------
+	
+	//------------------- TOTAL SYSTEM COST ------------------------------------------------------------------
 	@Test public void calculate1KWSystemCost() throws CalculatorException {
 		testSystem = new SystemConfiguration(250, 4, 0.96);
 		assertEquals(3296.88, SolarOutput.calculateSystemCost(testSystem), moneyDelta);
@@ -70,6 +74,13 @@ public class SolarOutputTests {
 		
 	}
 	
+	//------------------- COMPONENT COST CALCULATIONS ------------------------------------------------------------------
 	
-
+	@Test public void calculatePanelCost() {
+		assertEquals(500, SolarOutput.calculateTotalPanelCost(testSystem), moneyDelta);
+	}
+	
+	@Test public void calculateFlatRateInstallCost() {
+		assertEquals(1000, SolarOutput.calculateInstallCost(), moneyDelta);
+	}
 }

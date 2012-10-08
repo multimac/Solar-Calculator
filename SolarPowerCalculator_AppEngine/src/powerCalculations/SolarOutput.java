@@ -12,6 +12,8 @@ import environmentalSpecifications.*;
 public class SolarOutput {	
 	
 	private static int wattsInKilowatt = 1000;
+	private static DecimalFormat moneyDecFormat = new DecimalFormat("#.##");
+	private static int installCost = 1000;
 	
 	/**
 	 * Calculates the hourly output of a system in Wh
@@ -20,8 +22,17 @@ public class SolarOutput {
 	 * @return The hourly output of a system in KWh
 	 */
 	public static double calculateHourlyOutput(SystemConfiguration system) {
-		double output = (((system.getPanelOutput() * system.getPanelCount()) * system.getInverterEfficiency()));
+		double output = calculateRawHourlyOutput(system) * system.getInverterEfficiency();
 		return output;
+	}
+	
+	/**
+	 * Calculates the raw hourly output of the system regardless of efficiencies
+	 * @param system the solar panel system confguration
+	 * @return Wh produced in a single hour
+	 */
+	private static double calculateRawHourlyOutput(SystemConfiguration system) {
+		return system.getPanelCount() * system.getPanelOutput();
 	}
 	
 	/**
@@ -64,11 +75,9 @@ public class SolarOutput {
 	 * @return The expected dollar cost of the system
 	 */
 	public static double calculateSystemCost(SystemConfiguration system) {
-		double hourlyRawOutput = system.getPanelCount() * system.getPanelOutput();
-		int installCost = 1000;
-		double rawCost = hourlyRawOutput + calculateInverterCost(hourlyRawOutput)  + installCost;
-		DecimalFormat decFormat = new DecimalFormat("#.##");
-	    return Double.valueOf(decFormat.format(rawCost));
+		double hourlyRawOutput = calculateRawHourlyOutput(system);
+		double rawCost = hourlyRawOutput + calculateInverterCost(hourlyRawOutput)  + calculateInstallCost();
+	    return Double.valueOf(moneyDecFormat.format(rawCost));
 	}
 
 	/**
@@ -76,8 +85,40 @@ public class SolarOutput {
 	 * @param systemOutput the Raw output of a system in W
 	 * @return expected cost of an inverter to match output
 	 */
-	private static double calculateInverterCost(double systemOutput) {
+	public static double calculateInverterCost(double systemOutput) {
 		return -0.00004211*(systemOutput *systemOutput) + 1.06954219*systemOutput + 269.44442;
+	}
+	
+	/**
+	 * Get the cost of installation for a system
+	 * @return current flat install rate of $1000
+	 */
+	public static double calculateInstallCost() {
+		return Double.valueOf(moneyDecFormat.format(installCost));
+	}
+	
+	public static double calculateTotalPanelCost(SystemConfiguration system) {
+		return Double.valueOf(moneyDecFormat.format(calculatePanelCost(system) * system.getPanelCount()));
+	}
+	
+	/**
+	 * calculate the cost of a panel in a system
+	 * Panel cost is currently calculated at $1/watt
+	 * @return the cost of a solar panel given its output
+	 */
+	private static double calculatePanelCost(SystemConfiguration system) {
+		return system.getPanelOutput();
+	}
+	
+	/**
+	 * 
+	 * @param system
+	 * @param location
+	 * @return the dollar value that the system is generating per month
+	 */
+	public static double calculateOutputValue(SystemConfiguration system, LocationDetails location) {
+		double outputValue = calculateMonthlyOutput(location, system)*(location.getExportRate()/100);
+		return Double.valueOf(moneyDecFormat.format(outputValue));
 	}
 
 	

@@ -12,14 +12,16 @@ public class LocationDetails {
 	// Class Variables
 	private double daylightHours; // Hours
 	private double monthlyConsumption; // Killowatt Hours
+	private double exportRate; // Feed in tariff in cents
 	private static double hoursInDay = 24; //Hours
 	
 	/**
 	 * Initialises a new instance of location details with specified daylight exposure
 	 * @param daylightHours hours of daylight system is exposed to
+	 * @param exportRate 
 	 * @throws CalculatorException if daylightHours exceeds hoursInDay
 	 */
-	public LocationDetails (double daylightHours, double monthlyConsumption) throws CalculatorException {
+	public LocationDetails (double daylightHours, double monthlyConsumption, double exportRate) throws CalculatorException {
 		if (daylightHours > hoursInDay || daylightHours < 0)
 			throw new CalculatorException("daylightHours exceeds limits");
 		else
@@ -29,6 +31,10 @@ public class LocationDetails {
 			throw new CalculatorException("monthlyconsumption cannot be lower than 0");
 		else
 			this.monthlyConsumption = monthlyConsumption;
+		if (exportRate < 0)
+			throw new CalculatorException("export rate must be positive");
+		else
+			this.exportRate = exportRate;
 	}
 	
 	/**
@@ -47,4 +53,7 @@ public class LocationDetails {
 		return monthlyConsumption;
 	}
 	
+	public double getExportRate () {
+		return exportRate;
+	}
 }
