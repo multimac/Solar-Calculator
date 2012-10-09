@@ -121,5 +121,10 @@ public class SolarOutput {
 		return Double.valueOf(moneyDecFormat.format(outputValue));
 	}
 
-	
+	public static String calculateBreakEven(SystemConfiguration system, LocationDetails location) {
+		double totalMonths = calculateSystemCost(system)/calculateOutputValue(system, location);
+		int years = (int) (totalMonths % 12);
+		int months = (int) (totalMonths - (years*12));
+		return(years + " years," + months + " months");
+	}
 }
