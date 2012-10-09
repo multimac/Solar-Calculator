@@ -37,7 +37,7 @@ public class SolarOutputTests {
 	}
 	
 	@Test public void calculateMonthlyOutputStandardValues() {
-		assertEquals(64.8, SolarOutput.calculateMonthlyOutput(testLocation, testSystem), delta);
+		assertEquals(64.8, SolarOutput.calculateGrossMonthlyOutput(testLocation, testSystem), delta);
 	}
 	
 	
@@ -82,5 +82,16 @@ public class SolarOutputTests {
 	
 	@Test public void calculateFlatRateInstallCost() {
 		assertEquals(1000, SolarOutput.calculateInstallCost(), moneyDelta);
+	}
+	
+	//------------------- OUTPUT DOLLAR VALUE CALCULATIONS -------------------------------------------------------------
+
+	@Test public void calculateMonthlyOutputValue() {
+		assertEquals(5.18, SolarOutput.calculateMonthlyOutputValue(testSystem, testLocation), moneyDelta);
+	}
+	
+	//------------------- BREAKEVEN CALCULATIONS -----------------------------------------------------------------------
+	@Test public void calculateBreakeven() {
+		assertEquals("36 years, 10 months", SolarOutput.calculateBreakEven(testSystem, testLocation));
 	}
 }

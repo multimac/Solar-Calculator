@@ -64,7 +64,7 @@ public class SolarOutput {
 	 * @param system PanelConfiguration the solar panel system configuration
 	 * @return The daily of output of the system in KWh
 	 */
-	public static double calculateMonthlyOutput(LocationDetails location , SystemConfiguration system) {
+	public static double calculateGrossMonthlyOutput(LocationDetails location , SystemConfiguration system) {
 		return calculateGrossDailyOutput(location, system)*30;
 	}
 	
@@ -116,15 +116,21 @@ public class SolarOutput {
 	 * @param location
 	 * @return the dollar value that the system is generating per month
 	 */
-	public static double calculateOutputValue(SystemConfiguration system, LocationDetails location) {
-		double outputValue = calculateMonthlyOutput(location, system)*(location.getExportRate()/100);
+	public static double calculateMonthlyOutputValue(SystemConfiguration system, LocationDetails location) {
+		double outputValue = calculateGrossMonthlyOutput(location, system)*(location.getExportRate()/100);
 		return Double.valueOf(moneyDecFormat.format(outputValue));
 	}
 
+	/**
+	 * 
+	 * @param system
+	 * @param location
+	 * @return a string stating how long it will be until the system has paid for itself
+	 */
 	public static String calculateBreakEven(SystemConfiguration system, LocationDetails location) {
-		double totalMonths = calculateSystemCost(system)/calculateOutputValue(system, location);
-		int years = (int) (totalMonths % 12);
-		int months = (int) (totalMonths - (years*12));
-		return(years + " years," + months + " months");
+		int totalMonths = (int) (calculateSystemCost(system)/calculateMonthlyOutputValue(system, location));
+		int months = totalMonths % 12;
+		int years = (totalMonths - months) / 12;
+		return(years + " years, " + months + " months");
 	}
 }
