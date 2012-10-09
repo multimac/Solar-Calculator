@@ -49,7 +49,7 @@ function formValidation() {
 			errorString += errorList[errorIndex];
 		
 		}
-		document.getElementById("errorBox").innerHTML = errorBoxStart + errorString + errorBoxEnd;
+		document.getElementById("divrevenueoutput").innerHTML = errorBoxStart + errorString + errorBoxEnd;
 		return false;
 	}
 	else {

@@ -62,56 +62,102 @@ div.inputtable {
 	font-size: 80%;
 	display: inline-block;
 	float: right;
-	
-
 }
+
 div.text {
 	display: inline-block;
+}
+
+div.systemoptions {
+	margin-top: 10px;
+	margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+	width: 490px;
+	border: 1px solid;
+	font-size: 100%;
+	float: middle;
+	vertical-align:middle;
+	padding: 1px;
+	padding-top: 4px;
+	padding-bottom: 0px;
 }
 
 div.systemconf {
 	margin-left: auto;
     margin-right: auto;
+    margin-bottom: 10px;
 	width: 240px;
 	border: 1px solid;
-	font-size:100%;
+	font-size: 100%;
 	float: left;
 	padding: 1px;
+	height: 90px;
 }
 
 div.systemstats {
 	margin-left: auto;
     margin-right: auto;
+    margin-bottom: 10px;
 	width: 240px;
 	border: 1px solid;
-	font-size:100%;
+	font-size: 100%;
 	float: right;
 	padding: 1px;
+	height: 90px;
+}
+
+div.location {
+	margin-left: auto;
+    margin-right: auto;
+	width: 240px;
+	border: 1px solid;
+	font-size: 100%;
+	float: left;
+	padding: 1px;
+	height: 90px;
+}
+
+div.rates {
+	margin-left: auto;
+    margin-right: auto;
+	width: 240px;
+	border: 1px solid;
+	font-size: 100%;
+	float: right;
+	padding: 1px;
+	height: 90px;
+}
+
+
+
+div.inputs {
+	width: 100%;
+	height: 25px;
+	padding: 0px;
 }
 
 
 input.calc {
-	display: block;
 	margin-left: auto;
     margin-right: auto;
     width: 100px;
 	height: 25px;
+	float: right;
+	padding: 0px;
 }
 
 
-input {
-	width: 80px;
+input.text {
+	width: 70px;
 	float: right;
 	height: 22px;
 	display: inline-block;
 }
 
-div.inputs {
-	width: 100%;
-	height: 25px;
-	}
-
-
+lable {
+	height: 222px;
+}
 
 
 .powercalclink {

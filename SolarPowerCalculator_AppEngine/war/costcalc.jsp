@@ -17,35 +17,26 @@ int paneloutput = 250;
 
 <div id="container">
 <div id="template">
-<img src="images/TA0.jpg" width="671" height="70" alt=""><img src="images/TB0.jpg" width="185" height="32" alt=""><a class="powercalclink" href="powercalc.jsp"></a><img src="images/TB1.jpg" width="10" height="32" alt=""><a class="costcalclink" href="costcalc.jsp"></a><img src="images/TB2.jpg" width="10" height="32" alt=""><a class="aboutlink" href="about.jsp"></a><img src="images/TB3.jpg" width="194" height="32" alt=""><img src="images/TC0.jpg" align="top" width="167" height="95" alt=""><div class="inputtable">
-            <form name="output" action="costcalc.jsp" method="post" onSubmit="if (true) {postCostCalc();} return false;"> 
-                    <div class="systemconf">
-                     <div class="header"><b>System Configuration</b></div>
-					 <div class="labels">
-					 <span class="inputs">Number of Panels<input name="numpanels" value="<%=numpanels%>" /></span>
-					 </div>
-                    </div>
-                    <div class="systemstats">
-                     <div class="header"><b>System Statistics</b></div>
-					 <div class="labels">
-					 <span class="inputs">Panel Output W<input name="paneloutput" value="<%=paneloutput%>" /></span>
-					 </div>
-                    </div>
-					<input type="submit" value="Calculate" class="calc"/>
-					<div id="errorBox"></div>
-					<div id="cost"></div>
-			</form>
-            </div>
-	<!--
-	<img src="images/spacer.gif" width="167" height="1" alt="">
-	<img src="images/spacer.gif" width="18" height="1" alt="">
-	<img src="images/spacer.gif" width="104" height="1" alt="">
-	<img src="images/spacer.gif" width="10" height="1" alt="">
-	<img src="images/spacer.gif" width="104" height="1" alt="">
-	<img src="images/spacer.gif" width="10" height="1" alt="">
-	<img src="images/spacer.gif" width="64" height="1" alt="">
-	<img src="images/spacer.gif" width="194" height="1" alt="">
-	-->
+<img src="images/TA0.jpg" width="671" height="70" alt=""><img src="images/TB0.jpg" width="185" height="32" alt=""><a class="powercalclink" href="powercalc.jsp"></a><img src="images/TB1.jpg" width="10" height="32" alt=""><a class="costcalclink" href="costcalc.jsp"></a><img src="images/TB2.jpg" width="10" height="32" alt=""><a class="aboutlink" href="about.jsp"></a><img src="images/TB3.jpg" width="194" height="32" alt=""><img src="images/TC0.jpg" align="top" width="167" height="95" alt="">
+<div class="inputtable">
+<form name="output" action="costcalc.jsp" method="post" onSubmit="if (true) {postCostCalc();} return false;"> 
+	<div class="systemconf">
+		<div class="header"><b>System Configuration</b></div>
+		<div class="labels">
+			<span class="inputs">Number of Panels<input name="numpanels" value="<%=numpanels%>" /></span>
+		</div>
+	</div>
+	<div class="systemstats">
+		<div class="header"><b>System Statistics</b></div>
+		<div class="labels">
+			<span class="inputs">Panel Output W<input name="paneloutput" value="<%=paneloutput%>" /></span>
+		</div>
+	</div>
+	<input type="submit" value="Calculate" class="calc"/>
+	<div id="errorBox"></div>
+	<div id="cost"></div>
+	</form>
+</div>
 </div>
 </div>
 

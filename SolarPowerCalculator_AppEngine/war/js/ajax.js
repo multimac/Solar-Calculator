@@ -1,5 +1,5 @@
 function postPowerCalc() {
-	var url = "http://" + window.location.host + "/powercalcxml.jsp";
+	var url = "http://" + window.location.host + "/calcxml.jsp";
 	
 	var params = "";
 	params += "numpanels=" + encodeURIComponent(document.getElementsByName("numpanels")[0].value);

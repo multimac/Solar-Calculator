@@ -10,6 +10,7 @@ double monthlyconsumption = 18;
 int paneloutput = 250;
 double panelefficiency = 100;
 double inverterefficiency = 0.96;
+double exportrate = 0.96;
 
 String error = "noerror";
 boolean valid = false;
@@ -34,17 +35,20 @@ else if (!Validator.IsDouble(request.getParameter("panelefficiency"))) {
 else if (!Validator.IsDouble(request.getParameter("inverterefficiency"))) {
 	error = "Inverter Efficiency must be a valid number.";
 }
+else if (!Validator.IsDouble(request.getParameter("exportrate"))) {
+	error = "Export Rate must be a valid number.";
+}
 else {
-	
 	numpanels = Integer.parseInt(request.getParameter("numpanels"));
 	daylighthours = Double.parseDouble(request.getParameter("daylighthours"));
 	monthlyconsumption = Double.parseDouble(request.getParameter("monthlyconsumption"));
 	paneloutput = Integer.parseInt(request.getParameter("paneloutput"));
 	panelefficiency = Double.parseDouble(request.getParameter("panelefficiency"));
 	inverterefficiency = Double.parseDouble(request.getParameter("inverterefficiency")) * 0.01;
+	exportrate = Double.parseDouble(request.getParameter("exportrate"));
 
 	//Create a system, and calculate output
-	LocationDetails location = new LocationDetails(daylighthours, monthlyconsumption);
+	LocationDetails location = new LocationDetails(daylighthours, monthlyconsumption, exportrate);
 	SystemConfiguration system = new SystemConfiguration(paneloutput, numpanels, inverterefficiency);
 	
 	grossOutput = SolarOutput.calculateGrossDailyOutput(location, system);
