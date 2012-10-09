@@ -40,12 +40,12 @@ function showInput() {
 	//System Configuration//
 	
 	//divnumpanels
-	if ((optionPower) || (optionRevenue) || (optionCost)) {
+	if ((optionPower) || (optionRevenue) || (optionCost) || (optionBreakEven)) {
 		divnumpanels.style.display = '';
 	}
 	
 	//divmonthlyconsumption
-	if ((optionPower) || (optionRevenue)) {
+	if ((optionPower) || (optionRevenue) || (optionBreakEven)) {
 		divmonthlyconsumption.style.display = '';
 	}
 	
@@ -54,7 +54,7 @@ function showInput() {
 	//System Statistics//
 	
 	//paneloutput
-	if ((optionPower) || (optionRevenue) || (optionCost)) {
+	if ((optionPower) || (optionRevenue) || (optionCost) || (optionBreakEven)) {
 		divpaneloutput.style.display = '';
 	}
 	
@@ -73,17 +73,17 @@ function showInput() {
 	//Location//
 	
 	//divstate
-	if ((optionRevenue)) {
+	if ((optionRevenue) || (optionBreakEven)) {
 		divstate.style.display = '';
 	}
 	
 	//divlighthours
-	if ((optionPower) || (optionRevenue)) {
+	if ((optionPower) || (optionRevenue) || (optionBreakEven)) {
 		divlighthours.style.display = '';
 	}
 	
 	//divtemperature
-	if ((optionPower) || (optionRevenue)) {
+	if ((optionPower) || (optionRevenue) || (optionBreakEven)) {
 		divtemperature.style.display = '';
 	}
 	
@@ -92,7 +92,7 @@ function showInput() {
 	//Rates//
 	
 	//divstate
-	if ((optionRevenue)) {
+	if ((optionRevenue) || (optionBreakEven)) {
 		divexportrate.style.display = '';
 	}
 	
