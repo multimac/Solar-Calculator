@@ -4,6 +4,7 @@ function showInput() {
 	var optionPower = document.getElementsByName("optionpower")[0].checked;
 	var optionRevenue = document.getElementsByName("optionrevenue")[0].checked;
 	var optionCost = document.getElementsByName("optioncost")[0].checked;
+	var optionBreakEven = document.getElementsByName("optionbreakeven")[0].checked;
 	
 	//Extract form divs to collapse
 	var divnumpanels = document.getElementById("divnumpanels");
@@ -20,6 +21,7 @@ function showInput() {
 	var divcostoutput = document.getElementById("divcostoutput");
 	//var divrevenueoutput = document.getElementById("divrevenueoutput");
 	var diverroroutput = document.getElementById("diverroroutput");
+	var divbreakevenoutput = document.getElementById("divbreakevenoutput");
 	
 	//Hide all divs
 	divnumpanels.style.display = 'none';
@@ -31,6 +33,7 @@ function showInput() {
 	divlighthours.style.display = 'none';
 	divtemperature.style.display = 'none';
 	divexportrate.style.display = 'none';
+	divbreakevenoutput.style.display = 'none';
 	
 	//Show divs depending on checkbox options
 	
@@ -112,10 +115,16 @@ function showInput() {
 	}
 	
 	if (optionRevenue) {
-		divrevenueoutput.style.display = 'none';
+		divrevenueoutput.style.display = '';
 	}
 	else {
 		divrevenueoutput.style.display = 'none';
 	}
 	
+	if (optionBreakEven) {
+		divbreakevenoutput.style.display = '';
+	}
+	else {
+		divbreakevenoutput.style.display = 'none';
+	}
 }

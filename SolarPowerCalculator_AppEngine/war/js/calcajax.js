@@ -26,7 +26,8 @@ function postPowerCalc() {
 				var grossOutput = x[0].getElementsByTagName('grossoutput')[0].firstChild.nodeValue;
 				var netOutput = x[0].getElementsByTagName('netoutput')[0].firstChild.nodeValue;
 				var cost = x[0].getElementsByTagName('cost')[0].firstChild.nodeValue;
-				//var revenue = x[0].getElementsByTagName('revenue')[0].firstChild.nodeValue;
+				var revenue = x[0].getElementsByTagName('revenue')[0].firstChild.nodeValue;
+				var breakEven = x[0].getElementsByTagName('breakeven')[0].firstChild.nodeValue;
 				var error = x[0].getElementsByTagName('error')[0].firstChild.nodeValue;
 				
 				if (error == "noerror") {
@@ -34,6 +35,7 @@ function postPowerCalc() {
 					var optionPower = document.getElementsByName("optionpower")[0].checked;
 					var optionRevenue = document.getElementsByName("optionrevenue")[0].checked;
 					var optionCost = document.getElementsByName("optioncost")[0].checked;
+					var optionBreakEven = document.getElementsByName("optionbreakeven")[0].checked;
 					
 					if (optionPower) {
 						document.getElementById("divgrossoutput").innerHTML = "<b>Gross Daily Output: </b>" + grossOutput + " Kwh";
@@ -45,7 +47,10 @@ function postPowerCalc() {
 					}
 					
 					if (optionRevenue) {
-						//document.getElementById("divrevenueoutput").innerHTML = "<b>Revenue: </b>$" + revenue;
+						document.getElementById("divrevenueoutput").innerHTML = "<b>Revenue: </b>$" + revenue + " mo";
+					}
+					if (optionBreakEven) {
+						document.getElementById("divbreakevenoutput").innerHTML = "<b>Break Even: </b> " + breakEven;
 					}
 					
 					document.getElementById("diverroroutput").innerHTML = "";

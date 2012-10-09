@@ -4,6 +4,7 @@ double grossOutput = 0;//placeholder value
 double netOutput = 0;//placeholder value
 double cost = 0;
 double revenue = 0;
+String breakEven = "";
 
 //Default values, store in database instead
 int numpanels = 2;
@@ -23,7 +24,7 @@ if (!Validator.IsInteger(request.getParameter("numpanels"))) {
 	error = "Number of panels must be a whole number.";
 }
 else if (!Validator.IsDouble(request.getParameter("daylighthours"))) {
-	error = "Daylight Hoyrs must be valid number.";
+	error = "Daylight Hours must be valid number.";
 }
 else if (!Validator.IsDouble(request.getParameter("monthlyconsumption"))) {
 	error = "Monthly Consumption must be a valid number.";
@@ -47,6 +48,7 @@ else {
 	paneloutput = Integer.parseInt(request.getParameter("paneloutput"));
 	panelefficiency = Double.parseDouble(request.getParameter("panelefficiency"));
 	inverterefficiency = Double.parseDouble(request.getParameter("inverterefficiency")) * 0.01;
+	exportrate = Double.parseDouble(request.getParameter("exportrate"));
 
 	//Create a system, and calculate output
 	LocationDetails location = new LocationDetails(daylighthours, monthlyconsumption, exportrate);
@@ -55,8 +57,8 @@ else {
 	grossOutput = SolarOutput.calculateGrossDailyOutput(location, system);
 	netOutput = SolarOutput.calculateNetDailyOutput(location, system);
 	cost = SolarOutput.calculateSystemCost(system);
-	//revenue = SolarOutput.
-	
+	revenue = SolarOutput.calculateMonthlyOutputValue(system, location);
+	breakEven = SolarOutput.calculateBreakEven(system, location);
 	
 	//Round to 2 decimal places
 	grossOutput = Math.round(grossOutput*100.0)/100.0;
@@ -64,4 +66,4 @@ else {
 	cost = Math.round(cost * 100.0) / 100.0;
 }
 
-%><solarcalculator><grossoutput><%out.print(grossOutput);%></grossoutput><netoutput><%out.print(netOutput);%></netoutput><cost><%out.print(cost);%></cost><error><%out.print(error);%></error></solarcalculator>
+%><solarcalculator><grossoutput><%out.print(grossOutput);%></grossoutput><netoutput><%out.print(netOutput);%></netoutput><cost><%out.print(cost);%></cost><revenue><%out.print(revenue);%></revenue><breakeven><%out.print(breakEven);%></breakeven><error><%out.print(error);%></error></solarcalculator>
