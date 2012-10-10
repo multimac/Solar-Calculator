@@ -12,7 +12,7 @@ public class LocationDetails {
 	// Class Variables
 	private double daylightHours; // Hours
 	private double monthlyConsumption; // Killowatt Hours
-	private double exportRate; // Feed in tariff in cents
+	private double exportRate; // Feed in tariff in dollars
 	private static double hoursInDay = 24; //Hours
 	
 	/**

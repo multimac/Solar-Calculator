@@ -25,7 +25,7 @@ public class SolarOutputTests {
 	@Before
 	public void initObjects() throws CalculatorException {
 		testSystem = new SystemConfiguration(250, 2, 0.96);
-		testLocation = new LocationDetails(4.5, 300, 8);
+		testLocation = new LocationDetails(4.5, 300, 0.08);
 	}
 	
 	@Test public void calculateHourlyOutputStandardValues() {

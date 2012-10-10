@@ -117,7 +117,7 @@ public class SolarOutput {
 	 * @return the dollar value that the system is generating per month
 	 */
 	public static double calculateMonthlyOutputValue(SystemConfiguration system, LocationDetails location) {
-		double outputValue = calculateGrossMonthlyOutput(location, system)*(location.getExportRate()/100);
+		double outputValue = calculateGrossMonthlyOutput(location, system)*(location.getExportRate());
 		return Double.valueOf(moneyDecFormat.format(outputValue));
 	}
 
