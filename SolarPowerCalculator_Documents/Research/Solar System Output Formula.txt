@@ -1,0 +1,49 @@
+Default Values:
+Panel Density: 130W
+Solar Insolation: 4500W
+Panel Efficiency: 0.14 
+Mean 3pm Temp: 24
+Temp Coefficient: -0.005
+Mean Sunlight Hours: 8
+
+
+Sudo Code:
+
+If ((Solar Insolation*(System Rating/Panel Density)) / (Mean sunlight hours / 2)) * 
+  (Panel Efficiency - ((Mean 3pm Temp - 25) * Temperature Coefficient)) is greater than system rating than
+	output = system rating * (Mean sunlight hours / 2) 
+else
+	output = (System Rating / Panel Density) * (Solar Insolation * (Panel Efficiency - ((Mean 3pm Temp - 25) * Temperature Coefficient))
+	
+--------------------------------------------------------------------------------------------------------------------------------
+
+COST
+Research:
+http://www.aglsolarenergy.com.au/solar-pv/agl-home/?cid=car:au:sol:1
+http://www.solaronline.com.au/inverters-high-quality.html
+Our Cost for 1KW system: $3296.88
+
+
+	/**
+	 * 
+	 * Calculates the expected system cost based on the system rating
+	 * @param system PanelConfiguration the solar panel system configuration
+	 * @return The expected dollar cost of the system
+	 */
+	public static double calculateSystemCost(SystemConfiguration system) {
+		
+		double hourlyRawOutput = system.getPanelCount() * system.getPanelOutput();
+		int installCost = 1000;
+		return hourlyRawOutput + calculateInverterCost(hourlyRawOutput)  + installCost;
+		
+	}
+
+	/**
+	 * 
+	 * @param systemOutput the Raw output of a system in W
+	 * @return expected cost of an inverter to match output
+	 */
+	private static double calculateInverterCost(double systemOutput) {
+		
+		return -0.00004211*(systemOutput *systemOutput) + 1.06954219*systemOutput + 269.44442;
+	}
