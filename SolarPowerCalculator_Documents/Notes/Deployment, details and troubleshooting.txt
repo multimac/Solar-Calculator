@@ -1,0 +1,22 @@
+Google App ID: solarpanelcalc
+URL: solarpanelcalc.appspot.com
+DEBUG: localhost:8888
+-------------------------
+HOW TO DEPLOY:
+	- Click google icon within eclipse
+	- select Deploy to App Engine
+	- double check project settings below
+	- ensure app ID is the same as URL presented above
+	- Deploy
+	
+Troubleshooting:
+	500 internal service error after deploying:
+	- You aren't running JRE6 you are probably Running JRE7 which is unsupported with AppEngine
+	
+	Failed to compile .jsp pages when attempting to deploy
+	- check which version of the app engine you are running 1.7.1 will induce this issue
+	
+	Github sync is failing in GUI
+	- make sure you have NO uncommited cahnges
+	- you can delete uncommitted changes by right clicked the header and selecting 'discard all changes'
+	

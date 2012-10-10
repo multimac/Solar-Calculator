@@ -69,11 +69,11 @@ namespace UnitTests
         ///A test for Request
         ///</summary>
         [TestMethod()]
-        public void RequestTest()
+        public void RequestTestPower_Get()
         {
-            Uri target = new Uri("http://solarpanelcalc.appspot.com/outputxml.jsp?numpanels=5&daylighthours=8&hourlyusage=2&paneloutput=150&panelefficiency=100&inverterefficiency=98"); // TODO: Initialize to an appropriate value
+            Uri target = new Uri("http://solarpanelcalc.appspot.com/powercalcxml.jsp?numpanels=5&daylighthours=8&hourlyusage=2&paneloutput=150&panelefficiency=100&inverterefficiency=98"); // TODO: Initialize to an appropriate value
             RequestMethod method = RequestMethod.GET; // TODO: Initialize to an appropriate value
-            string expected = "<?xml version=\"1.0\" ?><solorcalculator><grossoutput>5.88</grossoutput><netoutput>5.864</netoutput></solorcalculator>"; // TODO: Initialize to an appropriate value
+            string expected = "<?xml version=\"1.0\" ?><solorcalculator><grossoutput>5.88</grossoutput><netoutput>5.864</netoutput><error>noerror</error></solorcalculator>"; // TODO: Initialize to an appropriate value
 
             string actual;
             actual = RESTMethods.Request(target, method);
@@ -84,12 +84,29 @@ namespace UnitTests
         ///A test for Request
         ///</summary>
         [TestMethod()]
-        public void RequestTest1()
+        public void RequestTestPower_GetWithData()
         {
-            Uri target = new Uri("http://solarpanelcalc.appspot.com/outputxml.jsp?numpanels=5&daylighthours=8&hourlyusage=2&paneloutput=150&panelefficiency=100&inverterefficiency=98"); // TODO: Initialize to an appropriate value
+            Uri target = new Uri("http://solarpanelcalc.appspot.com/powercalcxml.jsp?numpanels=5&daylighthours=8&hourlyusage=2&paneloutput=150&panelefficiency=100&inverterefficiency=98"); // TODO: Initialize to an appropriate value
             RequestMethod method = RequestMethod.GET; // TODO: Initialize to an appropriate value
             ContentType type = ContentType.Text_XML; // TODO: Initialize to an appropriate value
             byte[] data = null; // TODO: Initialize to an appropriate value
+            string expected = "<?xml version=\"1.0\" ?><solorcalculator><grossoutput>5.88</grossoutput><netoutput>5.864</netoutput><error>noerror</error></solorcalculator>"; // TODO: Initialize to an appropriate value
+
+            string actual;
+            actual = RESTMethods.Request(target, method, type, data);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for Request
+        ///</summary>
+        [TestMethod()]
+        public void RequestTestPower_Post()
+        {
+            Uri target = new Uri("http://solarpanelcalc.appspot.com/powercalcxml.jsp"); // TODO: Initialize to an appropriate value
+            RequestMethod method = RequestMethod.POST; // TODO: Initialize to an appropriate value
+            ContentType type = ContentType.Text_XML; // TODO: Initialize to an appropriate value
+            byte[] data = Encoding.ASCII.GetBytes("numpanels=5&daylighthours=8&hourlyusage=2&paneloutput=150&panelefficiency=100&inverterefficiency=98"); // TODO: Initialize to an appropriate value
             string expected = "<?xml version=\"1.0\" ?><solorcalculator><grossoutput>5.88</grossoutput><netoutput>5.864</netoutput></solorcalculator>"; // TODO: Initialize to an appropriate value
 
             string actual;
@@ -101,12 +118,44 @@ namespace UnitTests
         ///A test for Request
         ///</summary>
         [TestMethod()]
-        public void RequestTest2()
+        public void RequestTestCost_Get()
         {
-            Uri target = new Uri("http://solarpanelcalc.appspot.com/"); // TODO: Initialize to an appropriate value
+            Uri target = new Uri("http://solarpanelcalc.appspot.com/costcalcxml.jsp?numpanels=15&paneloutput=80"); // TODO: Initialize to an appropriate value
+            RequestMethod method = RequestMethod.GET; // TODO: Initialize to an appropriate value
+            string expected = "<?xml version=\"1.0\" ?><solorcalculator><cost>3692.26</cost><error>noerror</error></solorcalculator>"; // TODO: Initialize to an appropriate value
+
+            string actual;
+            actual = RESTMethods.Request(target, method);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for Request
+        ///</summary>
+        [TestMethod()]
+        public void RequestTestCost_GetWithData()
+        {
+            Uri target = new Uri("http://solarpanelcalc.appspot.com/costcalcxml.jsp?numpanels=12&paneloutput=50"); // TODO: Initialize to an appropriate value
+            RequestMethod method = RequestMethod.GET; // TODO: Initialize to an appropriate value
+            ContentType type = ContentType.Text_XML; // TODO: Initialize to an appropriate value
+            byte[] data = null; // TODO: Initialize to an appropriate value
+            string expected = "<?xml version=\"1.0\" ?><solorcalculator><cost>2496.01</cost><error>noerror</error></solorcalculator>"; // TODO: Initialize to an appropriate value
+
+            string actual;
+            actual = RESTMethods.Request(target, method, type, data);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for Request
+        ///</summary>
+        [TestMethod()]
+        public void RequestTestCost_Post()
+        {
+            Uri target = new Uri("http://solarpanelcalc.appspot.com/costcalcxml.jsp"); // TODO: Initialize to an appropriate value
             RequestMethod method = RequestMethod.POST; // TODO: Initialize to an appropriate value
             ContentType type = ContentType.Text_XML; // TODO: Initialize to an appropriate value
-            byte[] data = Encoding.ASCII.GetBytes("numpanels=5&daylighthours=8&hourlyusage=2&paneloutput=150&panelefficiency=100&inverterefficiency=98"); // TODO: Initialize to an appropriate value
+            byte[] data = Encoding.ASCII.GetBytes("numpanels=12&paneloutput=50"); // TODO: Initialize to an appropriate value
             string expected = "<?xml version=\"1.0\" ?><solorcalculator><grossoutput>5.88</grossoutput><netoutput>5.864</netoutput></solorcalculator>"; // TODO: Initialize to an appropriate value
 
             string actual;
