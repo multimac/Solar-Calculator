@@ -46,31 +46,31 @@ public class SolarOutputTests {
 	//------------------- TOTAL SYSTEM COST ------------------------------------------------------------------
 	@Test public void calculate1KWSystemCost() throws CalculatorException {
 		testSystem = new SystemConfiguration(250, 4, 0.96);
-		assertEquals(3296.88, SolarOutput.calculateSystemCost(testSystem), moneyDelta);
+		assertEquals(3300, SolarOutput.calculateSystemCost(testSystem), moneyDelta);
 		
 	}
 	
 	@Test public void calculate2KWSystemCost() throws CalculatorException {
 		testSystem = new SystemConfiguration(500, 4, 0.96);
-		assertEquals(5240.09, SolarOutput.calculateSystemCost(testSystem), moneyDelta);
+		assertEquals(5300, SolarOutput.calculateSystemCost(testSystem), moneyDelta);
 		
 	}
 	
 	@Test public void calculate3KWSystemCost() throws CalculatorException {
 		testSystem = new SystemConfiguration(300, 10, 0.96);
-		assertEquals(7099.08, SolarOutput.calculateSystemCost(testSystem), moneyDelta);
+		assertEquals(7300, SolarOutput.calculateSystemCost(testSystem), moneyDelta);
 		
 	}
 	
 	@Test public void calculate4KWSystemCost() throws CalculatorException {
 		testSystem = new SystemConfiguration(400, 10, 0.96);
-		assertEquals(8873.85, SolarOutput.calculateSystemCost(testSystem), moneyDelta);
+		assertEquals(9300, SolarOutput.calculateSystemCost(testSystem), moneyDelta);
 		
 	}
 	
 	@Test public void calculate5KWSystemCost() throws CalculatorException {
 		testSystem = new SystemConfiguration(250, 20, 0.96);
-		assertEquals(10564.41, SolarOutput.calculateSystemCost(testSystem), moneyDelta);
+		assertEquals(11300, SolarOutput.calculateSystemCost(testSystem), moneyDelta);
 		
 	}
 	
@@ -92,6 +92,6 @@ public class SolarOutputTests {
 	
 	//------------------- BREAKEVEN CALCULATIONS -----------------------------------------------------------------------
 	@Test public void calculateBreakeven() {
-		assertEquals("36 years, 10 months", SolarOutput.calculateBreakEven(testSystem, testLocation));
+		assertEquals("37 years, 0 months", SolarOutput.calculateBreakEven(testSystem, testLocation));
 	}
 }

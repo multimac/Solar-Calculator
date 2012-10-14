@@ -86,7 +86,9 @@ public class SolarOutput {
 	 * @return expected cost of an inverter to match output
 	 */
 	public static double calculateInverterCost(double systemOutput) {
-		return -0.00004211*(systemOutput *systemOutput) + 1.06954219*systemOutput + 269.44442;
+		return (Math.ceil(systemOutput)) + 300;
+		//return 1.06954219*systemOutput + 269.44442;
+		//return -0.00004211*(systemOutput *systemOutput) + 1.06954219*systemOutput + 269.44442;
 	}
 	
 	/**
