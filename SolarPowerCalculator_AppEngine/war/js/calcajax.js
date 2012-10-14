@@ -38,8 +38,8 @@ function postPowerCalc() {
 					var optionBreakEven = document.getElementsByName("optionbreakeven")[0].checked;
 					
 					if (optionPower) {
-						document.getElementById("divgrossoutput").innerHTML = "<b>Gross Daily Output: </b>" + grossOutput + " Kwh";
-						document.getElementById("divnetoutput").innerHTML = "<b>Net Daily Output: </b>" + netOutput + " Kwh";
+						document.getElementById("divgrossoutput").innerHTML = "<b>Gross Monthly Generation: </b>" + grossOutput + " (Kwh)";
+						document.getElementById("divnetoutput").innerHTML = "<b>Monthly Excess Generated: </b>" + netOutput + " (Kwh)";
 					}
 					
 					if (optionCost) {
