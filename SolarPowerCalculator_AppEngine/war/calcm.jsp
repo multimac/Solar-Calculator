@@ -44,7 +44,7 @@ double temperature = 28.0;
 		<div class="header"><b>System Configuration</b></div>
 		<div class="labels">
 			<div class="inputs" id="divnumpanels">Number of Panels<input name="numpanels" value="<%=numpanels%>" class="text"/></div>
-			<div class="inputs" id="divmonthlyconsumption">Monthly Usage KWh<input name="monthlyconsumption" value="<%=monthlyconsumption%>" class="text"/></div>
+			<div class="inputs" id="divmonthlyconsumption">Monthly Cons. (KWh)<input name="monthlyconsumption" value="<%=monthlyconsumption%>" class="text"/></div>
 		</div>
 	</div>
 	
@@ -52,23 +52,23 @@ double temperature = 28.0;
 	<div class="systemstats">
 		<div class="header"><b>System Statistics</b></div>
 		<div class="labels">
-			<div class="inputs" id="divpaneloutput">Panel Output W<input name="paneloutput" value="<%=paneloutput%>" class="text"/></div>
-			<div class="inputs" id="divpanelefficiency">Panel Degradation %pa<input name="panelefficiency" value="<%=panelefficiency%>" class="text"/></div>
-			<div class="inputs" id="divinverterefficiency">Inverter Efficiency %<input name="inverterefficiency" value="<%=inverterefficiency*100.0%>" class="text"/></div>
+			<div class="inputs" id="divpaneloutput">Panel Output (W)<input name="paneloutput" value="<%=paneloutput%>" class="text"/></div>
+			<div class="inputs" id="divpanelefficiency">Panel Degradation (%)PA<input name="panelefficiency" value="<%=panelefficiency%>" class="text"/></div>
+			<div class="inputs" id="divinverterefficiency">Inverter Efficiency (%)<input name="inverterefficiency" value="<%=inverterefficiency*100.0%>" class="text"/></div>
 		</div>
 	</div>
 	<div class="location">
 		<div class="header"><b>Location</b></div>
 		<div class="labels">
 			<div class="inputs" id="divstate">State<input name="state" value="<%=state%>" class="text"/></div>
-			<div class="inputs" id="divlighthours">Daylight Hours<input name="daylighthours" value="<%=daylighthours%>" class="text"/></div>
-			<div class="inputs" id="divtemperature">Temperature<input name="temperature" value="<%=temperature%>" class="text"/></div>
+			<div class="inputs" id="divlighthours">Daylight Hours (per day)<input name="daylighthours" value="<%=daylighthours%>" class="text"/></div>
+			<div class="inputs" id="divtemperature">Temperature (C&deg;)<input name="temperature" value="<%=temperature%>" class="text"/></div>
 		</div>
 	</div>
 	<div class="rates">
 		<div class="header"><b>Rates</b></div>
 		<div class="labels">
-			<div class="inputs" id="divexportrate">Feed in Tarrif<input name="exportrate" value="<%=exportrate%>" class="text"/></div>
+			<div class="inputs" id="divexportrate">Export Tariff ($)<input name="exportrate" value="<%=exportrate%>" class="text"/></div>
 		</div>
 	</div>
 	
@@ -79,6 +79,7 @@ double temperature = 28.0;
 		<div id="divcostoutput"></div>
 		<div id="divrevenueoutput"></div>
 		<div id="divbreakevenoutput"></div>
+		<div id="diverroroutput"></div>
 	</div>
 	
 	</form>

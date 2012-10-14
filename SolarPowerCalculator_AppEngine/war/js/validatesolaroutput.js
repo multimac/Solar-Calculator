@@ -47,7 +47,7 @@ function formValidation() {
 	
 	if (!validExportRate(document.output.exportrate.value)) {
 		inputError = true;
-		errorList.push("<li>Export Tarrif should be a number between 0.01 and 1.</li>");
+		errorList.push("<li>Export Tariff should be a number between 0.01 and 1.</li>");
 	}
 	
 	

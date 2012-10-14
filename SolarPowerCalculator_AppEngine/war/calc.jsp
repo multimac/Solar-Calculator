@@ -67,7 +67,7 @@ double temperature = 28.0;
 	<div class="rates">
 		<div class="header"><b>Rates</b></div>
 		<div class="labels">
-			<div class="inputs" id="divexportrate">Export Tarrif ($)<input name="exportrate" value="<%=exportrate%>" class="text"/></div>
+			<div class="inputs" id="divexportrate">Export Tariff ($)<input name="exportrate" value="<%=exportrate%>" class="text"/></div>
 		</div>
 	</div>
 	
