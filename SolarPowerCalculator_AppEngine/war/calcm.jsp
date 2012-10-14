@@ -5,7 +5,7 @@ int numpanels = 5;
 double daylighthours = 4.5;
 double monthlyconsumption = 540;
 int paneloutput = 250;
-double panelefficiency = 100;
+double panelefficiency = 5;
 double inverterefficiency = 0.96;
 double exportrate = 0.08;
 String state = "QLD";
@@ -33,7 +33,7 @@ double temperature = 28.0;
 	<div class="systemoptions">
 		<div class="inputs">
 			<input type="checkbox" name="optionpower" id="optionpower" value="optionpower" class="checkbox" onclick="showInput()" checked/><label for="optionpower" class="label">Power</label>
-			<input type="checkbox" name="optioncost" id="optioncost" value="optioncost" class="checkbox" onclick="showInput()" checked/><label for="optioncost">Cost</label>
+			<input type="checkbox" name="optioncost" id="optioncost" value="optioncost" class="checkbox" onclick="showInput()" checked/><label for="optioncost">Estimated Cost</label>
 			<input type="checkbox" name="optionrevenue" id="optionrevenue" value="optionrevenue" class="checkbox" onclick="showInput()" checked/><label for="optionrevenue">Revenue</label>
 			<input type="checkbox" name="optionbreakeven" id="optionbreakeven" value="optionbreakeven" class="checkbox" onclick="showInput()" checked/><label for="optionbreakeven">Break Even</label>
 			&nbsp;&nbsp;&nbsp;&nbsp;
@@ -70,7 +70,7 @@ double temperature = 28.0;
 	<div class="rates">
 		<div class="header"><b>Rates</b></div>
 		<div class="labels">
-			<div class="inputs" id="divexportrate">Export Rate<input name="exportrate" value="<%=exportrate%>" class="text"/></div>
+			<div class="inputs" id="divexportrate">Feed in Tarrif<input name="exportrate" value="<%=exportrate%>" class="text"/></div>
 		</div>
 	</div>
 	

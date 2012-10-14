@@ -11,7 +11,7 @@ int numpanels = 2;
 double daylighthours = 4.5;
 double monthlyconsumption = 18;
 int paneloutput = 250;
-double panelefficiency = 100;
+double panelefficiency = 5;
 double inverterefficiency = 0.96;
 double exportrate = 0.08;
 
