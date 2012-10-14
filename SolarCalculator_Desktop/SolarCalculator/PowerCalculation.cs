@@ -29,8 +29,8 @@ namespace SolarCalculator
         public delegate string StringReturnDelegate();
         public delegate void StringParseDelegate(string input);
 
-        const string PowerOfflineUri = "http://localhost:8888/powercalcxml.jsp?numpanels={0}&daylighthours={1}&monthlyconsumption={2}&paneloutput={3}&panelefficiency={4}&inverterefficiency={5}&exportrate={6}";
-        const string PowerOnlineUri = "http://solarpanelcalc.appspot.com/powercalcxml.jsp?numpanels={0}&daylighthours={1}&monthlyconsumption={2}&paneloutput={3}&panelefficiency={4}&inverterefficiency={5}&exportrate={6}";
+        const string PowerOfflineUri = "http://localhost:8888/powercalcxml.jsp?numpanels={0}&daylighthours={1}&monthlyconsumption={2}&paneloutput={3}&panelefficiency={4}&inverterefficiency={5}&importrate={6}&exportrate={7}";
+        const string PowerOnlineUri = "http://solarpanelcalc.appspot.com/powercalcxml.jsp?numpanels={0}&daylighthours={1}&monthlyconsumption={2}&paneloutput={3}&panelefficiency={4}&inverterefficiency={5}&importrate={6}&exportrate={7}";
 
         const string CostOfflineUri = "http://localhost:8888/costcalcxml.jsp?numpanels={0}&paneloutput={1}";
         const string CostOnlineUri = "http://solarpanelcalc.appspot.com/costcalcxml.jsp?numpanels={0}&paneloutput={1}";
@@ -49,7 +49,7 @@ namespace SolarCalculator
             if (InvokeRequired)
                 return Invoke(new StringReturnDelegate(GeneratePowerUriString)) as string;
 
-            return string.Format(PowerOnlineUri, numNumberOfPanels.Text, numHoursOfDaylight.Text, numMonthlyUsage.Text, numPanelOutput.Text, numPanelEfficiency.Text, numInverterEfficiency.Text, numImportPrice.Text, numExportPrice.Text);
+            return string.Format(PowerOnlineUri, numNumberOfPanels.Text, numHoursOfDaylight.Text, numMonthlyUsage.Text, numPanelOutput.Text, numPanelEfficiency.Text, numInverterEfficiency.Text, numImportPrice.Value * 100, numExportPrice.Value * 100);
         }
         private string GenerateCostUriString()
         {
@@ -118,13 +118,13 @@ namespace SolarCalculator
                 net = reader.ReadElementContentAsFloat();
                 moneyMadePerDay = net * (float)numExportPrice.Value;
 
-                label9.Text = string.Format("Power Generated Per Day: {0:0.00} KWh", gross); // Read the content from that tag as a string
-                label10.Text = string.Format("Power Generated Per Month: {0:0.00} KWh", gross * 30); // Read the content from that tag as a string
-                label11.Text = string.Format("Power Generated Per Year: {0:0.00} KWh", gross * 356); // Read the content from that tag as a string
+                label9.Text = string.Format("Per Day: Gross - {0:0.00} KWh, Net - {1:0.00} KWh", gross, net); // Read the content from that tag as a string
+                label10.Text = string.Format("Per Month: Gross - {0:0.00} KWh, Net - {1:0.00} KWh", gross * 30, net * 30); // Read the content from that tag as a string
+                label11.Text = string.Format("Per Year: Gross - {0:0.00} KWh, Net - {1:0.00} KWh", gross * 356, net * 356); // Read the content from that tag as a string
 
-                label14.Text = string.Format("Movey Made Per Day: ${0:0.00}", net * (float)numExportPrice.Value); // Read the content from that tag as a string
-                label13.Text = string.Format("Movey Made Per Month: ${0:0.00}", (net * (float)numExportPrice.Value) * 30); // Read the content from that tag as a string
-                label12.Text = string.Format("Movey Made Per Year: ${0:0.00}", (net * (float)numExportPrice.Value) * 356); // Read the content from that tag as a string
+                label14.Text = string.Format("Per Day: ${0:0.00}", moneyMadePerDay); // Read the content from that tag as a string
+                label13.Text = string.Format("Per Month: ${0:0.00}", moneyMadePerDay * 30); // Read the content from that tag as a string
+                label12.Text = string.Format("Per Year: ${0:0.00}", moneyMadePerDay * 356); // Read the content from that tag as a string
             }
         }
         private void SetExtraInfo(string xmlInput)
@@ -156,12 +156,18 @@ namespace SolarCalculator
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to close?", "Confirm Close", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                this.Close();
+            this.Close();
         }
-        private void OnFormClosed(object sender, EventArgs e)
+        private void PowerCalculation_FormClosing(object sender, CancelEventArgs e)
         {
-            Application.Exit();
+            if (MessageBox.Show("Are you sure you want to exit?", null, MessageBoxButtons.YesNo) != System.Windows.Forms.DialogResult.Yes)
+                e.Cancel = true;
+        }
+
+        private void btnAbout_Click(object sender, EventArgs e)
+        {
+            AboutForm about = new AboutForm();
+            about.Show();
         }
     }
 }
