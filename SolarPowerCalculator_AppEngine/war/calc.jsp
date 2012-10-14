@@ -35,8 +35,6 @@ double temperature = 28.0;
 			<input type="checkbox" name="optioncost" id="optioncost" value="optioncost" class="checkbox" onclick="showInput()" checked/><label for="optioncost">Estimated Cost</label>
 			<input type="checkbox" name="optionrevenue" id="optionrevenue" value="optionrevenue" class="checkbox" onclick="showInput()" checked/><label for="optionrevenue">Revenue</label>
 			<input type="checkbox" name="optionbreakeven" id="optionbreakeven" value="optionbreakeven" class="checkbox" onclick="showInput()" checked/><label for="optionbreakeven">Break Even</label>
-			&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="checkbox" name="optiongraph" id="optiongraph" value="optiongraph" class="checkbox" onclick="showInput()"/><label for="optiongraph">Graph</label>
 			
 			<input type="submit" value="Calculate" class="calc"/>
 		</div>
