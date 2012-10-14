@@ -28,7 +28,7 @@ double temperature = 28.0;
 <h1>Mobile</h1>
 <img src="images/TA0.jpg" width="671" height="70" alt=""><img src="images/TB0.jpg" width="185" height="32" alt=""><a class="powercalclink" href="calcm.jsp"></a><img src="images/TB1.jpg" width="10" height="32" alt=""><a class="costcalclink" href="calcm.jsp"></a><img src="images/TB2.jpg" width="10" height="32" alt=""><a class="aboutlink" href="aboutm.jsp"></a><img src="images/TB3.jpg" width="194" height="32" alt=""><img src="images/TC0.jpg" align="top" width="167" height="95" alt="">
 <div class="inputtable">
-	<form name="output" action="powercalc.jsp" method="post" onSubmit="if (formValidation()) {postPowerCalc(); showInput();} return false;">
+	<form name="output" action="calcm.jsp" method="post" onSubmit="if (formValidation()) {postPowerCalc(); showInput();} else {hideOuput();} return false;">
 	
 	<div class="systemoptions">
 		<div class="inputs">

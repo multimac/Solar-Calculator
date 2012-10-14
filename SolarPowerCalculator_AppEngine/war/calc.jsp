@@ -27,7 +27,7 @@ double temperature = 28.0;
 <div class="template">
 <img src="images/TA0.jpg" width="671" height="70" alt=""><img src="images/TB0.jpg" width="185" height="32" alt=""><a class="powercalclink" href="calc.jsp"></a><img src="images/TB1.jpg" width="10" height="32" alt=""><a class="costcalclink" href="help.jsp"></a><img src="images/TB2.jpg" width="10" height="32" alt=""><a class="aboutlink" href="about.jsp"></a><img src="images/TB3.jpg" width="194" height="32" alt=""><img src="images/TC0.jpg" align="top" width="167" height="95" alt="">
 <div class="inputtable">
-	<form name="output" action="powercalc.jsp" method="post" onSubmit="if (formValidation()) {postPowerCalc(); showInput();} return false;">
+	<form name="output" action="calc.jsp" method="post" onSubmit="if (formValidation()) {postPowerCalc(); showInput();} else {hideOuput();} return false;">
 	
 	<div class="systemoptions">
 		<div class="inputs">
@@ -43,7 +43,7 @@ double temperature = 28.0;
 		<div class="header"><b>System Configuration</b></div>
 		<div class="labels">
 			<div class="inputs" id="divnumpanels">Number of Panels<input name="numpanels" value="<%=numpanels%>" class="text"/></div>
-			<div class="inputs" id="divmonthlyconsumption">Monthly Usage (KWh)<input name="monthlyconsumption" value="<%=monthlyconsumption%>" class="text"/></div>
+			<div class="inputs" id="divmonthlyconsumption">Monthly Cons. (KWh)<input name="monthlyconsumption" value="<%=monthlyconsumption%>" class="text"/></div>
 		</div>
 	</div>
 	
@@ -60,7 +60,7 @@ double temperature = 28.0;
 		<div class="header"><b>Location</b></div>
 		<div class="labels">
 			<div class="inputs" id="divstate">State<input name="state" value="<%=state%>" class="text"/></div>
-			<div class="inputs" id="divlighthours">Daylight Hours<input name="daylighthours" value="<%=daylighthours%>" class="text"/></div>
+			<div class="inputs" id="divlighthours">Daylight Hours (per day)<input name="daylighthours" value="<%=daylighthours%>" class="text"/></div>
 			<div class="inputs" id="divtemperature">Temperature (C&deg;)<input name="temperature" value="<%=temperature%>" class="text"/></div>
 		</div>
 	</div>
@@ -78,6 +78,7 @@ double temperature = 28.0;
 		<div id="divcostoutput"></div>
 		<div id="divrevenueoutput"></div>
 		<div id="divbreakevenoutput"></div>
+		<div id="diverroroutput"></div>
 	</div>
 	
 	</form>

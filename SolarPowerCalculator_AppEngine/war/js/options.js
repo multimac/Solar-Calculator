@@ -1,4 +1,7 @@
 
+
+
+
 function showInput() {
 	//Check box options
 	var optionPower = document.getElementsByName("optionpower")[0].checked;
@@ -127,4 +130,23 @@ function showInput() {
 	else {
 		divbreakevenoutput.style.display = 'none';
 	}
+}
+
+
+function hideOuput() {
+	
+	//Output
+	var divgrossoutput = document.getElementById("divgrossoutput");
+	var divnetoutput = document.getElementById("divnetoutput");
+	var divcostoutput = document.getElementById("divcostoutput");
+	//var divrevenueoutput = document.getElementById("divrevenueoutput");
+	var diverroroutput = document.getElementById("diverroroutput");
+	var divbreakevenoutput = document.getElementById("divbreakevenoutput");
+	
+	
+	divgrossoutput.style.display = 'none';
+	divnetoutput.style.display = 'none';
+	divcostoutput.style.display = 'none';
+	divrevenueoutput.style.display = 'none';
+	divbreakevenoutput.style.display = 'none';
 }
