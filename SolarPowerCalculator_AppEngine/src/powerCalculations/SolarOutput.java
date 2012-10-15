@@ -97,6 +97,10 @@ public class SolarOutput {
 	 * @return expected cost of an inverter to match output
 	 */
 	public static double calculateInverterCost(double systemOutput) {
+		//Calculation should be somthing like this, don't have time to implement and test right now.
+		//Say, inverters come in increments of 250 watts, at $200 per increment. With $300 base line.
+		//return (Math.ceil(systemOutput / 250))*200 + 300;
+		
 		return (Math.ceil(systemOutput)) + 300;
 		//return 1.06954219*systemOutput + 269.44442;
 		//return -0.00004211*(systemOutput *systemOutput) + 1.06954219*systemOutput + 269.44442;
