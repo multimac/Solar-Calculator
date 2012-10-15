@@ -69,6 +69,17 @@ public class SolarOutput {
 	}
 	
 	/**
+	 *  Calculates the monthly output of a system given its location and set-up minus monthly usage
+	 * 
+	 * @param location LocationDetails details about the location of the set-up
+	 * @param system PanelConfiguration the solar panel system configuration
+	 * @return The daily of output of the system in KWh minus monthly usage
+	 */
+	public static double calculateNetMonthlyOutput(LocationDetails location , SystemConfiguration system) {
+		return calculateNetDailyOutput(location, system)*30;
+	}
+	
+	/**
 	 * 
 	 * Calculates the expected system cost based on the system rating
 	 * @param system PanelConfiguration the solar panel system configuration

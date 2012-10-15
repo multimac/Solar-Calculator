@@ -54,8 +54,8 @@ else {
 	LocationDetails location = new LocationDetails(daylighthours, monthlyconsumption, exportrate);
 	SystemConfiguration system = new SystemConfiguration(paneloutput, numpanels, inverterefficiency);
 	
-	grossOutput = SolarOutput.calculateGrossDailyOutput(location, system);
-	netOutput = SolarOutput.calculateNetDailyOutput(location, system);
+	grossOutput = SolarOutput.calculateGrossMonthlyOutput(location, system);
+	netOutput = SolarOutput.calculateNetMonthlyOutput(location, system);
 	cost = SolarOutput.calculateSystemCost(system);
 	revenue = SolarOutput.calculateMonthlyOutputValue(system, location);
 	breakEven = SolarOutput.calculateBreakEven(system, location);
