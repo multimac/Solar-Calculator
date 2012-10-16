@@ -20,6 +20,7 @@ double temperature = 28.0;
  <script type="text/javascript" src="js/validatesolaroutput.js"></script>
  <script type="text/javascript" src="js/calcajax.js"></script>
  <script type="text/javascript" src="js/options.js"></script>
+ <script type="text/javascript" src="js/tooltips.js"></script>
 </head>
 <body onload="showInput();">
 
@@ -42,7 +43,7 @@ double temperature = 28.0;
 	<div class="systemconf">
 		<div class="header"><b>System Configuration</b></div>
 		<div class="labels">
-			<div class="inputs" id="divnumpanels">Number of Panels<input name="numpanels" value="<%=numpanels%>" class="text"/></div>
+			<div class="inputs" id="divnumpanels">Number of Panels<input name="numpanels" value="<%=numpanels%>" class="text" onmouseover="toolTipShow(this);"/></div>
 			<div class="inputs" id="divmonthlyconsumption">Monthly Cons. (KWh)<input name="monthlyconsumption" value="<%=monthlyconsumption%>" class="text"/></div>
 		</div>
 	</div>
@@ -51,7 +52,7 @@ double temperature = 28.0;
 	<div class="systemstats">
 		<div class="header"><b>System Statistics</b></div>
 		<div class="labels">
-			<div class="inputs" id="divpaneloutput">Panel Output (W)<input name="paneloutput" value="<%=paneloutput%>" class="text"/></div>
+			<div class="inputs" id="divpaneloutput">Panel Output (W)</select><input name="paneloutput" value="<%=paneloutput%>" class="text"/></div>
 			<div class="inputs" id="divpanelefficiency">Panel Degradation (%)PA<input name="panelefficiency" value="<%=panelefficiency%>" class="text"/></div>
 			<div class="inputs" id="divinverterefficiency">Inverter Efficiency (%)<input name="inverterefficiency" value="<%=inverterefficiency*100.0%>" class="text"/></div>
 		</div>
