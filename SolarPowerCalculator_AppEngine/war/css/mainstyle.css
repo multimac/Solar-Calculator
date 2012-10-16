@@ -143,10 +143,18 @@ div.tooltip {
     margin-right: auto;
 	width: 480px;
 	font-size: 100%;
+	font-weight: bold;
+	color: 377cc9;
 	float: left;
 	padding: 0px;
 	height: 25px;
 	padding-top:5px;
+}
+
+
+div.instructions {
+	font-size: 75%;
+	width: 490px;
 }
 
 
