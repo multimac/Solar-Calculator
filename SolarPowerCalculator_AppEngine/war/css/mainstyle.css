@@ -138,6 +138,18 @@ div.inputs {
 }
 
 
+div.tooltip {
+	margin-left: auto;
+    margin-right: auto;
+	width: 480px;
+	font-size: 100%;
+	float: left;
+	padding: 0px;
+	height: 25px;
+	padding-top:5px;
+}
+
+
 input.calc {
 	margin-left: auto;
     margin-right: auto;
@@ -147,8 +159,14 @@ input.calc {
 	padding: 0px;
 }
 
-
 input.text {
+	width: 70px;
+	float: right;
+	height: 22px;
+	display: inline-block;
+}
+
+select.text {
 	width: 70px;
 	float: right;
 	height: 22px;

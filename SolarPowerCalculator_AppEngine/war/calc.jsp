@@ -59,7 +59,15 @@ double temperature = 28.0;
 	<div class="location">
 		<div class="header"><b>Location</b></div>
 		<div class="labels">
-			<div class="inputs" id="divstate">State<input name="state" value="<%=state%>" class="text"/></div>
+			<div class="inputs" id="divstate">State<select name="state" class="text">
+														<option value="qld">QLD</option>
+														<option value="nsw">NSW</option>
+														<option value="vic">VIC</option>
+														<option value="sa">SA</option>
+														<option value="wa">WA</option>
+														<option value="nt">NT</option>
+														<option value="tas">TAS</option>
+													</select></div>
 			<div class="inputs" id="divlighthours">Daylight Hours (per day)<input name="daylighthours" value="<%=daylighthours%>" class="text"/></div>
 			<div class="inputs" id="divtemperature">Temperature (C&deg;)<input name="temperature" value="<%=temperature%>" class="text"/></div>
 		</div>
@@ -72,6 +80,7 @@ double temperature = 28.0;
 	</div>
 	
 	<div>
+		<div id="divtooltip" class="tooltip"></div>
 		<div id="diverroroutput"></div>
 		<div id="divgrossoutput"></div>
 		<div id="divnetoutput"></div>
