@@ -17,7 +17,8 @@ double temperature = 28.0;
 <head>
  <title>Solar Output Calculator</title>
  <link rel="stylesheet" type="text/css" href="css/mainstyle.css" />
- <script type="text/javascript" src="js/validatesolaroutput.js"></script>
+ <script type="text/javascript" src="js/validateonsubmit.js"></script>
+ <script type="text/javascript" src="js/validateonkeydown.js"></script>
  <script type="text/javascript" src="js/calcajax.js"></script>
  <script type="text/javascript" src="js/options.js"></script>
  <script type="text/javascript" src="js/tooltips.js"></script>
@@ -43,8 +44,8 @@ double temperature = 28.0;
 	<div class="systemconf">
 		<div class="header"><b>System Configuration</b></div>
 		<div class="labels">
-			<div class="inputs" id="divnumpanels">Number of Panels<input name="numpanels" value="<%=numpanels%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"/></div>
-			<div class="inputs" id="divmonthlyconsumption">Monthly Cons. (KWh)<input name="monthlyconsumption" value="<%=monthlyconsumption%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"/></div>
+			<div class="inputs" id="divnumpanels">Number of Panels<input name="numpanels" value="<%=numpanels%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
+			<div class="inputs" id="divmonthlyconsumption">Monthly Cons. (KWh)<input name="monthlyconsumption" value="<%=monthlyconsumption%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
 		</div>
 	</div>
 	
@@ -52,15 +53,15 @@ double temperature = 28.0;
 	<div class="systemstats">
 		<div class="header"><b>System Statistics</b></div>
 		<div class="labels">
-			<div class="inputs" id="divpaneloutput">Panel Output (W)</select><input name="paneloutput" value="<%=paneloutput%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"/></div>
-			<div class="inputs" id="divpanelefficiency">Panel Degradation (%)PA<input name="panelefficiency" value="<%=panelefficiency%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"/></div>
-			<div class="inputs" id="divinverterefficiency">Inverter Efficiency (%)<input name="inverterefficiency" value="<%=inverterefficiency*100.0%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"/></div>
+			<div class="inputs" id="divpaneloutput">Panel Output (W)<input name="paneloutput" value="<%=paneloutput%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
+			<div class="inputs" id="divpanelefficiency">Panel Degradation (%)PA<input name="panelefficiency" value="<%=panelefficiency%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
+			<div class="inputs" id="divinverterefficiency">Inverter Efficiency (%)<input name="inverterefficiency" value="<%=inverterefficiency*100.0%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
 		</div>
 	</div>
 	<div class="location">
 		<div class="header"><b>Location</b></div>
 		<div class="labels">
-			<div class="inputs" id="divstate">State<select name="state" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();">
+			<div class="inputs" id="divstate">State<select name="state" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"  onkeyup="validateOnKeyDown(this);">
 														<option value="qld">QLD</option>
 														<option value="nsw">NSW</option>
 														<option value="vic">VIC</option>
@@ -69,19 +70,20 @@ double temperature = 28.0;
 														<option value="nt">NT</option>
 														<option value="tas">TAS</option>
 													</select></div>
-			<div class="inputs" id="divlighthours">Daylight Hours (per day)<input name="daylighthours" value="<%=daylighthours%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"/></div>
-			<div class="inputs" id="divtemperature">Temperature (C&deg;)<input name="temperature" value="<%=temperature%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"/></div>
+			<div class="inputs" id="divlighthours">Daylight Hours (per day)<input name="daylighthours" value="<%=daylighthours%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"  onkeyup="validateOnKeyDown(this);"/></div>
+			<div class="inputs" id="divtemperature">Temperature (C&deg;)<input name="temperature" value="<%=temperature%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"  onkeyup="validateOnKeyDown(this);"/></div>
 		</div>
 	</div>
 	<div class="rates">
 		<div class="header"><b>Rates</b></div>
 		<div class="labels">
-			<div class="inputs" id="divexportrate">Export Tariff ($)<input name="exportrate" value="<%=exportrate%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"/></div>
+			<div class="inputs" id="divexportrate">Export Tariff ($)<input name="exportrate" value="<%=exportrate%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"  onkeyup="validateOnKeyDown(this);"/></div>
 		</div>
 	</div>
 	
 	<div>
 		<div id="divtooltip" class="tooltip"></div>
+		<div id="divtooltiperror" class="tooltiperror"></div>
 		<div id="diverroroutput"></div>
 		<div id="divgrossoutput"></div>
 		<div id="divnetoutput"></div>

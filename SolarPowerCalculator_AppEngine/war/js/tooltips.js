@@ -1,7 +1,7 @@
 
 function toolTipPopUp(input) {
 	
-	var toolTipBox = document.getElementById("grossoutput")
+	var toolTipBox = document.getElementById("divtooltip")
 	
 	//System Configuration ToolTips
 	if (input.name == "numpanels") {
@@ -38,8 +38,8 @@ function toolTipPopUp(input) {
 		setToolTip("The rebate rate for feeding electricity back into the main power grid in dollars. [0.01-1]");
 	}
 	
-	
 }
+
 
 function toolTipPopDown() {
 	setToolTip("");
