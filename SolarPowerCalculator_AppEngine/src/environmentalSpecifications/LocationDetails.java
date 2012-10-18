@@ -111,7 +111,7 @@ public class LocationDetails {
 	 */
 	public int getMonthlyWinterConsumption () {
 		return monthlyWinterConsumption;
-	}
+	} 
 	
 	/**
 	 *  Gets the number of KWh consumed each month during the warm months of NOV-APR inclusive

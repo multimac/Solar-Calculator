@@ -124,5 +124,6 @@ public class SystemConfiguration {
 	public double getInverterEfficiency() {
 		return inverterEfficiency;
 	}
+
 	
 }

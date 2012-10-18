@@ -7,7 +7,7 @@ import environmentalSpecifications.*;
 
 /**
  * SolarOutput is responsible for all calculations relating to energy output of a system
- * @author Glen-Andrew
+ * @author Glen-Andrew 
  */
 public class SolarOutput {	
 	
@@ -15,8 +15,6 @@ public class SolarOutput {
 	private static DecimalFormat moneyDecFormat = new DecimalFormat("#.##");
 	private static int installCost = 1000;
 	private static double daysInMonth = 30.44;
-	private static int winterMonths = 6;
-	private static int summerMonths = 6;
 	
 
 	public static double calculateSystemRating(SystemConfiguration system) {
@@ -39,10 +37,14 @@ public class SolarOutput {
 		return likelyExposure;
 	}
 	
-	public static double calculatePanelEfficiencyWinter (SystemConfiguration system, LocationDetails location) {
+	public static double calculatePanelEfficiencyWinter (SystemConfiguration system, LocationDetails location, int year) {
 		int tempDifference = location.getRoofTempWinter() - 25;
-		double ajustment = tempDifference*system.getTempCoefficient();
-		double ajustedEfficiency = system.getPanelEfficiency() + ajustment;
+		double tempAjustment = tempDifference*system.getTempCoefficient();
+		double denegration = 1;
+		for (int i = 0 ; i < year; i = i + 1) {
+			denegration = denegration - ((1 - system.getPanelDegradation())*denegration);
+		}
+		double ajustedEfficiency = (system.getPanelEfficiency() + tempAjustment) * denegration;
 		return ajustedEfficiency;
 	}
 	
@@ -57,8 +59,8 @@ public class SolarOutput {
 		return ajustedEfficiency;
 	}
 	
-	public static double calculateMonthlyWinterOutput (SystemConfiguration system, LocationDetails location) {
-		double maxPossible = calculatePanelEfficiencyWinter(system, location)*calculateSolarExposureWinter(system, location);
+	public static double calculateMonthlyWinterOutput (SystemConfiguration system, LocationDetails location, int year) {
+		double maxPossible = calculatePanelEfficiencyWinter(system, location, year)*calculateSolarExposureWinter(system, location);
 		if (maxPossible > calculateSystemRating(system)) {
 			return (calculateSystemRating(system)*daysInMonth);
 		}
@@ -78,11 +80,11 @@ public class SolarOutput {
 	}
 	
 	public static double calculateAverageMonthlyOutput (SystemConfiguration system, LocationDetails location, int year) {
-		return (calculateMonthlyWinterOutput(system, location) + calculateMonthlySummerOutput(system, location, year)) / 2;
+		return (calculateMonthlyWinterOutput(system, location, year) + calculateMonthlySummerOutput(system, location, year)) / 2;
 	}
 	
-	public static double calculateMonthlyWinterSavings (SystemConfiguration system, LocationDetails location) {
-		double monthlyOutput = calculateMonthlyWinterOutput(system, location);
+	public static double calculateMonthlyWinterSavings (SystemConfiguration system, LocationDetails location, int year) {
+		double monthlyOutput = calculateMonthlyWinterOutput(system, location, year);
 		double exportedPower = 0;
 		if (monthlyOutput > location.getMonthlyWinterConsumption()) {
 			exportedPower = monthlyOutput - location.getMonthlyWinterConsumption();
@@ -100,7 +102,7 @@ public class SolarOutput {
 	}
 	
 	public static double calculateAverageMonthlySavings (SystemConfiguration system, LocationDetails location, int year) {
-		return (calculateMonthlyWinterSavings(system, location) + calculateMonthlySummerSavings(system, location, year)) / 2;
+		return (calculateMonthlyWinterSavings(system, location, year) + calculateMonthlySummerSavings(system, location, year)) / 2;
 	}
 	
 	public static String calculateBreakEvenTime (SystemConfiguration system, LocationDetails location) {
@@ -122,6 +124,13 @@ public class SolarOutput {
 		return (year-1 + " years, " + finalMonth + " months");
 	}
 	
+	public static double getInitialMonthlySavings (SystemConfiguration system, LocationDetails location) {
+		return calculateAverageMonthlySavings(system, location, 0);
+	}
+	
+	public static double getInitialMonthlyOutput (SystemConfiguration system, LocationDetails location) {
+		return calculateAverageMonthlyOutput(system, location, 0);
+	}
 	
 	
 	
@@ -135,6 +144,8 @@ public class SolarOutput {
 	
 	
 	
+
+
 	/**
 	 * 
 	 * Calculates the expected system cost based on the system rating
