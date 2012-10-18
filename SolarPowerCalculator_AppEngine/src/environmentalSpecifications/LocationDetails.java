@@ -4,16 +4,26 @@ import solarPowerCalculator.CalculatorException;
 
 /**
  * The LocationDetails provides all necessary information regarding a system's location in the world
- * @author Brendon
+ * @author Glen-Andrew
  *
  */
 public class LocationDetails {
 
 	// Class Variables
-	private double daylightHours; // Hours
-	private double monthlyConsumption; // Killowatt Hours
+	private double daylightHoursWinter; // Hours of direct sunlight in the cool months
+	private double daylightHoursSummer; // Hours of direct sunlight in the warm months
+	private int monthlyWinterConsumption; // Killowatt Hours (May-Oct)
+	private int monthlySummerConsumption; // Killowatt Hours (Nov-Apr)
 	private double exportRate; // Feed in tariff in dollars
+	private double importRate; // Import tariff in dollars
+	private int roofTempWinter; // Mean temp at 3pm in the cool months from the database
+	private int roofTempSummer; // Mean temp at 3pm in the warm months from the database
+	private double solarInsolationWinter; // Solar insolation during the cool months
+	private double solarInsolationSummer; // solar insolation during the warm months
+	
 	private static double hoursInDay = 24; //Hours
+	private static int maxTemp = 80; // Degrees Celsius
+	private static int minTemp = -40; // Degrees Celsius
 	
 	/**
 	 * Initialises a new instance of location details with specified daylight exposure
@@ -21,38 +31,100 @@ public class LocationDetails {
 	 * @param exportRate 
 	 * @throws CalculatorException if daylightHours exceeds hoursInDay
 	 */
-	public LocationDetails (double daylightHours, double monthlyConsumption, double exportRate) throws CalculatorException {
-		if (daylightHours > hoursInDay || daylightHours < 0)
+	public LocationDetails (double daylightHoursWinter, double daylightHoursSummer, int monthlyWinterConsumption, int monthlySummerConsumption, double exportRate, double importRate, int roofTempWinter, int roofTempSummer, double solarInsolationWinter, double solarInsolationSummer) throws CalculatorException {
+		if (daylightHoursWinter > hoursInDay || daylightHoursWinter < 0 || daylightHoursSummer > hoursInDay || daylightHoursSummer < 0)
 			throw new CalculatorException("daylightHours exceeds limits");
 		else
-			this.daylightHours = daylightHours;
-		
-		if (monthlyConsumption < 0)
-			throw new CalculatorException("monthlyconsumption cannot be lower than 0");
+			this.daylightHoursWinter = daylightHoursWinter;
+			this.daylightHoursSummer = daylightHoursSummer;
+			
+		if (roofTempWinter > maxTemp || roofTempWinter < minTemp || roofTempSummer > maxTemp || roofTempWinter < minTemp)
+			throw new CalculatorException("roof temprature exceeds limits");
 		else
-			this.monthlyConsumption = monthlyConsumption;
+			this.roofTempWinter = roofTempWinter;
+			this.roofTempSummer = roofTempSummer;
+		
+		if (monthlyWinterConsumption < 0)
+			throw new CalculatorException("monthlyWinterConsumption cannot be lower than 0");
+		else
+			this.monthlyWinterConsumption = monthlyWinterConsumption;
+		if (monthlySummerConsumption < 0)
+			throw new CalculatorException("monthlySummerConsumption cannot be lower than 0");
+		else
+			this.monthlySummerConsumption = monthlySummerConsumption;
 		if (exportRate < 0)
 			throw new CalculatorException("export rate must be positive");
 		else
 			this.exportRate = exportRate;
+		if (importRate < 0)
+			throw new CalculatorException("import rate must be positive");
+		else
+			this.importRate = importRate;
+		if (solarInsolationWinter < 0 || solarInsolationSummer < 0)
+			throw new CalculatorException("solar insolation must be positive");
+		else
+			this.solarInsolationWinter = solarInsolationWinter;
+			this.solarInsolationSummer = solarInsolationSummer;
 	}
+	
 	
 	/**
 	 *  Gets the number of hours of daylight in the day
 	 * @return hours of daylight in a day
 	 */
-	public double getDaylightHours () {
-		return daylightHours;
+	public double getDaylightHoursWinter () {
+		return daylightHoursWinter;
+	}
+	
+	public double getDaylightHoursSummer () {
+		return daylightHoursSummer;
+	}
+	
+	public int getRoofTempSummer () {
+		return roofTempSummer;
+	}
+	
+	public int getRoofTempWinter () {
+		return roofTempWinter;
+	}
+	
+	public double getSolarInsolationWinter () {
+		return solarInsolationWinter;
+	}
+	
+	public double getSolarInsolationSummer () {
+		return solarInsolationSummer;
 	}
 	
 	/**
-	 *  Gets the number of KWh consumed each day
-	 * @return KWh consumed each day
+	 * Gets the import tariff
+	 * @return the import tariff in dollars
 	 */
-	public double getMonthlyConsumption () {
-		return monthlyConsumption;
+	public double getImportRate () {
+		return importRate;
 	}
 	
+	
+	/**
+	 *  Gets the number of KWh consumed each month during the cold months of MAY-OCT inclusive
+	 * @return average monthly consumption in KWh
+	 */
+	public int getMonthlyWinterConsumption () {
+		return monthlyWinterConsumption;
+	}
+	
+	/**
+	 *  Gets the number of KWh consumed each month during the warm months of NOV-APR inclusive
+	 * @return average monthly consumption in KWh
+	 */
+	public int getMonthlySummerConsumption () {
+		return monthlySummerConsumption;
+	}
+	
+	/**
+	 * Gets the export tariff/feed in tariff
+	 * @return the export tariff in dollars
+	 */
 	public double getExportRate () {
 		return exportRate;
 	}

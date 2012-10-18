@@ -5,7 +5,7 @@ import solarPowerCalculator.CalculatorException;;
 /**
  *  SystemConfiguration class specifies all details about the physical set-up of
  *  a solar panel system
- * @author Brendon
+ * @author Glen-Andrew
  *
  */
 public class SystemConfiguration {
@@ -14,6 +14,13 @@ public class SystemConfiguration {
 	private int panelCount; // Whole Number
 	private int panelOutput; //  W 
 	private double inverterEfficiency; // Percentage
+	private int panelDensity; // W per sq. meter
+	private double panelEfficiency; // Percentage
+	private double panelDegradation; // Percentage p.a.
+	private double tempCoefficient; // Efficiency change per degrees C change
+	
+	
+	
 	
 	/**
 	 *  Initialises a new instance of SystemConfiguration
@@ -21,7 +28,7 @@ public class SystemConfiguration {
 	 * @param panelCount - The number of panels in the configuration
 	 * @param inverterEfficiency - Inverter efficiency 0-1
 	 */
-	public SystemConfiguration (int panelOutput, int panelCount, double inverterEfficiency) throws CalculatorException {
+	public SystemConfiguration (int panelOutput, int panelCount, double inverterEfficiency, int panelDensity, double panelEfficiency, double panelDegradation, double tempCoefficient) throws CalculatorException {
 		if (panelCount <= 0)
 			throw new CalculatorException ("Panel count should be greater than 0");
 		else
@@ -38,6 +45,27 @@ public class SystemConfiguration {
 			throw new CalculatorException ("Inverter efficiency should be less than than 1");
 		else
 			this.inverterEfficiency = inverterEfficiency;
+		if (panelEfficiency <= 0.0)
+			throw new CalculatorException ("Panel efficiency should be greater than 0");
+		else if (panelEfficiency > 1.0)
+			throw new CalculatorException ("Panel efficiency should be less than than 1");
+		else
+			this.panelEfficiency = panelEfficiency;
+		if (panelDegradation <= 0.0)
+			throw new CalculatorException ("Panel degradation should be greater than 0");
+		else if (panelDegradation > 1.0)
+			throw new CalculatorException ("Panel degradation should be less than than 1");
+		else
+			this.panelDegradation = panelEfficiency;
+		if (tempCoefficient > -0.1 || tempCoefficient < -1)
+			throw new CalculatorException ("Temprature Coefficient should be between -0.1 and -1");
+		else
+			this.tempCoefficient = tempCoefficient;
+		if (panelDensity > 200 || panelDensity < 50)
+			throw new CalculatorException ("panelDensity should not be above 200W or below 50W per square meter");
+		else 
+			this.panelDensity = panelDensity;
+		
 	}
 	
 	/**
@@ -54,6 +82,38 @@ public class SystemConfiguration {
 	 */
 	public int getPanelOutput () {
 		return panelOutput;
+	}
+	
+	/**
+	 * Gets the panel density of the solar panels
+	 * @return panel density of W per square meter
+	 */
+	public int getPanelDensity () {
+		return panelDensity;
+	}
+	
+	/**
+	 * Gets the panel efficiency
+	 * @return panel efficiency as percentage
+	 */
+	public double getPanelEfficiency () {
+		return panelEfficiency;
+	}
+	
+	/**
+	 * Gets the panel degradation
+	 * @return panel degradation as percentage per year
+	 */
+	public double getPanelDegradation () {
+		return panelDegradation;
+	}
+	
+	/**
+	 * Get the temperature coefficient
+	 * @return temperature coefficient expressed as change to efficiency per 1 degree C change in temperature
+	 */
+	public double getTempCoefficient () {
+		return tempCoefficient;
 	}
 	
 	

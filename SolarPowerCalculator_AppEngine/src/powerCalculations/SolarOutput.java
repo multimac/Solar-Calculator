@@ -7,77 +7,133 @@ import environmentalSpecifications.*;
 
 /**
  * SolarOutput is responsible for all calculations relating to energy output of a system
- *
+ * @author Glen-Andrew
  */
 public class SolarOutput {	
 	
 	private static int wattsInKilowatt = 1000;
 	private static DecimalFormat moneyDecFormat = new DecimalFormat("#.##");
 	private static int installCost = 1000;
+	private static double daysInMonth = 30.44;
+	private static int winterMonths = 6;
+	private static int summerMonths = 6;
 	
-	/**
-	 * Calculates the hourly output of a system in Wh
-	 * 
-	 * @param system the solar panel system configuration
-	 * @return The hourly output of a system in KWh
-	 */
-	public static double calculateHourlyOutput(SystemConfiguration system) {
-		double output = calculateRawHourlyOutput(system) * system.getInverterEfficiency();
-		return output;
+
+	public static double calculateSystemRating(SystemConfiguration system) {
+		return (system.getPanelCount()*system.getPanelOutput()*system.getInverterEfficiency());
 	}
 	
-	/**
-	 * Calculates the raw hourly output of the system regardless of efficiencies
-	 * @param system the solar panel system confguration
-	 * @return Wh produced in a single hour
-	 */
-	private static double calculateRawHourlyOutput(SystemConfiguration system) {
-		return system.getPanelCount() * system.getPanelOutput();
+	public static double calculatePanelArea(SystemConfiguration system) {
+		return (calculateSystemRating(system)/system.getPanelDensity());
 	}
 	
-	/**
-	 *  Calculates the gross daily output of a system given its location and set-up
-	 *  
-	 * @param location LocationDetails details about the location of the set-up
-	 * @param system PanelConfiguration the solar panel system configuration
-	 * @return The daily of output of the system in KWh
-	 */
-	public static double calculateGrossDailyOutput(LocationDetails location, SystemConfiguration system) {
-		return calculateHourlyOutput(system) * location.getDaylightHours() / wattsInKilowatt;
+	public static double calculateSolarExposureWinter(SystemConfiguration system, LocationDetails location) {
+		double maxExposure = location.getSolarInsolationWinter()*calculatePanelArea(system);
+		double likelyExposure = maxExposure/(location.getDaylightHoursWinter()/2);
+		return likelyExposure;
 	}
 	
-	/**
-	 *  Calculates the net daily output of a system given its location and set-up, and hours consumed
-	 *  
-	 * @param location LocationDetails details about the location of the set-up
-	 * @param system PanelConfiguration the solar panel system configuration
-	 * @return The daily of output of the system in KWh
-	 */
-	public static double calculateNetDailyOutput(LocationDetails location, SystemConfiguration system) {
-		return calculateGrossDailyOutput(location, system) - (location.getMonthlyConsumption() / 30);
+	public static double calculateSolarExposureSummer(SystemConfiguration system, LocationDetails location) {
+		double maxExposure = location.getSolarInsolationSummer()*calculatePanelArea(system);
+		double likelyExposure = maxExposure/(location.getDaylightHoursSummer()/2);
+		return likelyExposure;
 	}
 	
-	/**
-	 *  Calculates the monthly output of a system given its location and set-up
-	 * 
-	 * @param location LocationDetails details about the location of the set-up
-	 * @param system PanelConfiguration the solar panel system configuration
-	 * @return The daily of output of the system in KWh
-	 */
-	public static double calculateGrossMonthlyOutput(LocationDetails location , SystemConfiguration system) {
-		return calculateGrossDailyOutput(location, system)*30;
+	public static double calculatePanelEfficiencyWinter (SystemConfiguration system, LocationDetails location) {
+		int tempDifference = location.getRoofTempWinter() - 25;
+		double ajustment = tempDifference*system.getTempCoefficient();
+		double ajustedEfficiency = system.getPanelEfficiency() + ajustment;
+		return ajustedEfficiency;
 	}
 	
-	/**
-	 *  Calculates the monthly output of a system given its location and set-up minus monthly usage
-	 * 
-	 * @param location LocationDetails details about the location of the set-up
-	 * @param system PanelConfiguration the solar panel system configuration
-	 * @return The daily of output of the system in KWh minus monthly usage
-	 */
-	public static double calculateNetMonthlyOutput(LocationDetails location , SystemConfiguration system) {
-		return calculateNetDailyOutput(location, system)*30;
+	public static double calculatePanelEfficiencySummer (SystemConfiguration system, LocationDetails location, int year) {
+		int tempDifference = location.getRoofTempSummer() - 25;
+		double tempAjustment = tempDifference*system.getTempCoefficient();
+		double denegration = 1;
+		for (int i = 0 ; i < year; i = i + 1) {
+			denegration = denegration - ((1 - system.getPanelDegradation())*denegration);
+		}
+		double ajustedEfficiency = (system.getPanelEfficiency() + tempAjustment) * denegration;
+		return ajustedEfficiency;
 	}
+	
+	public static double calculateMonthlyWinterOutput (SystemConfiguration system, LocationDetails location) {
+		double maxPossible = calculatePanelEfficiencyWinter(system, location)*calculateSolarExposureWinter(system, location);
+		if (maxPossible > calculateSystemRating(system)) {
+			return (calculateSystemRating(system)*daysInMonth);
+		}
+		else {
+			return maxPossible*daysInMonth;
+		}
+	}
+	
+	public static double calculateMonthlySummerOutput (SystemConfiguration system, LocationDetails location, int year) {
+		double maxPossible = calculatePanelEfficiencySummer(system, location, year)*calculateSolarExposureSummer(system, location);
+		if (maxPossible > calculateSystemRating(system)) {
+			return (calculateSystemRating(system)*daysInMonth);
+		}
+		else {
+			return maxPossible*daysInMonth;
+		}
+	}
+	
+	public static double calculateAverageMonthlyOutput (SystemConfiguration system, LocationDetails location, int year) {
+		return (calculateMonthlyWinterOutput(system, location) + calculateMonthlySummerOutput(system, location, year)) / 2;
+	}
+	
+	public static double calculateMonthlyWinterSavings (SystemConfiguration system, LocationDetails location) {
+		double monthlyOutput = calculateMonthlyWinterOutput(system, location);
+		double exportedPower = 0;
+		if (monthlyOutput > location.getMonthlyWinterConsumption()) {
+			exportedPower = monthlyOutput - location.getMonthlyWinterConsumption();
+		}
+		return ((monthlyOutput - exportedPower)*location.getImportRate()) + (exportedPower*location.getExportRate());
+	}
+	
+	public static double calculateMonthlySummerSavings (SystemConfiguration system, LocationDetails location, int year) {
+		double monthlyOutput = calculateMonthlySummerOutput(system, location, year);
+		double exportedPower = 0;
+		if (monthlyOutput > location.getMonthlySummerConsumption()) {
+			exportedPower = monthlyOutput - location.getMonthlySummerConsumption();
+		}
+		return ((monthlyOutput - exportedPower)*location.getImportRate()) + (exportedPower*location.getExportRate());
+	}
+	
+	public static double calculateAverageMonthlySavings (SystemConfiguration system, LocationDetails location, int year) {
+		return (calculateMonthlyWinterSavings(system, location) + calculateMonthlySummerSavings(system, location, year)) / 2;
+	}
+	
+	public static String calculateBreakEvenTime (SystemConfiguration system, LocationDetails location) {
+		double cost = calculateSystemCost(system);
+		double savings = 0;
+		int year = 0;
+		int month = 0;
+		int finalMonth = 1;
+		while (savings < cost) {
+			while (month < 12 && savings < cost) {
+				savings = savings + calculateAverageMonthlySavings(system, location, year);
+				// DATAPOINT FOR CHARTS HERE
+				month = month + 1;
+				finalMonth = month;
+			}
+			month = 0;
+			year = year + 1;
+		}
+		return (year-1 + " years, " + finalMonth + " months");
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	/**
 	 * 
@@ -86,7 +142,7 @@ public class SolarOutput {
 	 * @return The expected dollar cost of the system
 	 */
 	public static double calculateSystemCost(SystemConfiguration system) {
-		double hourlyRawOutput = calculateRawHourlyOutput(system);
+		double hourlyRawOutput = system.getPanelOutput()*system.getPanelCount();
 		double rawCost = hourlyRawOutput + calculateInverterCost(hourlyRawOutput)  + calculateInstallCost();
 	    return Double.valueOf(moneyDecFormat.format(rawCost));
 	}
@@ -127,27 +183,5 @@ public class SolarOutput {
 		return system.getPanelOutput();
 	}
 	
-	/**
-	 * 
-	 * @param system
-	 * @param location
-	 * @return the dollar value that the system is generating per month
-	 */
-	public static double calculateMonthlyOutputValue(SystemConfiguration system, LocationDetails location) {
-		double outputValue = calculateGrossMonthlyOutput(location, system)*(location.getExportRate());
-		return Double.valueOf(moneyDecFormat.format(outputValue));
-	}
 
-	/**
-	 * 
-	 * @param system
-	 * @param location
-	 * @return a string stating how long it will be until the system has paid for itself
-	 */
-	public static String calculateBreakEven(SystemConfiguration system, LocationDetails location) {
-		int totalMonths = (int) (calculateSystemCost(system)/calculateMonthlyOutputValue(system, location));
-		int months = totalMonths % 12;
-		int years = (totalMonths - months) / 12;
-		return(years + " years, " + months + " months");
-	}
 }
