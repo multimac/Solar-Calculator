@@ -22,28 +22,25 @@ public class SolarOutput {
 	}
 	
 	public static double calculatePanelArea(SystemConfiguration system) {
-		return (calculateSystemRating(system)/system.getPanelDensity());
+		return ((calculateSystemRating(system)/system.getInverterEfficiency())/system.getPanelDensity());
 	}
 	
 	public static double calculateSolarExposureWinter(SystemConfiguration system, LocationDetails location) {
 		double maxExposure = location.getSolarInsolationWinter()*calculatePanelArea(system);
-		double likelyExposure = maxExposure/(location.getDaylightHoursWinter()/2);
+		double likelyExposure = maxExposure/2;
 		return likelyExposure;
 	}
 	
 	public static double calculateSolarExposureSummer(SystemConfiguration system, LocationDetails location) {
 		double maxExposure = location.getSolarInsolationSummer()*calculatePanelArea(system);
-		double likelyExposure = maxExposure/(location.getDaylightHoursSummer()/2);
+		double likelyExposure = maxExposure/2;
 		return likelyExposure;
 	}
 	
 	public static double calculatePanelEfficiencyWinter (SystemConfiguration system, LocationDetails location, int year) {
 		int tempDifference = location.getRoofTempWinter() - 25;
 		double tempAjustment = tempDifference*system.getTempCoefficient();
-		double denegration = 1;
-		for (int i = 0 ; i < year; i = i + 1) {
-			denegration = denegration - ((1 - system.getPanelDegradation())*denegration);
-		}
+		double denegration = Math.pow((1-system.getPanelDegradation()),year);
 		double ajustedEfficiency = (system.getPanelEfficiency() + tempAjustment) * denegration;
 		return ajustedEfficiency;
 	}
@@ -51,31 +48,32 @@ public class SolarOutput {
 	public static double calculatePanelEfficiencySummer (SystemConfiguration system, LocationDetails location, int year) {
 		int tempDifference = location.getRoofTempSummer() - 25;
 		double tempAjustment = tempDifference*system.getTempCoefficient();
-		double denegration = 1;
-		for (int i = 0 ; i < year; i = i + 1) {
-			denegration = denegration - ((1 - system.getPanelDegradation())*denegration);
-		}
+		double denegration = Math.pow((1-system.getPanelDegradation()),year);
 		double ajustedEfficiency = (system.getPanelEfficiency() + tempAjustment) * denegration;
 		return ajustedEfficiency;
 	}
 	
 	public static double calculateMonthlyWinterOutput (SystemConfiguration system, LocationDetails location, int year) {
 		double maxPossible = calculatePanelEfficiencyWinter(system, location, year)*calculateSolarExposureWinter(system, location);
-		if (maxPossible > calculateSystemRating(system)) {
-			return (calculateSystemRating(system)*daysInMonth);
+		double systemMax = calculateSystemRating(system)*(location.getDaylightHoursWinter()/2)*Math.pow((1-system.getPanelDegradation()), year);
+		double systemMaxKillowatts = systemMax/1000;
+		if (maxPossible > systemMaxKillowatts) {
+			return (systemMaxKillowatts*daysInMonth);
 		}
 		else {
-			return maxPossible*daysInMonth;
+			return (maxPossible*daysInMonth);
 		}
 	}
 	
 	public static double calculateMonthlySummerOutput (SystemConfiguration system, LocationDetails location, int year) {
 		double maxPossible = calculatePanelEfficiencySummer(system, location, year)*calculateSolarExposureSummer(system, location);
-		if (maxPossible > calculateSystemRating(system)) {
-			return (calculateSystemRating(system)*daysInMonth);
+		double systemMax = calculateSystemRating(system)*(location.getDaylightHoursSummer()/2)*Math.pow((1-system.getPanelDegradation()), year);
+		double systemMaxKillowatts = systemMax/1000;
+		if (maxPossible > systemMaxKillowatts) {
+			return (systemMaxKillowatts*daysInMonth);
 		}
 		else {
-			return maxPossible*daysInMonth;
+			return (maxPossible*daysInMonth);
 		}
 	}
 	
@@ -111,6 +109,7 @@ public class SolarOutput {
 		int year = 0;
 		int month = 0;
 		int finalMonth = 1;
+		boolean never = false;
 		while (savings < cost) {
 			while (month < 12 && savings < cost) {
 				savings = savings + calculateAverageMonthlySavings(system, location, year);
@@ -120,12 +119,28 @@ public class SolarOutput {
 			}
 			month = 0;
 			year = year + 1;
+			if (year > 200) {
+				never = true;
+				savings = cost;
+			}
 		}
-		return (year-1 + " years, " + finalMonth + " months");
+		if (never == true) {
+			return ("Never!");
+		} else {
+			return (year-1 + " years, " + finalMonth + " months");
+		}
 	}
 	
 	public static double getInitialMonthlySavings (SystemConfiguration system, LocationDetails location) {
 		return calculateAverageMonthlySavings(system, location, 0);
+	}
+	
+	public static double getInitialMonthlyWinterSavings (SystemConfiguration system, LocationDetails location) {
+		return calculateMonthlyWinterSavings(system, location, 0);
+	}
+	
+	public static double getInitialMonthlySummerSavings (SystemConfiguration system, LocationDetails location) {
+		return calculateMonthlySummerSavings(system, location, 0);
 	}
 	
 	public static double getInitialMonthlyOutput (SystemConfiguration system, LocationDetails location) {

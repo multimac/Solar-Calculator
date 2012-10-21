@@ -31,7 +31,9 @@ public class LocationDetails {
 	 * @param exportRate 
 	 * @throws CalculatorException if daylightHours exceeds hoursInDay
 	 */
-	public LocationDetails (double daylightHoursWinter, double daylightHoursSummer, int monthlyWinterConsumption, int monthlySummerConsumption, double exportRate, double importRate, int roofTempWinter, int roofTempSummer, double solarInsolationWinter, double solarInsolationSummer) throws CalculatorException {
+	public LocationDetails (double daylightHoursWinter, double daylightHoursSummer, int monthlyWinterConsumption, int monthlySummerConsumption, 
+			double exportRate, double importRate, int roofTempWinter, int roofTempSummer, double solarInsolationWinter, double solarInsolationSummer)
+					throws CalculatorException {
 		if (daylightHoursWinter > hoursInDay || daylightHoursWinter < 0 || daylightHoursSummer > hoursInDay || daylightHoursSummer < 0)
 			throw new CalculatorException("daylightHours exceeds limits");
 		else
@@ -69,29 +71,49 @@ public class LocationDetails {
 	
 	
 	/**
-	 *  Gets the number of hours of daylight in the day
-	 * @return hours of daylight in a day
+	 *  Gets the average number of hours of sunlight directly hitting the ground
+	 * @return average hours of direct sunlight May-Oct
 	 */
 	public double getDaylightHoursWinter () {
 		return daylightHoursWinter;
 	}
 	
+	/**
+	 *  Gets the average number of hours of sunlight directly hitting the ground
+	 * @return average hours of direct sunlight Nov-Apr
+	 */
 	public double getDaylightHoursSummer () {
 		return daylightHoursSummer;
 	}
 	
+	/**
+	 * Gets the average degrees celsius of the roof during Nov-Apr at 3pm
+	 * @return average roof temp
+	 */
 	public int getRoofTempSummer () {
 		return roofTempSummer;
 	}
 	
+	/**
+	 * Gets the average degrees celsius of the roof during May-Oct at 3pm
+	 * @return average roof temp
+	 */
 	public int getRoofTempWinter () {
 		return roofTempWinter;
 	}
 	
+	/**
+	 * Get the average amount of solar insolation in KWhs per m2 per day May-Oct
+	 * @return solar insolation
+	 */
 	public double getSolarInsolationWinter () {
 		return solarInsolationWinter;
 	}
 	
+	/**
+	 * Get the average amount of solar insolation in KWhs per m2 per day Nov-Apr
+	 * @return solar insolation
+	 */
 	public double getSolarInsolationSummer () {
 		return solarInsolationSummer;
 	}

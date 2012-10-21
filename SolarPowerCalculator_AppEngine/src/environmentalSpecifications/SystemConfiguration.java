@@ -28,7 +28,8 @@ public class SystemConfiguration {
 	 * @param panelCount - The number of panels in the configuration
 	 * @param inverterEfficiency - Inverter efficiency 0-1
 	 */
-	public SystemConfiguration (int panelOutput, int panelCount, double inverterEfficiency, int panelDensity, double panelEfficiency, double panelDegradation, double tempCoefficient) throws CalculatorException {
+	public SystemConfiguration (int panelCount, int panelOutput, double inverterEfficiency, int panelDensity,
+			double panelEfficiency, double panelDegradation, double tempCoefficient) throws CalculatorException {
 		if (panelCount <= 0)
 			throw new CalculatorException ("Panel count should be greater than 0");
 		else
@@ -51,13 +52,13 @@ public class SystemConfiguration {
 			throw new CalculatorException ("Panel efficiency should be less than than 1");
 		else
 			this.panelEfficiency = panelEfficiency;
-		if (panelDegradation <= 0.0)
+		if (panelDegradation < 0.0)
 			throw new CalculatorException ("Panel degradation should be greater than 0");
-		else if (panelDegradation > 1.0)
-			throw new CalculatorException ("Panel degradation should be less than than 1");
+		else if (panelDegradation > 0.04)
+			throw new CalculatorException ("Panel degradation should be less than than 0.04");
 		else
-			this.panelDegradation = panelEfficiency;
-		if (tempCoefficient > -0.1 || tempCoefficient < -1)
+			this.panelDegradation = panelDegradation;
+		if (tempCoefficient > -0.001 || tempCoefficient < -0.01)
 			throw new CalculatorException ("Temprature Coefficient should be between -0.1 and -1");
 		else
 			this.tempCoefficient = tempCoefficient;
