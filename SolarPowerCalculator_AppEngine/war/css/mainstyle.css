@@ -104,7 +104,7 @@ div.systemstats {
 	font-size: 100%;
 	float: right;
 	padding: 1px;
-	height: 90px;
+	height: 215px;
 }
 
 div.location {
@@ -115,7 +115,7 @@ div.location {
 	font-size: 100%;
 	float: left;
 	padding: 1px;
-	height: 90px;
+	height: 140px;
 }
 
 div.rates {
@@ -126,7 +126,28 @@ div.rates {
 	font-size: 100%;
 	float: right;
 	padding: 1px;
-	height: 90px;
+	height: 65px;
+}
+
+
+div.output {
+	margin-left: auto;
+    margin-right: auto;
+	width: 250px;
+	border: 0px solid;
+	font-size: 100%;
+	float: left;
+	padding: 1px;
+}
+
+div.info {
+	margin-left: auto;
+    margin-right: auto;
+	width: 480px;
+	border: 0px solid;
+	font-size: 100%;
+	float: left;
+	padding: 1px;
 }
 
 

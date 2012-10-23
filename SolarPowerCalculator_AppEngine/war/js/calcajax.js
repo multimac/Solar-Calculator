@@ -60,8 +60,8 @@ function postPowerCalc() {
 					var optionBreakEven = document.getElementsByName("optionbreakeven")[0].checked;
 					
 					
-					document.getElementById("divgrossmonthlyoutputs").innerHTML = "<b>Summer Monthly Generation: </b>" + grossmonthlyoutputs + " (Kwh)";
-					document.getElementById("divgrossmonthlyoutputw").innerHTML = "<b>Winter Monthly Generation: </b>" + grossmonthlyoutputw + " (Kwh)";
+					document.getElementById("divgrossmonthlyoutputs").innerHTML = "<b>Summer Generation: </b>" + grossmonthlyoutputs + " (Kwh)";
+					document.getElementById("divgrossmonthlyoutputw").innerHTML = "<b>Winter Generation: </b>" + grossmonthlyoutputw + " (Kwh)";
 					document.getElementById("divmonlthysavingss").innerHTML = "<b>Summer Monthly Savings: </b>$" + monlthysavingss;
 					document.getElementById("divmonlthysavingsw").innerHTML = "<b>Winter Monthly Savings: </b>$" + monlthysavingsw;
 					document.getElementById("divfirstyearoutput").innerHTML = "<b>First Year Generation: </b>" + firstyearoutput + " (Kwh)";

@@ -11,8 +11,8 @@
 <%@ page import="com.google.appengine.api.datastore.Query.FilterOperator" %><%
 //Process input
 String Name = "";
-double MeanRoofTempW = 0;
-double MeanRoofTempS = 0;
+int MeanRoofTempW = 0;
+int MeanRoofTempS = 0;
 double SolarInsolationW = 0;
 double SolarInsolationS = 0;
 double ImportTariff = 0;
@@ -39,8 +39,8 @@ if ((request.getParameter("name") != "") && (request.getParameter("name") != nul
 	    	//row.getProperty("Name");
 	    //}
 	    
-	    MeanRoofTempW = Double.parseDouble(row.getProperty("MeanRoofTempW").toString());
-	    MeanRoofTempS = Double.parseDouble(row.getProperty("MeanRoofTempS").toString());
+	    MeanRoofTempW = Integer.parseInt(row.getProperty("MeanRoofTempW").toString());
+	    MeanRoofTempS = Integer.parseInt(row.getProperty("MeanRoofTempS").toString());
 	    SolarInsolationW = Double.parseDouble(row.getProperty("SolarInsolationW").toString());
 	    SolarInsolationS = Double.parseDouble(row.getProperty("SolarInsolationS").toString());
 	    ImportTariff = Double.parseDouble(row.getProperty("ImportTariff").toString());
