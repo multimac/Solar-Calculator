@@ -3,10 +3,10 @@
 //System
 int panelcount = 2;
 int paneloutput = 250;
-double inverterefficiency = 0.96;
 int paneldensity = 130;
-double panelefficiency = 100; 
-double paneldegradation= 0.5; 
+double panelefficiency = 100;
+double paneldegradation= 0.5;
+double inverterefficiency = 0.96;
 double tempcoefficient = -0.005;
 
 //Environment
@@ -14,8 +14,8 @@ double daylighthoursw = 7.4;
 double daylighthourss = 7.5;
 int monthlyconsumptionw = 0;
 int monthlyconsumptions = 0;
-double exportrate = 0.14;
-double importrate = 0.25;
+double exporttariff = 0.14;
+double importtariff = 0.25;
 int rooftempw = 33;
 int rooftemps = 50;
 double solarinsolationw = 4.07;
@@ -43,7 +43,7 @@ boolean valid = false;
 
 //Validate all input
 
-if (!Validator.IsInteger(request.getParameter("numpanels"))) {
+if (!Validator.IsInteger(request.getParameter("panelcount"))) {
 	error = "Number of panels must be a whole number.";
 }
 else if (!Validator.IsInteger(request.getParameter("paneloutput"))) {
@@ -86,11 +86,11 @@ else {
 	
 	
 	daylighthoursw = Double.parseDouble(request.getParameter("daylighthoursw"));
-	daylighthourss = Double.parseDouble(request.getParameter("daylightHourss"));
+	daylighthourss = Double.parseDouble(request.getParameter("daylighthourss"));
 	monthlyconsumptionw = Integer.parseInt(request.getParameter("monthlyconsumptionw"));
 	monthlyconsumptions = Integer.parseInt(request.getParameter("monthlyconsumptions"));
-	exportrate = Double.parseDouble(request.getParameter("exportrate"));
-	importrate = Double.parseDouble(request.getParameter("importrate"));
+	exporttariff = Double.parseDouble(request.getParameter("exporttariff"));
+	importtariff = Double.parseDouble(request.getParameter("importtariff"));
 	rooftempw = Integer.parseInt(request.getParameter("rooftempw"));
 	rooftemps = Integer.parseInt(request.getParameter("rooftemps"));
 	solarinsolationw = Double.parseDouble(request.getParameter("solarinsolationw"));
@@ -102,8 +102,8 @@ else {
 													daylighthourss, 
 													monthlyconsumptionw, 
 													monthlyconsumptions, 
-													exportrate, 
-													importrate, 
+													exporttariff, 
+													importtariff, 
 													rooftempw, 
 													rooftemps, 
 													solarinsolationw, 

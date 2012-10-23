@@ -1,18 +1,22 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" language="java"%>
 <%
 //Default values, store in database instead
-int numpanels = 5;
-double daylighthourss = 7.4;
-double daylighthoursw = 7.5;
-double monthlyconsumption = 540;
+int panelcount = 5;
 int paneloutput = 250;
+int paneldensity = 130;
 double panelefficiency = 5;
 double inverterefficiency = 0.96;
-double importtariff = 0.14;
-double exporttariff = 0.25;
-String state = "QLD";
-int rooftemps = 40;
+
+double daylighthoursw = 7.4;
+double daylighthourss = 7.5;
+int monthlyconsumptionw = 0;
+int monthlyconsumptions = 0;
+double exporttariff = 0.14;
+double importtariff = 0.25;
 int rooftempw = 33;
+int rooftemps = 50;
+double solarinsolationw = 4.07;
+double solarinsolations = 5.85;
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -48,8 +52,9 @@ int rooftempw = 33;
 	<div class="systemconf">
 		<div class="header"><b>System Configuration</b></div>
 		<div class="labels">
-			<div class="inputs" id="divnumpanels">Number of Panels<input name="numpanels" value="<%=numpanels%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
-			<div class="inputs" id="divmonthlyconsumption">Monthly Cons. (KWh)<input name="monthlyconsumption" value="<%=monthlyconsumption%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
+			<div class="inputs" id="panelcount">Number of Panels<input name="panelcount" value="<%=panelcount%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
+			<div class="inputs" id="divmonthlyconsumptions">Summer Monthly Cons. (KWh)<input name="monthlyconsumptions" value="<%=monthlyconsumptions%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
+			<div class="inputs" id="divmonthlyconsumptionw">Winter Monthly Cons. (KWh)<input name="monthlyconsumptionw" value="<%=monthlyconsumptionw%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
 		</div>
 	</div>
 	
@@ -57,8 +62,11 @@ int rooftempw = 33;
 	<div class="systemstats">
 		<div class="header"><b>System Statistics</b></div>
 		<div class="labels">
-			<div class="inputs" id="divpaneloutput">Panel Output (W)<input name="paneloutput" value="<%=paneloutput%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
+			<div class="inputs" id="paneloutput">Panel Output (W)<input name="paneloutput" value="<%=paneloutput%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
+			<div class="inputs" id="divpaneldensity">Panel Density W/m^2<input name="paneldensity" value="<%=paneldensity%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
 			<div class="inputs" id="divpanelefficiency">Panel Degradation (%)PA<input name="panelefficiency" value="<%=panelefficiency%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
+			<div class="inputs" id="divsolarinsolations">Summer Solar Insolation KWh/m2<input name="solarinsolations" value="<%=solarinsolations%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
+			<div class="inputs" id="divsolarinsolationw">Winter Solar Insolation KWh/m2<input name="solarinsolationw" value="<%=solarinsolationw%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
 			<div class="inputs" id="divinverterefficiency">Inverter Efficiency (%)<input name="inverterefficiency" value="<%=inverterefficiency*100.0%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
 		</div>
 	</div>
@@ -83,7 +91,7 @@ int rooftempw = 33;
 	<div class="rates">
 		<div class="header"><b>Rates</b></div>
 		<div class="labels">
-			<div class="inputs" id="divimporttariff">Input Tariff ($)<input name=importtariff" value="<%=importtariff%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"  onkeyup="validateOnKeyDown(this);"/></div>
+			<div class="inputs" id="divimporttariff">Input Tariff ($)<input name="importtariff" value="<%=importtariff%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"  onkeyup="validateOnKeyDown(this);"/></div>
 			<div class="inputs" id="divexporttariff">Export Tariff ($)<input name="exporttariff" value="<%=exporttariff%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"  onkeyup="validateOnKeyDown(this);"/></div>
 		</div>
 	</div>
@@ -92,12 +100,17 @@ int rooftempw = 33;
 		<div id="divtooltip" class="tooltip"></div>
 		<div id="divtooltiperror" class="tooltiperror"></div>
 		<div id="diverroroutput"></div>
-		<div id="divgrossoutput"></div>
-		<div id="divnetoutput"></div>
-		<div id="divcostoutput"></div>
-		<div id="divrevenueoutput"></div>
-		<div id="divbreakevenoutput"></div>
-		<div id="diverroroutput"></div>
+		<div id="divgrossmonthlyoutputw"></div>
+		<div id="divgrossmonthlyoutputs"></div>
+		<div id="divmonlthysavingsw"></div>
+		<div id="divmonlthysavingss"></div>
+		<div id="divfirstyearoutput"></div>
+		<div id="divfirstyearsavings"></div>
+		<div id="divsystemcost"></div>
+		<div id="divbreakeventime"></div>
+		
+		
+		
 	</div>
 	
 	</form>

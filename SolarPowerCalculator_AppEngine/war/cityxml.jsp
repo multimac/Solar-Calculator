@@ -57,8 +57,8 @@ if ((request.getParameter("name") != "") && (request.getParameter("name") != nul
 
 %><solarcalculator>
 	<name><%out.print(Name);%></name>
-	<meanRooftempw><%out.print(MeanRoofTempW);%></meanRooftempw>
-	<meanRooftemps><%out.print(MeanRoofTempS);%></meanRooftemps>
+	<meanrooftempw><%out.print(MeanRoofTempW);%></meanrooftempw>
+	<meanrooftemps><%out.print(MeanRoofTempS);%></meanrooftemps>
 	<solarinsolationw><%out.print(SolarInsolationW);%></solarinsolationw>
 	<solarinsolations><%out.print(SolarInsolationS);%></solarinsolations>
 	<importtariff><%out.print(ImportTariff);%></importtariff>

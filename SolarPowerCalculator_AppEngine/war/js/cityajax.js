@@ -14,8 +14,8 @@ function postCity() {
 				
 				var xmldata = xmlhttp.responseXML;
 				var x = xmldata.getElementsByTagName('solarcalculator');
-				var MeanRoofTempW = x[0].getElementsByTagName('meanRooftempw')[0].firstChild.nodeValue;
-				var MeanRoofTempS = x[0].getElementsByTagName('meanRooftemps')[0].firstChild.nodeValue;
+				var MeanRoofTempW = x[0].getElementsByTagName('meanrooftempw')[0].firstChild.nodeValue;
+				var MeanRoofTempS = x[0].getElementsByTagName('meanrooftemps')[0].firstChild.nodeValue;
 				var SolarInsolationW = x[0].getElementsByTagName('solarinsolationw')[0].firstChild.nodeValue;
 				var SolarInsolationS = x[0].getElementsByTagName('solarinsolations')[0].firstChild.nodeValue;
 				var ImportTariff = x[0].getElementsByTagName('importtariff')[0].firstChild.nodeValue;
@@ -29,13 +29,14 @@ function postCity() {
 					document.output.daylighthoursw.value = DaylightHoursW;
 					document.output.daylighthourss.value = DaylightHoursS;
 					document.output.daylighthoursw.value = DaylightHoursW;
+					document.output.daylighthourss.value = DaylightHoursS;
 					document.output.rooftemps.value = MeanRoofTempS;
 					document.output.rooftempw.value = MeanRoofTempW;
 					document.output.importtariff.value = ImportTariff;
 					document.output.exporttariff.value = ExportTariff;
 				}
 				else {
-					
+					alert(error);
 				}
 			}
 		}
