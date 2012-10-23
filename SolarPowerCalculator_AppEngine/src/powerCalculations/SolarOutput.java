@@ -1,6 +1,7 @@
 package powerCalculations;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 import environmentalSpecifications.*;
 
@@ -15,6 +16,7 @@ public class SolarOutput {
 	private static DecimalFormat moneyDecFormat = new DecimalFormat("#.##");
 	private static int installCost = 1000;
 	private static double daysInMonth = 30.44;
+	private static ArrayList data = new ArrayList();
 	
 
 	public static double calculateSystemRating(SystemConfiguration system) {
@@ -113,7 +115,7 @@ public class SolarOutput {
 		while (savings < cost) {
 			while (month < 12 && savings < cost) {
 				savings = savings + calculateAverageMonthlySavings(system, location, year);
-				// DATAPOINT FOR CHARTS HERE
+				data.add(savings);
 				month = month + 1;
 				finalMonth = month;
 			}
@@ -145,6 +147,10 @@ public class SolarOutput {
 	
 	public static double getInitialMonthlyOutput (SystemConfiguration system, LocationDetails location) {
 		return calculateAverageMonthlyOutput(system, location, 0);
+	}
+	
+	public static ArrayList getData() {
+		return data;
 	}
 	
 	
