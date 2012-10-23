@@ -39,7 +39,7 @@ double solarinsolations = 5.85;
 <div class="template">
 <img src="images/TA0.jpg" width="671" height="70" alt=""><img src="images/TB0.jpg" width="185" height="32" alt=""><a class="powercalclink" href="calc.jsp"></a><img src="images/TB1.jpg" width="10" height="32" alt=""><a class="costcalclink" href="help.jsp"></a><img src="images/TB2.jpg" width="10" height="32" alt=""><a class="aboutlink" href="about.jsp"></a><img src="images/TB3.jpg" width="194" height="32" alt=""><img src="images/TC0.jpg" align="top" width="167" height="95" alt="">
 <div class="inputtable">
-	<form name="output" action="calc.jsp" method="post" onSubmit="return postPowerCalc(); if (formValidation()) {postPowerCalc(); showInput();} else {hideOuput();} return false;">
+	<form name="output" action="calc.jsp" method="post" onSubmit="if (formValidation()) {postPowerCalc(); showInput();} else {hideOutput();} return false;">
 	
 	<div class="systemoptions">
 		<div class="inputs">
@@ -88,8 +88,8 @@ double solarinsolations = 5.85;
 													</select></div>
 			<div class="inputs" id="divdaylighthourss">Summer Daylight Hours<input name="daylighthourss" value="<%=daylighthourss%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"  onkeyup="validateOnKeyDown(this);"/></div>
 			<div class="inputs" id="divdaylighthoursw">Winter Daylight Hours<input name="daylighthoursw" value="<%=daylighthoursw%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"  onkeyup="validateOnKeyDown(this);"/></div>
-			<div class="inputs" id="divrooftemps">Winter Roof Temp. (&deg;C)<input name="rooftemps" value="<%=rooftemps%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"  onkeyup="validateOnKeyDown(this);"/></div>
-			<div class="inputs" id="divrooftempw">Summer Roof Temp. (&deg;C)<input name="rooftempw" value="<%=rooftempw%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"  onkeyup="validateOnKeyDown(this);"/></div>
+			<div class="inputs" id="divrooftemps">Summer Roof Temp. (&deg;C)<input name="rooftemps" value="<%=rooftemps%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"  onkeyup="validateOnKeyDown(this);"/></div>
+			<div class="inputs" id="divrooftempw">Winter Roof Temp. (&deg;C)<input name="rooftempw" value="<%=rooftempw%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"  onkeyup="validateOnKeyDown(this);"/></div>
 		</div>
 	</div>
 	<div class="rates">

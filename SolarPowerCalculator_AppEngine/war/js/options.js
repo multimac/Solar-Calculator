@@ -11,35 +11,66 @@ function showInput() {
 	var optionBreakEven = document.getElementsByName("optionbreakeven")[0].checked;
 	
 	//Extract form divs to collapse
-	var divnumpanels = document.getElementById("divnumpanels");
+	var divnumpanels = document.getElementById("panelcount");
 	var divdaylighthourss = document.getElementById("divdaylighthourss");
 	var divdaylighthoursw = document.getElementById("divdaylighthoursw");
-	var divmonthlyconsumption = document.getElementById("divmonthlyconsumption");
+	var divmonthlyconsumptions = document.getElementById("divmonthlyconsumptions"); //todo
+	var divmonthlyconsumptionw = document.getElementById("divmonthlyconsumptionw"); //todo
 	
-	var paneloutput = document.getElementById("divpaneloutput");
+	var paneloutput = document.getElementById("paneloutput");
+	var divpaneldensity = document.getElementById("divpaneldensity"); //todo
 	var panelefficiency = document.getElementById("divpanelefficiency");
+	var divsolarinsolations = document.getElementById("divsolarinsolations"); //todo
+	var divsolarinsolationw = document.getElementById("divsolarinsolationw"); //todo
 	var inverterefficiency = document.getElementById("divinverterefficiency");
 	
+	//Location
+	var divcity = document.getElementById("divcity");
+	var divdaylighthourss = document.getElementById("divdaylighthourss");
+	var divdaylighthoursw = document.getElementById("divdaylighthoursw");
+	var divrooftemps = document.getElementById("divrooftemps");
+	var divrooftempw = document.getElementById("divrooftempw");
+	
 	//Output
-	var divgrossoutput = document.getElementById("divgrossoutput");
-	var divnetoutput = document.getElementById("divnetoutput");
-	var divcostoutput = document.getElementById("divcostoutput");
-	var diverroroutput = document.getElementById("diverroroutput");
-	var divbreakevenoutput = document.getElementById("divbreakevenoutput");
+	var divgrossmonthlyoutputw = document.getElementById("divgrossmonthlyoutputw");
+	var divgrossmonthlyoutputs = document.getElementById("divgrossmonthlyoutputs");
+	var divmonlthysavingsw = document.getElementById("divmonlthysavingsw");
+	var divmonlthysavingss = document.getElementById("divmonlthysavingss");
+	var divfirstyearoutput = document.getElementById("divfirstyearoutput");
+	var divfirstyearsavings = document.getElementById("divfirstyearsavings");
+	var divsystemcost = document.getElementById("divsystemcost");
+	var divbreakeventime = document.getElementById("divbreakeventime");
+	
+	//Tariff
+	var divimporttariff = document.getElementById("divimporttariff");
+	var divexporttariff = document.getElementById("divexporttariff");
 	
 	//Hide all divs
 	divnumpanels.style.display = 'none';
-	divmonthlyconsumption.style.display = 'none';
-	divpaneloutput.style.display = 'none';
-	divpanelefficiency.style.display = 'none';
-	divinverterefficiency.style.display = 'none';
+	divdaylighthourss.style.display = 'none';
+	divdaylighthoursw.style.display = 'none';
+	divmonthlyconsumptions.style.display = 'none';
+	divmonthlyconsumptionw.style.display = 'none';
+	
+	paneloutput.style.display = 'none';
+	divpaneldensity.style.display = 'none';
+	panelefficiency.style.display = 'none';
+	divsolarinsolations.style.display = 'none';
+	divsolarinsolationw.style.display = 'none';
+	inverterefficiency.style.display = 'none';
+	
+	//Location
 	divcity.style.display = 'none';
-	divlighthours.style.display = 'none';
+	divdaylighthourss.style.display = 'none';
+	divdaylighthoursw.style.display = 'none';
 	divrooftemps.style.display = 'none';
 	divrooftempw.style.display = 'none';
+	
+	hideOutput();
+	
+	//Tariffs
 	divimporttariff.style.display = 'none';
 	divexporttariff.style.display = 'none';
-	divbreakevenoutput.style.display = 'none';
 	
 	//Show divs depending on checkbox options
 	
@@ -52,7 +83,8 @@ function showInput() {
 	
 	//divmonthlyconsumption
 	if ((optionPower) || (optionRevenue) || (optionBreakEven)) {
-		divmonthlyconsumption.style.display = '';
+		divmonthlyconsumptions.style.display = '';
+		divmonthlyconsumptionw.style.display ='';
 	}
 	
 	
@@ -61,17 +93,17 @@ function showInput() {
 	
 	//paneloutput
 	if ((optionPower) || (optionRevenue) || (optionCost) || (optionBreakEven)) {
-		divpaneloutput.style.display = '';
+		paneloutput.style.display = '';
 	}
 	
 	//panelefficiency
 	if (optionPower) {
-		divpanelefficiency.style.display = '';
+		panelefficiency.style.display = '';
 	}
 	
 	//inverterefficiency
 	if (optionPower) {
-		divinverterefficiency.style.display = '';
+		inverterefficiency.style.display = '';
 	}
 	
 	
@@ -85,7 +117,8 @@ function showInput() {
 	
 	//divlighthours
 	if ((optionPower) || (optionRevenue) || (optionBreakEven)) {
-		divlighthours.style.display = '';
+		divdaylighthourss.style.display = '';
+		divdaylighthoursw.style.display = '';
 	}
 	
 	//divtemperature
@@ -105,53 +138,34 @@ function showInput() {
 	}
 	
 	
-	
-	if (optionPower) {
-		divgrossoutput.style.display = '';
-		divnetoutput.style.display = '';
-	}
-	else {
-		divgrossoutput.style.display = 'none';
-		divnetoutput.style.display = 'none';
-	}
-	
-	if (optionCost) {
-		divcostoutput.style.display = '';
-	}
-	else {
-		divcostoutput.style.display = 'none';
-	}
-	
-	if (optionRevenue) {
-		divrevenueoutput.style.display = '';
-	}
-	else {
-		divrevenueoutput.style.display = 'none';
-	}
-	
-	if (optionBreakEven) {
-		divbreakevenoutput.style.display = '';
-	}
-	else {
-		divbreakevenoutput.style.display = 'none';
-	}
+	divgrossmonthlyoutputw.style.display = '';
+	divgrossmonthlyoutputs.style.display = '';
+	divmonlthysavingsw.style.display = '';
+	divmonlthysavingss.style.display = '';
+	divfirstyearoutput.style.display = '';
+	divfirstyearsavings.style.display = '';
+	divsystemcost.style.display = '';
+	divbreakeventime.style.display = '';
 }
 
 
-function hideOuput() {
+function hideOutput() {
 	
-	//Output
-	var divgrossoutput = document.getElementById("divgrossoutput");
-	var divnetoutput = document.getElementById("divnetoutput");
-	var divcostoutput = document.getElementById("divcostoutput");
-	//var divrevenueoutput = document.getElementById("divrevenueoutput");
-	var diverroroutput = document.getElementById("diverroroutput");
-	var divbreakevenoutput = document.getElementById("divbreakevenoutput");
-	
-	
-	divgrossoutput.style.display = 'none';
-	divnetoutput.style.display = 'none';
-	divcostoutput.style.display = 'none';
-	divrevenueoutput.style.display = 'none';
-	divbreakevenoutput.style.display = 'none';
+	var divgrossmonthlyoutputw = document.getElementById("divgrossmonthlyoutputw");
+	var divgrossmonthlyoutputs = document.getElementById("divgrossmonthlyoutputs");
+	var divmonlthysavingsw = document.getElementById("divmonlthysavingsw");
+	var divmonlthysavingss = document.getElementById("divmonlthysavingss");
+	var divfirstyearoutput = document.getElementById("divfirstyearoutput");
+	var divfirstyearsavings = document.getElementById("divfirstyearsavings");
+	var divsystemcost = document.getElementById("divsystemcost");
+	var divbreakeventime = document.getElementById("divbreakeventime");
+
+	divgrossmonthlyoutputw.style.display = 'none';
+	divgrossmonthlyoutputs.style.display = 'none';
+	divmonlthysavingsw.style.display = 'none';
+	divmonlthysavingss.style.display = 'none';
+	divfirstyearoutput.style.display = 'none';
+	divfirstyearsavings.style.display = 'none';
+	divsystemcost.style.display = 'none';
+	divbreakeventime.style.display = 'none';
 }
