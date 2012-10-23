@@ -47,7 +47,7 @@ function postPowerCalc() {
 				var firstyearsavings = x[0].getElementsByTagName('firstyearsavings')[0].firstChild.nodeValue;
 				var systemcost = x[0].getElementsByTagName('systemcost')[0].firstChild.nodeValue;
 				
-				var breakeventime = x[0].getElementsByTagName('systemcost')[0].firstChild.nodeValue;
+				var breakeventime = x[0].getElementsByTagName('breakeventime')[0].firstChild.nodeValue;
 				
 				var error = x[0].getElementsByTagName('error')[0].firstChild.nodeValue;
 				
