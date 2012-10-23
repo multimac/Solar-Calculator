@@ -202,7 +202,7 @@ input.calc {
 }
 
 input.text {
-	width: 70px;
+	width: 50px;
 	float: right;
 	height: 22px;
 	display: inline-block;

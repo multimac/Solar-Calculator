@@ -4,10 +4,10 @@
 int panelcount = 5;
 int paneloutput = 250;
 int paneldensity = 130;
-double paneldegradation = 0.007;
-double panelefficiency = 0.14;
+double paneldegradation = 0.7;
+double panelefficiency = 14.0;
 double tempcoefficient = -0.005;
-double inverterefficiency = 0.9;
+double inverterefficiency = 90;
 
 double daylighthoursw = 7.4;
 double daylighthourss = 7.5;
@@ -55,8 +55,8 @@ double solarinsolations = 5.85;
 		<div class="header"><b>System Configuration</b></div>
 		<div class="labels">
 			<div class="inputs" id="divpanelcount">Number of Panels<input name="panelcount" value="<%=panelcount%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
-			<div class="inputs" id="divmonthlyconsumptions">Summer Cons. (KWh/Mo)<input name="monthlyconsumptions" value="<%=monthlyconsumptions%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
-			<div class="inputs" id="divmonthlyconsumptionw">Winter Cons. (KWh/Mo)<input name="monthlyconsumptionw" value="<%=monthlyconsumptionw%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
+			<div class="inputs" id="divmonthlyconsumptions">Summer Consum. (KWh/Mo)<input name="monthlyconsumptions" value="<%=monthlyconsumptions%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
+			<div class="inputs" id="divmonthlyconsumptionw">Winter Consum. (KWh/Mo)<input name="monthlyconsumptionw" value="<%=monthlyconsumptionw%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
 		</div>
 	</div>
 	
@@ -65,9 +65,9 @@ double solarinsolations = 5.85;
 		<div class="header"><b>System Statistics</b></div>
 		<div class="labels">
 			<div class="inputs" id="divpaneloutput">Panel Output (W)<input name="paneloutput" value="<%=paneloutput%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
-			<div class="inputs" id="divpaneldensity">Panel Density W/m^2<input name="paneldensity" value="<%=paneldensity%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
-			<div class="inputs" id="divpanelpanelefficiency">Panel Efficiency<input name="panelefficiency" value="<%=panelefficiency%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
-			<div class="inputs" id="divpaneldegradation">Panel Degradation (%)PA<input name="paneldegradation" value="<%=paneldegradation%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
+			<div class="inputs" id="divpaneldensity">Panel Density (W/m^2)<input name="paneldensity" value="<%=paneldensity%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
+			<div class="inputs" id="divpanelpanelefficiency">Panel Efficiency (%)<input name="panelefficiency" value="<%=panelefficiency%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
+			<div class="inputs" id="divpaneldegradation">Panel Degradation (%PA)<input name="paneldegradation" value="<%=paneldegradation%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
 			<div class="inputs" id="divsolarinsolations">Summer Insolation<input name="solarinsolations" value="<%=solarinsolations%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
 			<div class="inputs" id="divsolarinsolationw">Winter Insolation<input name="solarinsolationw" value="<%=solarinsolationw%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
 			<div class="inputs" id="divtempcoefficient">Temperature Coefficient<input name="tempcoefficient" value="<%=tempcoefficient%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
