@@ -7,12 +7,12 @@ function postPowerCalc() {
 	
 	params += "&paneloutput=" + encodeURIComponent(document.getElementsByName("paneloutput")[0].value);
 	params += "&paneldensity=" + encodeURIComponent(document.getElementsByName("paneldensity")[0].value);
-	params += "&panelefficiency=" + encodeURIComponent(document.getElementsByName("panelefficiency")[0].value);
-	params += "&paneldegradation=" + encodeURIComponent(document.getElementsByName("paneldegradation")[0].value);
+	params += "&panelefficiency=" + encodeURIComponent(document.getElementsByName("panelefficiency")[0].value * 0.01);
+	params += "&paneldegradation=" + encodeURIComponent(document.getElementsByName("paneldegradation")[0].value * 0.01);
 	params += "&solarinsolationw=" + encodeURIComponent(document.getElementsByName("solarinsolationw")[0].value);
 	params += "&solarinsolations=" + encodeURIComponent(document.getElementsByName("solarinsolations")[0].value);
 	params += "&tempcoefficient=" + encodeURIComponent(document.getElementsByName("tempcoefficient")[0].value);
-	params += "&inverterefficiency=" + encodeURIComponent(document.getElementsByName("inverterefficiency")[0].value);
+	params += "&inverterefficiency=" + encodeURIComponent(document.getElementsByName("inverterefficiency")[0].value * 0.01);
 	
 	params += "&daylighthoursw=" + encodeURIComponent(document.getElementsByName("daylighthoursw")[0].value);
 	params += "&daylighthourss=" + encodeURIComponent(document.getElementsByName("daylighthourss")[0].value);
