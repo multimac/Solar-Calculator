@@ -90,6 +90,7 @@ function postPowerCalc() {
 					document.getElementById("diverroroutput").innerHTML = "";
 				}
 				else {
+					alert(error);
 					document.getElementById("divgrossoutput").innerHTML = "";
 					document.getElementById("divgrossoutput").innerHTML = "";
 					document.getElementById("divcostoutput").innerHTML = "";

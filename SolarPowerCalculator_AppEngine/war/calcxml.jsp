@@ -42,19 +42,29 @@ String error = "noerror";
 boolean valid = false;
 
 //Validate all input
-/*
+
 if (!Validator.IsInteger(request.getParameter("panelcount"))) {
 	error = "Number of panels must be a whole number.";
 }
 else if (!Validator.IsInteger(request.getParameter("paneloutput"))) {
 	error = "Panel Output must be a whole number.";
 }
+else if (!Validator.IsInteger(request.getParameter("paneldensity"))) {
+	error = "Panel Density must be a whole number.";
+}
 else if (!Validator.IsDouble(request.getParameter("panelefficiency"))) {
 	error = "Panel Degredation must be a valid number.";
+}
+else if (!Validator.IsDouble(request.getParameter("paneldegradation"))) {
+	error = "Panel Degradation must be a valid number.";
 }
 else if (!Validator.IsDouble(request.getParameter("inverterefficiency"))) {
 	error = "Inverter Efficiency must be a valid number.";
 }
+else if (!Validator.IsDouble(request.getParameter("tempcoefficient"))) {
+	error = "Temp Coefficient must be a valid number.";
+}
+
 
 else if (!Validator.IsDouble(request.getParameter("daylighthoursw"))) {
 	error = "Winter Daylight Hours must be valid number.";
@@ -71,10 +81,28 @@ else if (!Validator.IsInteger(request.getParameter("monthlyconsumptions"))) {
 }
 
 
-else if (!Validator.IsDouble(request.getParameter("exportrate"))) {
-	error = "Export Rate must be a valid number." + request.getParameter("exportrate");
+else if (!Validator.IsDouble(request.getParameter("exporttariff"))) {
+	error = "Export Tariff must be a valid number.";
 }
-else {*/
+else if (!Validator.IsDouble(request.getParameter("importtariff"))) {
+	error = "Import Tariff must be a valid number.";
+}
+
+else if (!Validator.IsInteger(request.getParameter("rooftempw"))) {
+	error = "Winter Roof Temp must be a valid number.";
+}
+else if (!Validator.IsInteger(request.getParameter("rooftemps"))) {
+	error = "Summer Roof Temp must be a valid number.";
+}
+
+else if (!Validator.IsDouble(request.getParameter("solarinsolations"))) {
+	error = "Winter Solar Insolation must be a valid number.";
+}
+else if (!Validator.IsDouble(request.getParameter("solarinsolations"))) {
+	error = "Summer Solar Insolation must be a valid number.";
+}
+
+else {
 
 	
 	panelcount = Integer.parseInt(request.getParameter("panelcount"));
@@ -149,7 +177,7 @@ else {*/
 	
 	systemCost = Math.round( systemCost * 100.0) / 100.0;
 	
-//}
+}
 
 %><solarcalculator>
 	<grossmonthlyoutputw><%out.print(grossMonthlyOutputW);%></grossmonthlyoutputw>
