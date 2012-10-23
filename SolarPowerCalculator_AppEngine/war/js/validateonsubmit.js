@@ -5,7 +5,7 @@ var errorMessages = ["Number of panels should be a number between 1 and 50.",
                      "Panel Degradation should be a number between 0 and 100.",
                      "Inverter Efficiency should be a number between 1 and 100.",
                      "Daylight Hours should be a number between 1 and 24.",
-                     "Roof Temperature should be a number between -10 and 50.",
+                     "Roof Temperature should be a number between -40 and 80.",
                      "Export Tariff should be a number between 0.01 and 1.",
                      "Panel Density should be a number between 10 and 1000",
                      "Solar Insolation should be a number between 0 and 20",
@@ -71,7 +71,7 @@ function formValidation() {
 		errorList.push("<li>" + errorMessages[errDaylighthours] + "</li>");
 	}
 	
-	if (!validRoofTemperature(document.output.rooftemps) || !validRoofTemperature(document.output.rooftempw)) {
+	if (!validRoofTemperature(document.output.rooftemps.value) || !validRoofTemperature(document.output.rooftempw.value)) {
 		inputError = true;
 		errorList.push("<li>" + errorMessages[errTemperature] + "</li>");
 	}
