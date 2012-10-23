@@ -25,7 +25,6 @@ function postCity() {
 				var error = x[0].getElementsByTagName('error')[0].firstChild.nodeValue;
 				
 				
-				
 				if (error == "noerror") {
 					document.output.daylighthoursw.value = DaylightHoursW;
 					document.output.daylighthourss.value = DaylightHoursS;
