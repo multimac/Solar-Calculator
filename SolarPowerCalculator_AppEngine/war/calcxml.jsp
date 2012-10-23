@@ -123,21 +123,22 @@ else {
 	//Montlhy is Winter/Summer is 3 months
 	
 	
-	grossMonthlyOutputW = 
-	netMonthlyOutputW =
+	grossMonthlyOutputW = SolarOutput.getInitialMonthlyWinterOutput(system, location);
+	netMonthlyOutputW = // Not Needed
 	
-	GrossMonthlyOutputS = 
-	netMonthlyOutputS = 
+	GrossMonthlyOutputS = SolarOutput.getInitialMonthlySummerOutput(system, location);
+	netMonthlyOutputS = // Not Needed
 	
 	monlthySavingsW = SolarOutput.getInitialMonthlyWinterSavings(system, location);
 	monlthySavingsS = SolarOutput.getInitialMonthlySummerSavings(system, location);
 	
-	firstYearOutput =
-	firstYearSavings = 
+	firstYearOutput = SolarOutput.getFristYearOutput(system, location);
+	firstYearSavings = SolarOutput.getFristYearSavings(system, location);
+	// NEED FIRST YEAR FEED IN SolarOutput.getFristYearExport(system, location);
 	
 	systemCost = SolarOutput.calculateInstallCost();
 	
-	revenue = (???)
+	revenue = (???) // WTF is this????
 	
 	breakEvenTime = SolarOutput.calculateBreakEvenTime(system, location);
 
