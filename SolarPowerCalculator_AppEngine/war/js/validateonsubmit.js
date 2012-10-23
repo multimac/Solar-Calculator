@@ -5,8 +5,11 @@ var errorMessages = ["Number of panels should be a number between 1 and 50.",
                      "Panel Degradation should be a number between 0 and 100.",
                      "Inverter Efficiency should be a number between 1 and 100.",
                      "Daylight Hours should be a number between 1 and 24.",
-                     "Temperature should be a number between -10 and 50.",
-                     "Export Tariff should be a number between 0.01 and 1."
+                     "Roof Temperature should be a number between -10 and 50.",
+                     "Export Tariff should be a number between 0.01 and 1.",
+                     "Panel Density should be a number between 10 and 1000",
+                     "Solar Insolation should be a number between 0 and 20",
+                     "Import Tariff should be a number between 0.01 and 1.",
                     ];
 
 const errNumPanels = 0;
@@ -17,6 +20,9 @@ const errInverterEfficiency = 4;
 const errDaylighthours = 5;
 const errTemperature = 6;
 const errExportRate = 7;
+const errPanelDensity = 8;
+const errSolarInsolation = 9;
+const errImportTariff = 10;
 
 //Main function calling validation rules
 function formValidation() {
@@ -29,21 +35,20 @@ function formValidation() {
 		errorList.push("<li>" + errorMessages[errNumPanels] + "</li>");
 	}
 	
-	if(!validMonthlyConsumption()) {
+	if(!validMonthlyConsumption(document.output.monthlyconsumptions.value) || !validMonthlyConsumption(document.output.monthlyconsumptionw.value)) {
 		inputError = true;
 		errorList.push("<li>" + errorMessages[errMonthlyConsumption] + "</li>");
 	}
-	
-	
+		
 	
 	if (!validPanelOutput()) {
 		inputError = true;
 		errorList.push("<li>" + errorMessages[errPanelOutput] + "</li>");
 	}
 	
-	if (!validPanelDegredation()) {
+	if (!validPanelDensity()) {
 		inputError = true;
-		errorList.push("<li>" + errorMessages[errPanelDegradation] + "</li>");
+		errorList.push("<li>" + errorMessages[errPanelDensity] + "</li>")
 	}
 	
 	if (!validInverterEfficiency()) {
@@ -51,14 +56,22 @@ function formValidation() {
 		errorList.push("<li>" + errorMessages[errInverterEfficiency] + "</li>");
 	}
 	
+	if (!validPanelDegredation()) {
+		inputError = true;
+		errorList.push("<li>" + errorMessages[errPanelDegradation] + "</li>");
+	}
 	
-	
-	if (!validDaylightHours()) {
+	if (!validSolarInsolation(document.output.solarinsolations.value) || !validSolarInsolation(document.output.solarinsolationw.value)) {
+		inputError = true;
+		errorList.push("<li>" + errorMessage[errSolarInsolation] + "</li>");
+	}
+
+	if (!validDaylightHours(document.output.daylighthourss.value) || !validDaylightHours(document.output.daylighthoursw.value)) {
 		inputError = true;
 		errorList.push("<li>" + errorMessages[errDaylighthours] + "</li>");
 	}
 	
-	if (!validTemperature()) {
+	if (!validRoofTemperature(document.output.rooftemps) || !validRoofTemperature(document.output.rooftempw)) {
 		inputError = true;
 		errorList.push("<li>" + errorMessages[errTemperature] + "</li>");
 	}
@@ -66,6 +79,11 @@ function formValidation() {
 	if (!validExportRate()) {
 		inputError = true;
 		errorList.push("<li>" + errorMessages[errExportRate] + "</li>");
+	}
+	
+	if (!validImportRate()) {
+		inputError = true;
+		errorList.push("<li>" + errorMessage[errImportTariff] + "</li>");
 	}
 	
 	
@@ -89,22 +107,20 @@ function formValidation() {
 //Validation functions
 
 function validNumPanels() {
-	var numPanels = document.output.numpanels.value;
+	var numPanels = document.output.panelcount.value;
 	if ((numPanels > 0) && (numPanels <= 50) && (isNaN(numPanels) == false)) {
 		return true;
 	}
 	return false;
 }
 
-function validMonthlyConsumption() {
-	var MonthlyConsumption = document.output.monthlyconsumption.value;
+function validMonthlyConsumption(MonthlyConsumption) {
+
 	if ((MonthlyConsumption >= 0) && (MonthlyConsumption <= 1000) && (isNaN(MonthlyConsumption) == false)) {
 		return true;
 	}
 	return false;
-	
 }
-
 
 
 function validPanelOutput() {
@@ -123,27 +139,41 @@ function validPanelDegredation() {
 	return false;
 }
 
+function validPanelDensity() {
+	var panelDensity = document.output.paneldensity.value;
+	if ((panelDensity >= 10) && (panelDensity <= 1000) && isNaN(panelDensity) == false) {
+		return true;
+	}
+	return false;
+}
+
 function validInverterEfficiency() {
 	var inverterEfficiency = document.output.inverterefficiency.value;
-	if ((inverterEfficiency >= 1) && (inverterEfficiency <= 100) && isNaN(inverterEfficiency) == false) {
+	if ((inverterEfficiency >= 0) && (inverterEfficiency <= 100) && isNaN(inverterEfficiency) == false) {
+		return true;
+	}
+	return false;
+}
+
+function validSolarInsolation(solarInsolation) {
+	if ((solarInsolation >= 0) && (solarInsolation <= 20) && isNaN(solarInsolation) == false) {
 		return true;
 	}
 	return false;
 }
 
 
+function validDaylightHours(daylighthours) {
 
-function validDaylightHours() {
-	var daylighthours = document.output.daylighthours.value;
 	if ((daylighthours >= 1) && (daylighthours <= 24) && isNaN(daylighthours) == false) {
 		return true;
 	}
 	return false;
 }
 
-function validTemperature() {
-	var temperature = document.output.temperature.value;
-	if ((temperature >= -10) && (temperature <= 50) && isNaN(temperature) == false) {
+function validRoofTemperature(temperature) {
+
+	if ((temperature >= -40) && (temperature <= 80) && isNaN(temperature) == false) {
 		return true;
 	}
 	return false;
@@ -152,8 +182,16 @@ function validTemperature() {
 
 
 function validExportRate() {
-	var exportrate = document.output.exportrate.value;
-	if ((exportrate >= 0.01) && (exportrate <= 1) && isNaN(exportrate) == false) {
+	var exporttariff = document.output.exporttariff.value;
+	if ((exporttariff >= 0.01) && (exporttariff <= 1) && isNaN(exporttariff) == false) {
+		return true;
+	}
+	return false;
+}
+
+function validImportRate() {
+	var importtariff = document.output.importtariff.value;
+	if ((importtariff >= 0.01) && (importtariff <= 1) && isNaN(importtariff) == false) {
 		return true;
 	}
 	return false;
