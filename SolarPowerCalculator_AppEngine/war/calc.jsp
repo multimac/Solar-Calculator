@@ -4,13 +4,15 @@
 int panelcount = 5;
 int paneloutput = 250;
 int paneldensity = 130;
-double panelefficiency = 5;
-double inverterefficiency = 0.96;
+double paneldegradation = 0.007;
+double panelefficiency = 0.14;
+double tempcoefficient = -0.005;
+double inverterefficiency = 0.9;
 
 double daylighthoursw = 7.4;
 double daylighthourss = 7.5;
-int monthlyconsumptionw = 0;
-int monthlyconsumptions = 0;
+int monthlyconsumptionw = 540;
+int monthlyconsumptions = 540;
 double exporttariff = 0.14;
 double importtariff = 0.25;
 int rooftempw = 33;
@@ -37,7 +39,7 @@ double solarinsolations = 5.85;
 <div class="template">
 <img src="images/TA0.jpg" width="671" height="70" alt=""><img src="images/TB0.jpg" width="185" height="32" alt=""><a class="powercalclink" href="calc.jsp"></a><img src="images/TB1.jpg" width="10" height="32" alt=""><a class="costcalclink" href="help.jsp"></a><img src="images/TB2.jpg" width="10" height="32" alt=""><a class="aboutlink" href="about.jsp"></a><img src="images/TB3.jpg" width="194" height="32" alt=""><img src="images/TC0.jpg" align="top" width="167" height="95" alt="">
 <div class="inputtable">
-	<form name="output" action="calc.jsp" method="post" onSubmit="if (formValidation()) {postPowerCalc(); showInput();} else {hideOuput();} return false;">
+	<form name="output" action="calc.jsp" method="post" onSubmit="return postPowerCalc(); if (formValidation()) {postPowerCalc(); showInput();} else {hideOuput();} return false;">
 	
 	<div class="systemoptions">
 		<div class="inputs">
@@ -52,7 +54,7 @@ double solarinsolations = 5.85;
 	<div class="systemconf">
 		<div class="header"><b>System Configuration</b></div>
 		<div class="labels">
-			<div class="inputs" id="panelcount">Number of Panels<input name="panelcount" value="<%=panelcount%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
+			<div class="inputs" id="divpanelcount">Number of Panels<input name="panelcount" value="<%=panelcount%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
 			<div class="inputs" id="divmonthlyconsumptions">Summer Monthly Cons. (KWh)<input name="monthlyconsumptions" value="<%=monthlyconsumptions%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
 			<div class="inputs" id="divmonthlyconsumptionw">Winter Monthly Cons. (KWh)<input name="monthlyconsumptionw" value="<%=monthlyconsumptionw%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
 		</div>
@@ -62,12 +64,14 @@ double solarinsolations = 5.85;
 	<div class="systemstats">
 		<div class="header"><b>System Statistics</b></div>
 		<div class="labels">
-			<div class="inputs" id="paneloutput">Panel Output (W)<input name="paneloutput" value="<%=paneloutput%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
+			<div class="inputs" id="divpaneloutput">Panel Output (W)<input name="paneloutput" value="<%=paneloutput%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
 			<div class="inputs" id="divpaneldensity">Panel Density W/m^2<input name="paneldensity" value="<%=paneldensity%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
-			<div class="inputs" id="divpanelefficiency">Panel Degradation (%)PA<input name="panelefficiency" value="<%=panelefficiency%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
+			<div class="inputs" id="divpanelpanelefficiency">Panel Efficiency<input name="panelefficiency" value="<%=panelefficiency%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
+			<div class="inputs" id="divpaneldegradation">Panel Degradation (%)PA<input name="paneldegradation" value="<%=paneldegradation%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
 			<div class="inputs" id="divsolarinsolations">Summer Solar Insolation KWh/m2<input name="solarinsolations" value="<%=solarinsolations%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
 			<div class="inputs" id="divsolarinsolationw">Winter Solar Insolation KWh/m2<input name="solarinsolationw" value="<%=solarinsolationw%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
-			<div class="inputs" id="divinverterefficiency">Inverter Efficiency (%)<input name="inverterefficiency" value="<%=inverterefficiency*100.0%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
+			<div class="inputs" id="divtempcoefficient">Temperature Coefficient<input name="tempcoefficient" value="<%=tempcoefficient%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
+			<div class="inputs" id="divinverterefficiency">Inverter Efficiency (%)<input name="inverterefficiency" value="<%=inverterefficiency%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
 		</div>
 	</div>
 	<div class="location">

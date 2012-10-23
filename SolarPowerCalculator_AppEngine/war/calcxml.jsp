@@ -10,8 +10,8 @@ double inverterefficiency = 0.96;
 double tempcoefficient = -0.005;
 
 //Environment
-double daylighthoursw = 7.4;
-double daylighthourss = 7.5;
+double daylighthoursw = 7.4f;
+double daylighthourss = 7.5f;
 int monthlyconsumptionw = 0;
 int monthlyconsumptions = 0;
 double exporttariff = 0.14;
@@ -33,7 +33,7 @@ double firstYearOutput = 0;
 double firstYearFeedIn = 0;
 double firstYearSavings = 0;
 	
-double systemCost = 0; 
+double systemCost = 0;
 double revenue = 0;
 String breakEvenTime = ""; 
 
@@ -42,7 +42,7 @@ String error = "noerror";
 boolean valid = false;
 
 //Validate all input
-
+/*
 if (!Validator.IsInteger(request.getParameter("panelcount"))) {
 	error = "Number of panels must be a whole number.";
 }
@@ -74,8 +74,9 @@ else if (!Validator.IsInteger(request.getParameter("monthlyconsumptions"))) {
 else if (!Validator.IsDouble(request.getParameter("exportrate"))) {
 	error = "Export Rate must be a valid number." + request.getParameter("exportrate");
 }
-else {
+else {*/
 
+	
 	panelcount = Integer.parseInt(request.getParameter("panelcount"));
 	paneloutput = Integer.parseInt(request.getParameter("paneloutput"));
 	inverterefficiency = Double.parseDouble(request.getParameter("inverterefficiency"));
@@ -125,7 +126,7 @@ else {
 	
 	monlthySavingsW = SolarOutput.getInitialMonthlyWinterSavings(system, location);
 	monlthySavingsS = SolarOutput.getInitialMonthlySummerSavings(system, location);
-	
+
 	firstYearOutput = SolarOutput.getFristYearOutput(system, location);
 	firstYearFeedIn = SolarOutput.getFristYearExport(system, location);
 	firstYearSavings = SolarOutput.getFristYearSavings(system, location);
@@ -148,7 +149,7 @@ else {
 	
 	systemCost = Math.round( monlthySavingsS * 100.0) / 100.0;
 	
-}
+//}
 
 %><solarcalculator>
 	<grossmonthlyoutputw><%out.print(grossMonthlyOutputW);%></grossmonthlyoutputw>
