@@ -131,7 +131,7 @@ else {*/
 	firstYearFeedIn = SolarOutput.getFristYearExport(system, location);
 	firstYearSavings = SolarOutput.getFristYearSavings(system, location);
 	
-	systemCost = SolarOutput.calculateInstallCost();
+	systemCost = SolarOutput.calculateSystemCost(system);
 	
 	breakEvenTime = SolarOutput.calculateBreakEvenTime(system, location);
 
@@ -143,11 +143,11 @@ else {*/
 	monlthySavingsW = Math.round( monlthySavingsW * 100.0) / 100.0;
 	monlthySavingsS = Math.round( monlthySavingsS * 100.0) / 100.0;
 	
-	firstYearOutput = Math.round( monlthySavingsS * 100.0) / 100.0;
-	firstYearFeedIn =  Math.round( monlthySavingsS * 100.0) / 100.0;
-	firstYearSavings = Math.round( monlthySavingsS * 100.0) / 100.0;
+	firstYearOutput = Math.round( firstYearOutput * 100.0) / 100.0;
+	firstYearFeedIn =  Math.round( firstYearFeedIn * 100.0) / 100.0;
+	firstYearSavings = Math.round( firstYearSavings * 100.0) / 100.0;
 	
-	systemCost = Math.round( monlthySavingsS * 100.0) / 100.0;
+	systemCost = Math.round( systemCost * 100.0) / 100.0;
 	
 //}
 
