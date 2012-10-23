@@ -1,8 +1,17 @@
 package solarPowerCalculator;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.*;
+
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.FetchOptions;
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.datastore.Query;
 
 @SuppressWarnings("serial")
 public class SolarPowerCalculatorServlet extends HttpServlet {
