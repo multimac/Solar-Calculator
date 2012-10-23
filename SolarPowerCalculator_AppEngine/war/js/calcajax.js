@@ -65,7 +65,7 @@ function postPowerCalc() {
 					document.getElementById("divmonlthysavingss").innerHTML = "<b>Summer Monthly Savings: </b>$" + monlthysavingss;
 					document.getElementById("divmonlthysavingsw").innerHTML = "<b>Winter Monthly Savings: </b>$" + monlthysavingsw;
 					document.getElementById("divfirstyearoutput").innerHTML = "<b>First Year Generation: </b>" + firstyearoutput + " (Kwh)";
-					document.getElementById("divfirstyearsavings").innerHTML = "<b>First Year Generation: </b>$" + firstyearsavings;
+					document.getElementById("divfirstyearsavings").innerHTML = "<b>First Year Savings: </b>$" + firstyearsavings;
 					document.getElementById("divsystemcost").innerHTML = "<b>System Cost: </b>$" + systemcost;
 					document.getElementById("divbreakeventime").innerHTML = "<b>Break Even Time: </b>" + breakeventime;
 					
