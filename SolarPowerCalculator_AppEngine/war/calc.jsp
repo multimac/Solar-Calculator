@@ -39,7 +39,7 @@ double solarinsolations = 5.85;
 <div class="template">
 <img src="images/TA0.jpg" width="671" height="70" alt=""><img src="images/TB0.jpg" width="185" height="32" alt=""><a class="powercalclink" href="calc.jsp"></a><img src="images/TB1.jpg" width="10" height="32" alt=""><a class="costcalclink" href="help.jsp"></a><img src="images/TB2.jpg" width="10" height="32" alt=""><a class="aboutlink" href="about.jsp"></a><img src="images/TB3.jpg" width="194" height="32" alt=""><img src="images/TC0.jpg" align="top" width="167" height="95" alt="">
 <div class="inputtable">
-	<form name="output" action="calc.jsp" method="post" onSubmit="if (formValidation()) {postPowerCalc(); showInput();} else {hideOutput();} return false;">
+	<form name="output" action="calc.jsp" method="post" onSubmit="postPowerCalc(); return false;if (formValidation()) {postPowerCalc(); showInput();} else {hideOutput();} return false;">
 	
 	<div class="systemoptions">
 		<div class="inputs">
@@ -103,8 +103,8 @@ double solarinsolations = 5.85;
 	<div class="output">
 		<div id="divgrossmonthlyoutputw"></div>
 		<div id="divgrossmonthlyoutputs"></div>
-		<div id="divmonlthysavingsw"></div>
 		<div id="divmonlthysavingss"></div>
+		<div id="divmonlthysavingsw"></div>
 		<div id="divfirstyearoutput"></div>
 		<div id="divfirstyearsavings"></div>
 		<div id="divsystemcost"></div>

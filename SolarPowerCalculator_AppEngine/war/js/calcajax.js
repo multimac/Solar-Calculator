@@ -1,5 +1,5 @@
 function postPowerCalc() {
-	
+
 	var url = "http://" + window.location.host + "/calcxml.jsp";
 	
 	var params = "";
@@ -68,7 +68,6 @@ function postPowerCalc() {
 					document.getElementById("divfirstyearsavings").innerHTML = "<b>First Year Savings: </b>$" + firstyearsavings;
 					document.getElementById("divsystemcost").innerHTML = "<b>System Cost: </b>$" + systemcost;
 					document.getElementById("divbreakeventime").innerHTML = "<b>Break Even Time: </b>" + breakeventime;
-					
 					
 					/*
 					if (optionPower) {
