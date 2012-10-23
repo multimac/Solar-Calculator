@@ -149,8 +149,39 @@ public class SolarOutput {
 		return calculateAverageMonthlyOutput(system, location, 0);
 	}
 	
+	public static double getInitialMonthlyWinterOutput (SystemConfiguration system, LocationDetails location) {
+		return calculateMonthlyWinterOutput(system, location, 0);
+	}
+	
+	public static double getInitialMonthlySummerOutput (SystemConfiguration system, LocationDetails location) {
+		return calculateMonthlySummerOutput(system, location, 0);
+	}
+	
+	public static double getFristYearOutput (SystemConfiguration system, LocationDetails location) {
+		return (calculateAverageMonthlyOutput(system, location, 0)*12);
+	}
+	
+	public static double getFristYearSavings (SystemConfiguration system, LocationDetails location) {
+		return (calculateAverageMonthlySavings(system, location, 0)*12);
+	}
+	
 	public static ArrayList getData() {
 		return data;
+	}
+	
+	public static double getFristYearExport(SystemConfiguration system, LocationDetails location) {
+		double monthlyOutputSummer = calculateMonthlySummerOutput(system, location, 0);
+		double exportedPowerSummer = 0;
+		if (monthlyOutputSummer > location.getMonthlySummerConsumption()) {
+			exportedPowerSummer = (monthlyOutputSummer - location.getMonthlySummerConsumption())*6;
+		}
+		double monthlyOutputWinter = calculateMonthlyWinterOutput(system, location, 0);
+		double exportedPowerWinter = 0;
+		if (monthlyOutputWinter > location.getMonthlyWinterConsumption()) {
+			exportedPowerWinter = (monthlyOutputWinter - location.getMonthlyWinterConsumption())*6;
+		}
+		return (exportedPowerSummer+exportedPowerWinter);
+		
 	}
 	
 	
@@ -214,6 +245,7 @@ public class SolarOutput {
 	private static double calculatePanelCost(SystemConfiguration system) {
 		return system.getPanelOutput();
 	}
+
 	
 
 }
