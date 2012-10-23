@@ -50,9 +50,20 @@ if ((request.getParameter("name") != "") && (request.getParameter("name") != nul
     
 	}
     else {
-    	error = "No data for that city";
+    	error = "No data for that city: " + Name;
     }
     
 }
 
-%><solarcalculator><name><%out.print(Name);%></name><meanRooftempW><%out.print(MeanRoofTempW);%></meanRooftempW><meanRooftempS><%out.print(MeanRoofTempS);%></meanRooftempS><solarinsolationW><%out.print(SolarInsolationW);%></solarinsolationW><solarinsolationS><%out.print(SolarInsolationS);%></solarinsolationS><importtariff><%out.print(ImportTariff);%></importtariff><ewxporttariff><%out.print(ExportTariff);%></ewxporttariff><daylighthoursW><%out.print(DaylightHoursW);%></daylighthoursW><daylighthoursS><%out.print(DaylightHoursS);%></daylighthoursS><error><%out.print(error);%></error></solarcalculator>
+%><solarcalculator>
+	<name><%out.print(Name);%></name>
+	<meanRooftempw><%out.print(MeanRoofTempW);%></meanRooftempw>
+	<meanRooftemps><%out.print(MeanRoofTempS);%></meanRooftemps>
+	<solarinsolationw><%out.print(SolarInsolationW);%></solarinsolationw>
+	<solarinsolations><%out.print(SolarInsolationS);%></solarinsolations>
+	<importtariff><%out.print(ImportTariff);%></importtariff>
+	<exporttariff><%out.print(ExportTariff);%></exporttariff>
+	<daylighthoursw><%out.print(DaylightHoursW);%></daylighthoursw>
+	<daylighthourss><%out.print(DaylightHoursS);%></daylighthourss>
+	<error><%out.print(error);%></error>
+</solarcalculator>

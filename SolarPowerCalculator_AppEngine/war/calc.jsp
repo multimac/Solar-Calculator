@@ -2,14 +2,17 @@
 <%
 //Default values, store in database instead
 int numpanels = 5;
-double daylighthours = 4.5;
+double daylighthourss = 7.4;
+double daylighthoursw = 7.5;
 double monthlyconsumption = 540;
 int paneloutput = 250;
 double panelefficiency = 5;
 double inverterefficiency = 0.96;
-double exportrate = 0.08;
+double importtariff = 0.14;
+double exporttariff = 0.25;
 String state = "QLD";
-double temperature = 28.0;
+int rooftemps = 40;
+int rooftempw = 33;
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -20,6 +23,7 @@ double temperature = 28.0;
  <script type="text/javascript" src="js/validateonsubmit.js"></script>
  <script type="text/javascript" src="js/validateonkeydown.js"></script>
  <script type="text/javascript" src="js/calcajax.js"></script>
+ <script type="text/javascript" src="js/cityajax.js"></script>
  <script type="text/javascript" src="js/options.js"></script>
  <script type="text/javascript" src="js/tooltips.js"></script>
 </head>
@@ -61,23 +65,26 @@ double temperature = 28.0;
 	<div class="location">
 		<div class="header"><b>Location</b></div>
 		<div class="labels">
-			<div class="inputs" id="divstate">State<select name="state" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"  onkeyup="validateOnKeyDown(this);">
-														<option value="qld">QLD</option>
-														<option value="nsw">NSW</option>
-														<option value="vic">VIC</option>
-														<option value="sa">SA</option>
-														<option value="wa">WA</option>
-														<option value="nt">NT</option>
-														<option value="tas">TAS</option>
+			<div class="inputs" id="divcity">City<select name="city" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onchange="postCity()">
+														<option value="Brisbane">Brisbane</option>
+														<option value="Sydney">Sydney</option>
+														<option value="Melbourne">Melbourne</option>
+														<option value="Adelaide">Adelaide</option>
+														<option value="Perth">Perth</option>
+														<option value="Darwin">Darwin</option>
+														<option value="Canberra">Canberra</option>
 													</select></div>
-			<div class="inputs" id="divlighthours">Daylight Hours (per day)<input name="daylighthours" value="<%=daylighthours%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"  onkeyup="validateOnKeyDown(this);"/></div>
-			<div class="inputs" id="divtemperature">Temperature (C&deg;)<input name="temperature" value="<%=temperature%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"  onkeyup="validateOnKeyDown(this);"/></div>
+			<div class="inputs" id="divdaylighthourss">Summer Daylight Hours<input name="daylighthourss" value="<%=daylighthourss%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"  onkeyup="validateOnKeyDown(this);"/></div>
+			<div class="inputs" id="divdaylighthoursw">Winter Daylight Hours<input name="daylighthoursw" value="<%=daylighthoursw%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"  onkeyup="validateOnKeyDown(this);"/></div>
+			<div class="inputs" id="divrooftemps">Winter Roof Temp. (&deg;C)<input name="rooftemps" value="<%=rooftemps%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"  onkeyup="validateOnKeyDown(this);"/></div>
+			<div class="inputs" id="divrooftempw">Summer Roof Temp. (&deg;C)<input name="rooftempw" value="<%=rooftempw%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"  onkeyup="validateOnKeyDown(this);"/></div>
 		</div>
 	</div>
 	<div class="rates">
 		<div class="header"><b>Rates</b></div>
 		<div class="labels">
-			<div class="inputs" id="divexportrate">Export Tariff ($)<input name="exportrate" value="<%=exportrate%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"  onkeyup="validateOnKeyDown(this);"/></div>
+			<div class="inputs" id="divimporttariff">Input Tariff ($)<input name=importtariff" value="<%=importtariff%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"  onkeyup="validateOnKeyDown(this);"/></div>
+			<div class="inputs" id="divexporttariff">Export Tariff ($)<input name="exporttariff" value="<%=exporttariff%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"  onkeyup="validateOnKeyDown(this);"/></div>
 		</div>
 	</div>
 	

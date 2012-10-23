@@ -3,6 +3,7 @@
 
 
 function showInput() {
+	return;
 	//Check box options
 	var optionPower = document.getElementsByName("optionpower")[0].checked;
 	var optionRevenue = document.getElementsByName("optionrevenue")[0].checked;
@@ -11,7 +12,8 @@ function showInput() {
 	
 	//Extract form divs to collapse
 	var divnumpanels = document.getElementById("divnumpanels");
-	var divlighthours = document.getElementById("divlighthours");
+	var divdaylighthourss = document.getElementById("divdaylighthourss");
+	var divdaylighthoursw = document.getElementById("divdaylighthoursw");
 	var divmonthlyconsumption = document.getElementById("divmonthlyconsumption");
 	
 	var paneloutput = document.getElementById("divpaneloutput");
@@ -22,7 +24,6 @@ function showInput() {
 	var divgrossoutput = document.getElementById("divgrossoutput");
 	var divnetoutput = document.getElementById("divnetoutput");
 	var divcostoutput = document.getElementById("divcostoutput");
-	//var divrevenueoutput = document.getElementById("divrevenueoutput");
 	var diverroroutput = document.getElementById("diverroroutput");
 	var divbreakevenoutput = document.getElementById("divbreakevenoutput");
 	
@@ -32,10 +33,12 @@ function showInput() {
 	divpaneloutput.style.display = 'none';
 	divpanelefficiency.style.display = 'none';
 	divinverterefficiency.style.display = 'none';
-	divstate.style.display = 'none';
+	divcity.style.display = 'none';
 	divlighthours.style.display = 'none';
-	divtemperature.style.display = 'none';
-	divexportrate.style.display = 'none';
+	divrooftemps.style.display = 'none';
+	divrooftempw.style.display = 'none';
+	divimporttariff.style.display = 'none';
+	divexporttariff.style.display = 'none';
 	divbreakevenoutput.style.display = 'none';
 	
 	//Show divs depending on checkbox options
@@ -75,9 +78,9 @@ function showInput() {
 	
 	//Location//
 	
-	//divstate
+	//divcity
 	if ((optionRevenue) || (optionBreakEven)) {
-		divstate.style.display = '';
+		divcity.style.display = '';
 	}
 	
 	//divlighthours
@@ -87,16 +90,18 @@ function showInput() {
 	
 	//divtemperature
 	if ((optionPower) || (optionRevenue) || (optionBreakEven)) {
-		divtemperature.style.display = '';
+		divrooftemps.style.display = '';
+		divrooftempw.style.display = '';
 	}
 	
 	
 	
 	//Rates//
 	
-	//divstate
+	//divtarrifs
 	if ((optionRevenue) || (optionBreakEven)) {
-		divexportrate.style.display = '';
+		divexporttariff.style.display = '';
+		divimporttariff.style.display = '';
 	}
 	
 	
