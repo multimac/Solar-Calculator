@@ -1,23 +1,5 @@
 <?xml version="1.0" ?><%@ page contentType="text/xml;charset=ISO-8859-1" %><%@ page import="powerCalculations.SolarOutput" %><%@ page import="environmentalSpecifications.LocationDetails"%><%@ page import="environmentalSpecifications.SystemConfiguration"%><%@ page import="validation.Validator"%><%
-//Process input
-
-//UPDATE THESE
-double grossMonthlyOutputW;
-double netMonthlyOutputW;
-	
-double GrossMonthlyOutputS; 
-double netMonthlyOutputS; 
-	
-double monlthySavingsW; 
-double monlthySavingsS; 
-	
-double firstYearOutpu;
-double firstYearSavings; 
-	
-double systemCost; 
-double revenue;
-String breakEvenTime; 
-
+//Input
 //System
 int panelcount = 2;
 int paneloutput = 250;
@@ -38,6 +20,23 @@ int rooftempw = 33;
 int rooftemps = 50;
 double solarinsolationw = 4.07;
 double solarinsolations = 5.85;
+
+
+//Output
+double grossMonthlyOutputW = 0;
+double grossMonthlyOutputS = 0; 
+	
+double monlthySavingsW = 0; 
+double monlthySavingsS = 0; 
+	
+double firstYearOutput = 0;
+double firstYearFeedIn = 0;
+double firstYearSavings = 0;
+	
+double systemCost = 0; 
+double revenue = 0;
+String breakEvenTime = ""; 
+
 
 String error = "noerror";
 boolean valid = false;
@@ -98,7 +97,6 @@ else {
 	solarinsolations = Double.parseDouble(request.getParameter("solarinsolations"));
 	
 	
-
 	//Create a system, and calculate output
 	LocationDetails location = new LocationDetails( daylighthoursw, 
 													daylighthourss, 
@@ -122,43 +120,44 @@ else {
 	
 	//Montlhy is Winter/Summer is 3 months
 	
-	
 	grossMonthlyOutputW = SolarOutput.getInitialMonthlyWinterOutput(system, location);
-	netMonthlyOutputW = // Not Needed
-	
-	GrossMonthlyOutputS = SolarOutput.getInitialMonthlySummerOutput(system, location);
-	netMonthlyOutputS = // Not Needed
+	grossMonthlyOutputS = SolarOutput.getInitialMonthlySummerOutput(system, location);
 	
 	monlthySavingsW = SolarOutput.getInitialMonthlyWinterSavings(system, location);
 	monlthySavingsS = SolarOutput.getInitialMonthlySummerSavings(system, location);
 	
 	firstYearOutput = SolarOutput.getFristYearOutput(system, location);
+	firstYearFeedIn = SolarOutput.getFristYearExport(system, location);
 	firstYearSavings = SolarOutput.getFristYearSavings(system, location);
-	// NEED FIRST YEAR FEED IN SolarOutput.getFristYearExport(system, location);
 	
 	systemCost = SolarOutput.calculateInstallCost();
-	
-	revenue = (???) // WTF is this????
 	
 	breakEvenTime = SolarOutput.calculateBreakEvenTime(system, location);
 
 	
 	//TODO: Round all values to 2 places
-	//Math.round( [VALUE] *100.0)/100.0;
+	grossMonthlyOutputW = Math.round( grossMonthlyOutputW * 100.0) / 100.0;
+	grossMonthlyOutputS = Math.round( grossMonthlyOutputS * 100.0) / 100.0;
+	
+	monlthySavingsW = Math.round( monlthySavingsW * 100.0) / 100.0;
+	monlthySavingsS = Math.round( monlthySavingsS * 100.0) / 100.0;
+	
+	firstYearOutput = Math.round( monlthySavingsS * 100.0) / 100.0;
+	firstYearFeedIn =  Math.round( monlthySavingsS * 100.0) / 100.0;
+	firstYearSavings = Math.round( monlthySavingsS * 100.0) / 100.0;
+	
+	systemCost = Math.round( monlthySavingsS * 100.0) / 100.0;
 	
 }
 
 %><solarcalculator>
 	<grossmonthlyoutputw><%out.print(grossMonthlyOutputW);%></grossmonthlyoutputw>
-	<netmonthlyoutputw><%out.print(netMonthlyOutputW);%></netmonthlyoutputw>
-	<grossmonthlyoutputs><%out.print(GrossMonthlyOutputS);%></grossmonthlyoutputs>
-	<netmonthlyoutputs><%out.print(netMonthlyOutputS);%></netmonthlyoutputs>
+	<grossmonthlyoutputs><%out.print(grossMonthlyOutputS);%></grossmonthlyoutputs>
 	<monlthysavingsw><%out.print(monlthySavingsW);%></monlthysavingsw>
 	<monlthysavingss><%out.print(monlthySavingsS);%></monlthysavingss>
 	<firstyearoutput><%out.print(firstYearOutput);%></firstyearoutput>
 	<firstyearsavings><%out.print(firstYearSavings);%></firstyearsavings>
 	<systemcost><%out.print(systemCost);%></systemcost>
-	<revenue><%out.print(revenue);%></revenue>
 	<breakeventime><%out.print(breakEvenTime);%></breakeventime>
 	<error><%out.print(error);%></error>
 </solarcalculator>
