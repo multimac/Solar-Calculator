@@ -8,7 +8,7 @@ table {
 	border: 1px;
 }
 
-div.header {
+.tableHeader {
 	background-color:#CCC;
 	width: 100%;
 	height: 18px;
@@ -23,45 +23,91 @@ div.labels {
 
 /* page content */
 #container {
-	width: 671px;
+	padding: 0px;
+	width: 800px;
 	margin-top: 10%;
+	margin-bottom: 0;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-#template {
-	width:671px;
-	height:198px;
-	padding:0px;
-	spacing:0px;
-	border:0px;
-	border-spacing:0px;
-    border-collapse:collapse;
+#header {
+	height: 115px;
+	width:100%;
+	background-image: url("../images/header.jpg");
+    background-position: left top;
+    background-repeat:no-repeat;
+}
+
+#menuBar {
+	padding-top: 75px;
+	height:40px;
+	max-width: 100%;
+	text-align:right;
+	margin-right: 250px;
 
 }
 
-#template td {
-	padding:0px;
-	spacing:0px;
-	border:0px;
+#sidebar {
+	width:171px;
+	min-height:83px;
+	background-image: url("../images/sidebar.jpg");
+    background-position: center top;
+    background-repeat:no-repeat;
+    float:left;
 }
-	
-h1 {
-	font-size:20px;
-	margin:auto;
+
+#footer {
+	clear:both;
+	width:100%;
+	text-align:center;
+}
+.splitter {
+	clear: both;
+	width: 100%;
+}
+
+#contentFooter {
+	margin-top: 20px;
+	float:right;
+	width: 629px;
 	text-align:center;
 }
 
+#content {
+	font-size: 80%;
+	float:right;
+	width: 629px;
+	min-height: 300px;
+}
+
+
+/* MENU BUTTONS ------------------------------------------------------- */
+.menuItem {
+	text-decoration:none;
+	font-size: 18px;
+	font-weight:bold;
+	color: #FFFFFF;
+	margin: 10px;
+	padding:2px 10px;
+	text-align:center;
+	border-style:solid;
+	border-color:#FFFFFF;
+	border-thickness:1px;
+	background-color: #B0B0B0;
+}
+
+.menuItem:hover {
+	color: #377CC9;
+}
+
 /* data input */
-div.inputtable {
+#inputtable {
 	margin-left: auto;
     margin-right: auto;
-	width: 499px;
-	height: 200px;
 	border: 0px solid;
 	font-size: 80%;
 	display: inline-block;
-	float: right;
 }
 
 div.text {
@@ -87,67 +133,42 @@ div.systemconf {
 	margin-left: auto;
     margin-right: auto;
     margin-bottom: 10px;
-	width: 240px;
+	width: 45%;
 	border: 1px solid;
 	font-size: 100%;
 	float: left;
-	padding: 1px;
-	height: 90px;
+	padding: 2px;
 }
 
 div.systemstats {
 	margin-left: auto;
     margin-right: auto;
     margin-bottom: 10px;
-	width: 240px;
+	width: 45%;
 	border: 1px solid;
 	font-size: 100%;
 	float: right;
-	padding: 1px;
-	height: 215px;
+	padding: 2px;
 }
 
 div.location {
 	margin-left: auto;
     margin-right: auto;
-	width: 240px;
+	width: 45%;
 	border: 1px solid;
 	font-size: 100%;
 	float: left;
-	padding: 1px;
-	height: 140px;
+	padding: 2px;
 }
 
 div.rates {
 	margin-left: auto;
     margin-right: auto;
-	width: 240px;
+	width: 45%;
 	border: 1px solid;
 	font-size: 100%;
 	float: right;
-	padding: 1px;
-	height: 65px;
-}
-
-
-div.output {
-	margin-left: auto;
-    margin-right: auto;
-	width: 250px;
-	border: 0px solid;
-	font-size: 100%;
-	float: left;
-	padding: 1px;
-}
-
-div.info {
-	margin-left: auto;
-    margin-right: auto;
-	width: 480px;
-	border: 0px solid;
-	font-size: 100%;
-	float: left;
-	padding: 1px;
+	padding: 2px;
 }
 
 
@@ -162,7 +183,7 @@ div.inputs {
 div.tooltip {
 	margin-left: auto;
     margin-right: auto;
-	width: 480px;
+	width: 100%;
 	font-size: 100%;
 	font-weight: bold;
 	color: 377cc9;
@@ -176,7 +197,7 @@ div.tooltip {
 div.tooltiperror {
 	margin-left: auto;
     margin-right: auto;
-	width: 480px;
+	width: 100%;
 	font-size: 100%;
 	font-weight: bold;
 	color: c93737;
@@ -188,7 +209,7 @@ div.tooltiperror {
 
 div.instructions {
 	font-size: 75%;
-	width: 490px;
+	width: 100%;
 }
 
 
@@ -202,7 +223,7 @@ input.calc {
 }
 
 input.text {
-	width: 50px;
+	width: 70px;
 	float: right;
 	height: 22px;
 	display: inline-block;
@@ -248,4 +269,10 @@ lable {
 }
 .aboutlink:hover {
 	background: url('../images/TB_About_Blue.jpg') bottom;
+}
+
+h1 {
+	font-size:20px;
+	margin:auto;
+	text-align:center;
 }
