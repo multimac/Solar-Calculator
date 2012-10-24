@@ -14,7 +14,6 @@
 <head>
  <title>Solar Output Calculator</title>
  <link rel="stylesheet" type="text/css" href="css/mainstyle.css" />
- <script type="text/javascript" src="js/validatesolaroutput.js"></script>
 </head>
 <body>
 
