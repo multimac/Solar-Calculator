@@ -170,6 +170,12 @@ namespace SolarPowerCalculator_Desktop
 
         }
 
+        private void btnAbout_Click_1(object sender, EventArgs e)
+        {
+            About aboutForm = new About();
+            aboutForm.Show();
+        }
+
 
 
     }

@@ -2,7 +2,7 @@
 var errorMessages = ["Number of panels should be a number between 1 and 50.",
                      "Monthly consumption should be a number between 0 and 1000.",
                      "Panel Output should be a number between 50 and 500.",
-                     "Panel Degradation should be a number between 0 and 100.",
+                     "Panel Degradation should be a number between 0 and 4.",
                      "Inverter Efficiency should be a number between 1 and 100.",
                      "Daylight Hours should be a number between 1 and 24.",
                      "Roof Temperature should be a number between -40 and 80.",
@@ -10,6 +10,8 @@ var errorMessages = ["Number of panels should be a number between 1 and 50.",
                      "Panel Density should be a number between 10 and 1000",
                      "Solar Insolation should be a number between 0 and 20",
                      "Import Tariff should be a number between 0.01 and 1.",
+                     "Temperature Coefficient should be a number between -0.01 and -0.001",
+                     "Panel Efficiency should be a number between 1 - 25"
                     ];
 
 const errNumPanels = 0;
@@ -23,6 +25,8 @@ const errExportRate = 7;
 const errPanelDensity = 8;
 const errSolarInsolation = 9;
 const errImportTariff = 10;
+const errTempCoefficient = 11;
+const errPanelEfficiency = 12;
 
 //Main function calling validation rules
 function formValidation() {
@@ -56,7 +60,12 @@ function formValidation() {
 		errorList.push("<li>" + errorMessages[errInverterEfficiency] + "</li>");
 	}
 	
-	if (!validPanelDegredation()) {
+	if (!validPanelEfficiency()) {
+		inputError = true;
+		errorList.push("<li>" + errorMessage[errPanelEfficiency] + "</li>");
+	}
+	
+	if (!validPanelDegrdation()) {
 		inputError = true;
 		errorList.push("<li>" + errorMessages[errPanelDegradation] + "</li>");
 	}
@@ -75,6 +84,7 @@ function formValidation() {
 		inputError = true;
 		errorList.push("<li>" + errorMessages[errTemperature] + "</li>");
 	}
+
 	
 	if (!validExportRate()) {
 		inputError = true;
@@ -86,7 +96,10 @@ function formValidation() {
 		errorList.push("<li>" + errorMessage[errImportTariff] + "</li>");
 	}
 	
-	
+	if (!validTempCoefficient()) {
+		inputError = true;
+		errorList.push("<li>" + errorMessage[errTempCoefficient] + "</li>");
+	}
 	// Error Handling: outputs all errors that occured
 	if (inputError == true) {
 		var errorBoxStart = '<div id="error"><h3>The following errors occured during calculation:</h3><ul>';
@@ -105,6 +118,14 @@ function formValidation() {
 }
 
 //Validation functions
+function validPanelEfficiency() {
+	var panelEfficiency = document.output.panelefficiency.value;
+	if (panelEfficiency >= 1 && panelEfficiency <= 25 && isNaN(panelEfficiency) == false) {
+		return true;
+	}
+	return false;
+}
+
 
 function validNumPanels() {
 	var numPanels = document.output.panelcount.value;
@@ -122,6 +143,13 @@ function validMonthlyConsumption(MonthlyConsumption) {
 	return false;
 }
 
+function validTempCoefficient() {
+	var temp = document.output.tempcoefficient.value;
+	if ((temp >= -0.01) && (temp <= -0.001) && isNaN(temp) == false) {
+		return true;
+	}
+	return false;
+}
 
 function validPanelOutput() {
 	var panelOutput = document.output.paneloutput.value;
@@ -131,9 +159,9 @@ function validPanelOutput() {
 	return false;
 }
 
-function validPanelDegredation() {
-	var panelDegredation = document.output.panelefficiency.value;
-	if ((panelDegredation >= 0) && (panelDegredation <= 100) && isNaN(panelDegredation) == false) {
+function validPanelDegradation() {
+	var panelDegradation = document.output.paneldegradation.value;
+	if ((panelDegradation >= 0) && (panelDegradation <= 4) && isNaN(panelDegradation) == false) {
 		return true;
 	}
 	return false;

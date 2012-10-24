@@ -36,8 +36,8 @@ function validateOnKeyDown(input) {
 	}
 	
 	else if (input.name == "panelefficiency") {
-		if (!validPanelDegredation()) {
-			setToolTipError(errorMessages[errPanelDegradation]);
+		if (!validPanelEfficiency()) {
+			setToolTipError(errorMessages[errPanelEfficiency]);
 		}
 	}
 	else if (input.name == "inverterefficiency") {
@@ -45,7 +45,11 @@ function validateOnKeyDown(input) {
 			setToolTipError(errorMessages[errInverterEfficiency]);
 		}
 	}
-	
+	else if (input.name == "paneldegradation") {
+		if (!validPanelDegradation()) {
+			setToolTipError(errorMessages[errPanelDegradation]);
+		}
+	}
 	//Location ToolTips
 
 	else if (input.name == "daylighthourss" || input.name == "daylighthoursw") {
@@ -69,6 +73,11 @@ function validateOnKeyDown(input) {
 	else if (input.name == "importtariff") {
 		if (!validImportRate()) {
 			setToolTipError(errorMessages[errImportTariff]);
+		}
+	}
+	else if (input.name == "tempcoefficient") {
+		if (!validTempCoefficient()) {
+			setToolTipError(errorMessages[errTempCoefficient]);
 		}
 	}
 	

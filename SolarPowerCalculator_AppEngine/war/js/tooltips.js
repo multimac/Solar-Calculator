@@ -19,11 +19,11 @@ function toolTipPopUp(input) {
 		setToolTip("The output of each panel for the system in Watts. [50-500]");
 	}
 	else if (input.name == "paneldensity") {
-		setToolTip("The density of each panel in Watts per Metre squared");
+		setToolTip("The density of each panel in Watts per Metre squared.");
 	}
 	
 	else if (input.name == "panelefficiency") {
-		setToolTip("The rate at which the panels degrade per year as a %. [0-100]");
+		setToolTip("The efficiency for capturing solar energy [0-100]");
 	}
 	
 	else if (input.name == "solarinsolations" || input.name == "solarinsolationw") {
@@ -32,7 +32,12 @@ function toolTipPopUp(input) {
 	else if (input.name == "inverterefficiency") {
 		setToolTip("The efficiency of the inverter to convert panel output to usable electricity as a %. [0-100]");
 	}
-	
+	else if (input.name == "tempcoefficient") {
+		setToolTip("The Temperature is a special rating assigned to solar panels [-0.01 - -0.001");
+	}
+	else if (input.name == "paneldegradation") {
+		setToolTip("The rate at which the solar panel degrades per year as a percentage. [0 - 4]");
+	}
 	//Location ToolTips
 	else if (input.name == "city") {
 		setToolTip("The city in which your installation is located in.");

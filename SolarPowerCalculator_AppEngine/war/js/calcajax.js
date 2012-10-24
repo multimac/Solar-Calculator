@@ -53,11 +53,6 @@ function postPowerCalc() {
 				
 				if (error == "noerror") {
 					
-					//Check box options
-					var optionPower = document.getElementsByName("optionpower")[0].checked;
-					var optionRevenue = document.getElementsByName("optionrevenue")[0].checked;
-					var optionCost = document.getElementsByName("optioncost")[0].checked;
-					var optionBreakEven = document.getElementsByName("optionbreakeven")[0].checked;
 					
 					
 					document.getElementById("divgrossmonthlyoutputs").innerHTML = "<b>Summer Generation: </b>" + grossmonthlyoutputs + " (Kwh)";
@@ -69,22 +64,6 @@ function postPowerCalc() {
 					document.getElementById("divsystemcost").innerHTML = "<b>System Cost: </b>$" + systemcost;
 					document.getElementById("divbreakeventime").innerHTML = "<b>Break Even Time: </b>" + breakeventime;
 					
-					/*
-					if (optionPower) {
-						document.getElementById("divgrossoutput").innerHTML = "<b>Gross Monthly Generation: </b>" + grossOutput + " (Kwh)";
-						document.getElementById("divnetoutput").innerHTML = "<b>Monthly Excess Generated: </b>" + netOutput + " (Kwh)";
-					}
-					
-					if (optionCost) {
-						document.getElementById("divcostoutput").innerHTML = "<b>Cost: </b>$" + cost;
-					}
-					
-					if (optionRevenue) {
-						document.getElementById("divrevenueoutput").innerHTML = "<b>Revenue: </b>$" + revenue + " mo";
-					}
-					if (optionBreakEven) {
-						document.getElementById("divbreakevenoutput").innerHTML = "<b>Break Even: </b> " + breakEven;
-					}*/
 					
 					document.getElementById("diverroroutput").innerHTML = "";
 				}

@@ -85,6 +85,8 @@
             this.lblMonthlySummerConsumption = new System.Windows.Forms.Label();
             this.bkgLoadCity = new System.ComponentModel.BackgroundWorker();
             this.bkgCalculate = new System.ComponentModel.BackgroundWorker();
+            this.lblDisclaimer = new System.Windows.Forms.Label();
+            this.btnAbout = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grpCalculations.SuspendLayout();
             this.panelContent.SuspendLayout();
@@ -123,21 +125,24 @@
             // 
             // grpCalculations
             // 
+            this.grpCalculations.Controls.Add(this.btnAbout);
             this.grpCalculations.Controls.Add(this.chkSimpleSettings);
             this.grpCalculations.Controls.Add(this.btnCalculate);
             this.grpCalculations.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.grpCalculations.Location = new System.Drawing.Point(209, 106);
+            this.grpCalculations.Location = new System.Drawing.Point(634, 101);
             this.grpCalculations.Name = "grpCalculations";
-            this.grpCalculations.Size = new System.Drawing.Size(723, 77);
+            this.grpCalculations.Size = new System.Drawing.Size(298, 106);
             this.grpCalculations.TabIndex = 4;
             this.grpCalculations.TabStop = false;
             // 
             // chkSimpleSettings
             // 
+            this.chkSimpleSettings.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.chkSimpleSettings.AutoSize = true;
-            this.chkSimpleSettings.Location = new System.Drawing.Point(6, 50);
+            this.chkSimpleSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.chkSimpleSettings.Location = new System.Drawing.Point(6, 32);
             this.chkSimpleSettings.Name = "chkSimpleSettings";
-            this.chkSimpleSettings.Size = new System.Drawing.Size(111, 21);
+            this.chkSimpleSettings.Size = new System.Drawing.Size(115, 22);
             this.chkSimpleSettings.TabIndex = 7;
             this.chkSimpleSettings.Text = "Simple Inputs";
             this.chkSimpleSettings.UseVisualStyleBackColor = true;
@@ -145,7 +150,8 @@
             // 
             // btnCalculate
             // 
-            this.btnCalculate.Location = new System.Drawing.Point(576, 22);
+            this.btnCalculate.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnCalculate.Location = new System.Drawing.Point(157, 22);
             this.btnCalculate.Name = "btnCalculate";
             this.btnCalculate.Size = new System.Drawing.Size(135, 43);
             this.btnCalculate.TabIndex = 6;
@@ -156,6 +162,7 @@
             // panelContent
             // 
             this.panelContent.AutoScroll = true;
+            this.panelContent.Controls.Add(this.lblDisclaimer);
             this.panelContent.Controls.Add(this.grpResults);
             this.panelContent.Controls.Add(this.groupBox2);
             this.panelContent.Controls.Add(this.grpSystemStatistics);
@@ -921,6 +928,25 @@
             // 
             this.bkgCalculate.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkgCalculate_DoWork);
             // 
+            // lblDisclaimer
+            // 
+            this.lblDisclaimer.AutoSize = true;
+            this.lblDisclaimer.Location = new System.Drawing.Point(3, 530);
+            this.lblDisclaimer.Name = "lblDisclaimer";
+            this.lblDisclaimer.Size = new System.Drawing.Size(464, 18);
+            this.lblDisclaimer.TabIndex = 58;
+            this.lblDisclaimer.Text = "All values are pure estimates and hold no guaranteed real-world value.\r\n";
+            // 
+            // btnAbout
+            // 
+            this.btnAbout.Location = new System.Drawing.Point(157, 71);
+            this.btnAbout.Name = "btnAbout";
+            this.btnAbout.Size = new System.Drawing.Size(135, 23);
+            this.btnAbout.TabIndex = 6;
+            this.btnAbout.Text = "About";
+            this.btnAbout.UseVisualStyleBackColor = true;
+            this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click_1);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -937,6 +963,7 @@
             this.grpCalculations.ResumeLayout(false);
             this.grpCalculations.PerformLayout();
             this.panelContent.ResumeLayout(false);
+            this.panelContent.PerformLayout();
             this.grpResults.ResumeLayout(false);
             this.grpResults.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -1026,5 +1053,7 @@
         private System.Windows.Forms.GroupBox groSystemConfig;
         private System.Windows.Forms.CheckBox chkSimpleSettings;
         private System.Windows.Forms.GroupBox grpResults;
+        private System.Windows.Forms.Label lblDisclaimer;
+        private System.Windows.Forms.Button btnAbout;
     }
 }

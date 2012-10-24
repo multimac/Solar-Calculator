@@ -45,14 +45,12 @@ double solarinsolations = 5.85;
 			<div id="sidebar"></div>
 			<div id="content">
 				<div class="inputtable">
-					<form name="output" action="calc.jsp" method="post" onSubmit="if (formValidation()) {postPowerCalc(); showInput();} else {hideOutput();} return false;">
+					<form name="output" action="calc.jsp" method="post" onSubmit="postPowerCalc(); return false;if (formValidation()) {postPowerCalc(); showInput();} else {hideOutput();} return false;">
+
 					
 					<div class="systemoptions">
 						<div class="inputs">
-							<input type="checkbox" name="optionpower" id="optionpower" value="optionpower" class="checkbox" onclick="showInput()" checked/><label for="optionpower" class="label">Power</label>
-							<input type="checkbox" name="optioncost" id="optioncost" value="optioncost" class="checkbox" onclick="showInput()" checked/><label for="optioncost">Estimated Cost</label>
-							<input type="checkbox" name="optionrevenue" id="optionrevenue" value="optionrevenue" class="checkbox" onclick="showInput()" checked/><label for="optionrevenue">Revenue</label>
-							<input type="checkbox" name="optionbreakeven" id="optionbreakeven" value="optionbreakeven" class="checkbox" onclick="showInput()" checked/><label for="optionbreakeven">Break Even</label>
+							<input type="checkbox" name="optionSimpleInput" id=""optionSimpleInput" value=""optionSimpleInput" class="checkbox" onclick="showInput()" checked/><label for="optionSimpleInput" class="label">Simple Inputs</label>
 							
 							<input type="submit" value="Calculate" class="calc"/>
 						</div>
