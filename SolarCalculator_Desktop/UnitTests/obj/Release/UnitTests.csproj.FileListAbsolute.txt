@@ -1,9 +1,0 @@
-C:\Users\KAS\Desktop\SolarCalculator_Desktop\UnitTests\bin\Release\UnitTests.dll
-C:\Users\KAS\Desktop\SolarCalculator_Desktop\UnitTests\bin\Release\UnitTests.pdb
-C:\Users\KAS\Desktop\SolarCalculator_Desktop\UnitTests\bin\Release\SolarCalculator.exe
-C:\Users\KAS\Desktop\SolarCalculator_Desktop\UnitTests\bin\Release\SolarCalculator.pdb
-C:\Users\KAS\Desktop\SolarCalculator_Desktop\UnitTests\bin\Release\SolarCalculator_Accessor.exe
-C:\Users\KAS\Desktop\SolarCalculator_Desktop\UnitTests\bin\Release\SolarCalculator_Accessor.pdb
-C:\Users\KAS\Desktop\SolarCalculator_Desktop\UnitTests\obj\Release\ResolveAssemblyReference.cache
-C:\Users\KAS\Desktop\SolarCalculator_Desktop\UnitTests\obj\Release\UnitTests.dll
-C:\Users\KAS\Desktop\SolarCalculator_Desktop\UnitTests\obj\Release\UnitTests.pdb
