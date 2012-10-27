@@ -92,8 +92,8 @@ double solarinsolations = 5.85;
 																	</select></div>
 							<div class="inputs" id="divdaylighthourss">Av. Direct Sunlight (Nov-Apr)<input name="daylighthourss" value="<%=daylighthourss%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"  onkeyup="validateOnKeyDown(this);"/></div>
 							<div class="inputs" id="divdaylighthoursw">Av. Direct Sunlight (May-Oct)<input name="daylighthoursw" value="<%=daylighthoursw%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"  onkeyup="validateOnKeyDown(this);"/></div>
-							<div class="inputs" id="divrooftemps">Roof Temp. (May-Oct)(&deg;C)<input name="rooftemps" value="<%=rooftemps%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"  onkeyup="validateOnKeyDown(this);"/></div>
-							<div class="inputs" id="divrooftempw">Roof Temp. ()(&deg;C)<input name="rooftempw" value="<%=rooftempw%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"  onkeyup="validateOnKeyDown(this);"/></div>
+							<div class="inputs" id="divrooftemps">Roof Temp. (Nov-Apr)(&deg;C)<input name="rooftemps" value="<%=rooftemps%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"  onkeyup="validateOnKeyDown(this);"/></div>
+							<div class="inputs" id="divrooftempw">Roof Temp. (May-Oct)(&deg;C)<input name="rooftempw" value="<%=rooftempw%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"  onkeyup="validateOnKeyDown(this);"/></div>
 						</div>
 					</div>
 					<div class="rates">
