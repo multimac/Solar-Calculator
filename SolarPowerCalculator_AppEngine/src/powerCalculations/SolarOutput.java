@@ -12,37 +12,75 @@ import environmentalSpecifications.*;
  */
 public class SolarOutput {	
 	
-	private static int wattsInKilowatt = 1000;
 	private static DecimalFormat moneyDecFormat = new DecimalFormat("#.##");
 	private static int installCost = 1000;
 	private static double daysInMonth = 30.44;
 	private static ArrayList data = new ArrayList();
 	
-
+	/**
+	 * calculates the theoretical maximum output of the system by multiplying panels, panel output
+	 * and inverter efficiency
+	 * @param system
+	 * @return max output
+	 */
 	public static double calculateSystemRating(SystemConfiguration system) {
 		return (system.getPanelCount()*system.getPanelOutput()*system.getInverterEfficiency());
 	}
 	
+	
+	/**
+	 * calculates the total area of the solar panels by dividing the system rating by the panel density
+	 * @param system
+	 * @return area of solar panel
+	 */
 	public static double calculatePanelArea(SystemConfiguration system) {
 		return ((calculateSystemRating(system)/system.getInverterEfficiency())/system.getPanelDensity());
 	}
 	
+	
+	/**
+	 * calculates the amount of solar exposure the system will get in winter by multiplying the area and the insolation
+	 * it is assumed that only half of the daylight hours are usable to the system
+	 * @param system
+	 * @param location
+	 * @return total energy hitting the panels in KWh
+	 */
 	public static double calculateSolarExposureWinter(SystemConfiguration system, LocationDetails location) {
 		double maxExposure = location.getSolarInsolationWinter()*calculatePanelArea(system);
 		double likelyExposure = maxExposure/2;
 		return likelyExposure;
 	}
 	
+	/**
+	 * calculates the amount of solar exposure the system will get in summer by multiplying the area and the insolation
+	 * it is assumed that only half of the daylight hours are usable to the system
+	 * @param system
+	 * @param location
+	 * @return total energy hitting the panels in KWh
+	 */
 	public static double calculateSolarExposureSummer(SystemConfiguration system, LocationDetails location) {
 		double maxExposure = location.getSolarInsolationSummer()*calculatePanelArea(system);
 		double likelyExposure = maxExposure/2;
 		return likelyExposure;
 	}
 	
+	/**
+	 * Calculates the efficiency of the overall system by multiplying the panel efficiency, effects of temperature
+	 * and the yearly denigration
+	 * @param system
+	 * @param location
+	 * @param year
+	 * @return
+	 */
 	public static double calculatePanelEfficiencyWinter (SystemConfiguration system, LocationDetails location, int year) {
 		int tempDifference = location.getRoofTempWinter() - 25;
 		double tempAjustment = tempDifference*system.getTempCoefficient();
-		double denegration = Math.pow((1-system.getPanelDegradation()),year);
+		double denegration = 1;
+		if (year > 25) {
+			denegration = Math.pow((1-system.getPanelDegradation()),25);
+		} else {
+			denegration = Math.pow((1-system.getPanelDegradation()),year);
+		}
 		double ajustedEfficiency = (system.getPanelEfficiency() + tempAjustment) * denegration;
 		return ajustedEfficiency;
 	}
@@ -50,11 +88,25 @@ public class SolarOutput {
 	public static double calculatePanelEfficiencySummer (SystemConfiguration system, LocationDetails location, int year) {
 		int tempDifference = location.getRoofTempSummer() - 25;
 		double tempAjustment = tempDifference*system.getTempCoefficient();
-		double denegration = Math.pow((1-system.getPanelDegradation()),year);
+		double denegration = 1;
+		if (year > 25) {
+			denegration = Math.pow((1-system.getPanelDegradation()),25);
+		} else {
+			denegration = Math.pow((1-system.getPanelDegradation()),year);
+		}
 		double ajustedEfficiency = (system.getPanelEfficiency() + tempAjustment) * denegration;
 		return ajustedEfficiency;
 	}
 	
+	/**
+	 * Calculates the output by multiplying the efficiency and the solar exposure, checks to see if this
+	 * is more than the maximum the system can produce.
+	 * @param system
+	 * @param location
+	 * @param year
+	 * @return The lowest of the maximum the system can produce in optimal conditions and the maximum the weather and efficiency
+	 * will allow the system to produce.
+	 */
 	public static double calculateMonthlyWinterOutput (SystemConfiguration system, LocationDetails location, int year) {
 		double maxPossible = calculatePanelEfficiencyWinter(system, location, year)*calculateSolarExposureWinter(system, location);
 		double systemMax = calculateSystemRating(system)*(location.getDaylightHoursWinter()/2)*Math.pow((1-system.getPanelDegradation()), year);
@@ -79,10 +131,24 @@ public class SolarOutput {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param system
+	 * @param location
+	 * @param year
+	 * @return returns the average output of all the months in the given year
+	 */
 	public static double calculateAverageMonthlyOutput (SystemConfiguration system, LocationDetails location, int year) {
 		return (calculateMonthlyWinterOutput(system, location, year) + calculateMonthlySummerOutput(system, location, year)) / 2;
 	}
 	
+	/**
+	 * calculates the monthly savings during the cold months of May-Oct
+	 * @param system
+	 * @param location
+	 * @param year
+	 * @return
+	 */
 	public static double calculateMonthlyWinterSavings (SystemConfiguration system, LocationDetails location, int year) {
 		double monthlyOutput = calculateMonthlyWinterOutput(system, location, year);
 		double exportedPower = 0;
@@ -92,6 +158,13 @@ public class SolarOutput {
 		return ((monthlyOutput - exportedPower)*location.getImportRate()) + (exportedPower*location.getExportRate());
 	}
 	
+	/**
+	 * calculates the monthly savings of the warm months of Nov-Apr
+	 * @param system
+	 * @param location
+	 * @param year
+	 * @return
+	 */
 	public static double calculateMonthlySummerSavings (SystemConfiguration system, LocationDetails location, int year) {
 		double monthlyOutput = calculateMonthlySummerOutput(system, location, year);
 		double exportedPower = 0;
@@ -101,10 +174,24 @@ public class SolarOutput {
 		return ((monthlyOutput - exportedPower)*location.getImportRate()) + (exportedPower*location.getExportRate());
 	}
 	
+	/**
+	 * Calculates the average savings per month over the given year
+	 * @param system
+	 * @param location
+	 * @param year
+	 * @return
+	 */
 	public static double calculateAverageMonthlySavings (SystemConfiguration system, LocationDetails location, int year) {
 		return (calculateMonthlyWinterSavings(system, location, year) + calculateMonthlySummerSavings(system, location, year)) / 2;
 	}
 	
+	/**
+	 * Calculates the time it will take to break even by accumulating the monthly savings until they are
+	 * are equal to or greater than the cost of the system
+	 * @param system
+	 * @param location
+	 * @return the time in years and months until the savings reach the cost of the system
+	 */
 	public static String calculateBreakEvenTime (SystemConfiguration system, LocationDetails location) {
 		double cost = calculateSystemCost(system);
 		double savings = 0;
@@ -115,12 +202,13 @@ public class SolarOutput {
 		while (savings < cost) {
 			while (month < 12 && savings < cost) {
 				savings = savings + calculateAverageMonthlySavings(system, location, year);
-				data.add(savings);
+				data.add(savings); // Collects the accumulative savings each month in an array to be used for graphing.
 				month = month + 1;
 				finalMonth = month;
 			}
 			month = 0;
 			year = year + 1;
+			// If it has been more than 200 years, stop the calculation and return never
 			if (year > 200) {
 				never = true;
 				savings = cost;
@@ -133,42 +221,100 @@ public class SolarOutput {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param system
+	 * @param location
+	 * @return the average monthly savings during the first year of operation
+	 */
 	public static double getInitialMonthlySavings (SystemConfiguration system, LocationDetails location) {
 		return calculateAverageMonthlySavings(system, location, 0);
 	}
 	
+	/**
+	 * 
+	 * @param system
+	 * @param location
+	 * @return the average monthly savings during the cold months in the first year of operation
+	 */
 	public static double getInitialMonthlyWinterSavings (SystemConfiguration system, LocationDetails location) {
 		return calculateMonthlyWinterSavings(system, location, 0);
 	}
 	
+	/**
+	 * 
+	 * @param system
+	 * @param location
+	 * @return the average monthly savings during the warm months in the first year of operation
+	 */
 	public static double getInitialMonthlySummerSavings (SystemConfiguration system, LocationDetails location) {
 		return calculateMonthlySummerSavings(system, location, 0);
 	}
 	
+	/**
+	 * 
+	 * @param system
+	 * @param location
+	 * @return the average monthly output during the first year of operation
+	 */
 	public static double getInitialMonthlyOutput (SystemConfiguration system, LocationDetails location) {
 		return calculateAverageMonthlyOutput(system, location, 0);
 	}
 	
+	/**
+	 * 
+	 * @param system
+	 * @param location
+	 * @return the average monthly output during the cold months in the first year of operation
+	 */
 	public static double getInitialMonthlyWinterOutput (SystemConfiguration system, LocationDetails location) {
 		return calculateMonthlyWinterOutput(system, location, 0);
 	}
 	
+	/**
+	 * 
+	 * @param system
+	 * @param location
+	 * @return the average monthly output during the warm months in the first year of operation
+	 */
 	public static double getInitialMonthlySummerOutput (SystemConfiguration system, LocationDetails location) {
 		return calculateMonthlySummerOutput(system, location, 0);
 	}
 	
+	/**
+	 * 
+	 * @param system
+	 * @param location
+	 * @return the total output of the system in its first year
+	 */
 	public static double getFristYearOutput (SystemConfiguration system, LocationDetails location) {
 		return (calculateAverageMonthlyOutput(system, location, 0)*12);
 	}
 	
+	/**
+	 * 
+	 * @param system
+	 * @param location
+	 * @return the total amount of money saved during the first year
+	 */
 	public static double getFristYearSavings (SystemConfiguration system, LocationDetails location) {
 		return (calculateAverageMonthlySavings(system, location, 0)*12);
 	}
 	
+	/**
+	 * 
+	 * @return savings data
+	 */
 	public static ArrayList getData() {
 		return data;
 	}
 	
+	/**
+	 * 
+	 * @param system
+	 * @param location
+	 * @return the total amount of power the system fed back into the grid in the first year in KWh
+	 */
 	public static double getFristYearExport(SystemConfiguration system, LocationDetails location) {
 		double monthlyOutputSummer = calculateMonthlySummerOutput(system, location, 0);
 		double exportedPowerSummer = 0;
