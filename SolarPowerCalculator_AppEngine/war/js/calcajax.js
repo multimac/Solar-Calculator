@@ -51,6 +51,8 @@ function postPowerCalc() {
 				
 				var error = x[0].getElementsByTagName('error')[0].firstChild.nodeValue;
 				
+				var chartData = x[0].getElementsByTagName('data')[0].firstChild.nodeValue;
+				
 				if (error == "noerror") {
 					
 					
@@ -63,6 +65,31 @@ function postPowerCalc() {
 					document.getElementById("divfirstyearsavings").innerHTML = "<b>Total Savings During 1st Year: </b>$" + firstyearsavings;
 					document.getElementById("divsystemcost").innerHTML = "<b>System Cost: </b>$" + systemcost;
 					document.getElementById("divbreakeventime").innerHTML = "<b>Break Even Time: </b>" + breakeventime;
+					var chart1; // globally available
+					window.addEvent('domready', function() {
+					      chart1 = new Highcharts.Chart({
+					         chart: {
+					            renderTo: 'chart',
+					            type: 'line'
+					         },
+					         title: {
+					            text: 'Total Savings Over 50 Years'
+					         },
+					         xAxis: {
+								title: {
+									text: 'Year'
+									}
+					         },
+					         yAxis: {
+					            title: {
+					               text: 'Dollars ($)'
+					            }
+					         },
+					         series: [{
+					            data: chartData;
+					         }]
+					      });
+					   });
 					
 					
 					document.getElementById("diverroroutput").innerHTML = "";

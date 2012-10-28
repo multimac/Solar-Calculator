@@ -26,6 +26,14 @@ double solarinsolations = 5.85;
 <head>
  <title>Solar Output Calculator</title>
  <link rel="stylesheet" type="text/css" href="css/mainstyle.css" />
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+ <script src="js\highcharts.js" type="text/javascript"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/mootools/1.4.2/mootools-yui-compressed.js" type="text/javascript"></script>
+ <script src="js\adapters\mootools-adapter.js" type="text/javascript"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.0.0/prototype.js" type="text/javascript"></script>
+ <script src="js\adapters\prototype-adapter.js" type="text/javascript"></script>
+ <script src="js\highcharts.js" type="text/javascript"></script>
+ <script src="js\modules\exporting.js" type="text/javascript"></script>
  <script type="text/javascript" src="js/validateonsubmit.js"></script>
  <script type="text/javascript" src="js/validateonkeydown.js"></script>
  <script type="text/javascript" src="js/calcajax.js"></script>

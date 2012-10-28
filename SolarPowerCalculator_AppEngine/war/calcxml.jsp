@@ -36,6 +36,7 @@ double firstYearSavings = 0;
 double systemCost = 0;
 double revenue = 0;
 String breakEvenTime = ""; 
+java.util.List<Double> data = new java.util.ArrayList<Double>(50);
 
 
 String error = "noerror";
@@ -147,7 +148,6 @@ else {
 														 tempcoefficient);
 	
 	
-	//Montlhy is Winter/Summer is 3 months
 	
 	grossMonthlyOutputW = SolarOutput.getInitialMonthlyWinterOutput(system, location);
 	grossMonthlyOutputS = SolarOutput.getInitialMonthlySummerOutput(system, location);
@@ -162,6 +162,8 @@ else {
 	systemCost = SolarOutput.calculateSystemCost(system);
 	
 	breakEvenTime = SolarOutput.calculateBreakEvenTime(system, location);
+	
+	data = SolarOutput.getData(system, location);
 
 	
 	//TODO: Round all values to 2 places
@@ -188,5 +190,6 @@ else {
 	<firstyearsavings><%out.print(firstYearSavings);%></firstyearsavings>
 	<systemcost><%out.print(systemCost);%></systemcost>
 	<breakeventime><%out.print(breakEvenTime);%></breakeventime>
+	<data><%out.print(data);%></data>
 	<error><%out.print(error);%></error>
 </solarcalculator>

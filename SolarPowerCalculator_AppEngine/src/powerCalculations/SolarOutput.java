@@ -2,6 +2,7 @@ package powerCalculations;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 import environmentalSpecifications.*;
 
@@ -15,7 +16,7 @@ public class SolarOutput {
 	private static DecimalFormat moneyDecFormat = new DecimalFormat("#.##");
 	private static int installCost = 1000;
 	private static double daysInMonth = 30.44;
-	private static ArrayList data = new ArrayList();
+	private static ArrayList<Double> data = new ArrayList<Double>();
 	
 	/**
 	 * calculates the theoretical maximum output of the system by multiplying panels, panel output
@@ -305,7 +306,15 @@ public class SolarOutput {
 	 * 
 	 * @return savings data
 	 */
-	public static ArrayList getData() {
+	public static List<Double> getData(SystemConfiguration system, LocationDetails location) {
+		double savings = 0;
+		int year = 0;
+		while (year < 50) {
+			savings = savings + (calculateAverageMonthlySavings(system, location, year)*12);
+			data.add(savings); // Collects the accumulative savings each month in an array to be used for graphing.
+			year = year + 1;
+		}
+		
 		return data;
 	}
 	
