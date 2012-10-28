@@ -64,3 +64,29 @@ function hideOutput() {
 	divsystemcost.style.display = 'none';
 	divbreakeventime.style.display = 'none';
 }
+
+function hideAdvancedInput() {
+	var hiddenDiv = document.getElementById("hidden");
+	var wasNull = false;
+	if (hiddenDiv == null) {
+		hiddenDiv = document.getElementById("unhidden")
+		hiddenDiv.id = "hidden";
+		wasNull = true;
+	}
+	if (hiddenDiv.id == "hidden" && wasNull == false) {
+		hiddenDiv.id = "unhidden";
+	}
+	
+	var hiddenDiv2 = document.getElementById("hidden2");
+	var wasNull2 = false;
+	if (hiddenDiv2 == null) {
+		hiddenDiv2 = document.getElementById("unhidden2")
+		hiddenDiv2.id = "hidden2";
+		wasNull2 = true;
+	}
+	if (hiddenDiv2.id == "hidden2" && wasNull2 == false) {
+		hiddenDiv2.id = "unhidden2";
+	}
+
+
+}

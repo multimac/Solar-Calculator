@@ -50,32 +50,37 @@ double solarinsolations = 5.85;
 					
 					<div class="systemoptions">
 						<div class="inputs">
-							<input type="checkbox" name="optionSimpleInput" id=""optionSimpleInput" value=""optionSimpleInput" class="checkbox" onclick="showInput()" checked/><label for="optionSimpleInput" class="label">Simple Inputs</label>
+							<input type="checkbox" name="optionSimpleInput" id="optionSimpleInput" value="optionSimpleInput" class="checkbox" onclick="hideAdvancedInput()"/><label for="optionSimpleInput" class="label">Advanced Calculation</label>
 							
 							<input type="submit" value="Calculate" class="calc"/>
 						</div>
 					</div>
 					<div class="systemconf">
-						<div class="tableHeader"><b>System Configuration</b></div>
+						<div class="tableHeader"><b>Basic Information</b></div>
 						<div class="labels">
 							<div class="inputs" id="divpanelcount">Number of Panels<input name="panelcount" value="<%=panelcount%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
-							<div class="inputs" id="divmonthlyconsumptions">Av. Consum. (Nov-Apr) (KWh/Mo)<input name="monthlyconsumptions" value="<%=monthlyconsumptions%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
-							<div class="inputs" id="divmonthlyconsumptionw">Av. Consum (May-Oct) (KWh/Mo)<input name="monthlyconsumptionw" value="<%=monthlyconsumptionw%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
+							<div class="inputs" id="divpaneloutput">Panel Output (W)<input name="paneloutput" value="<%=paneloutput%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
+							<div class="inputs" id="divmonthlyconsumptions">Consum (Nov-Apr)(KWh/Mo)<input name="monthlyconsumptions" value="<%=monthlyconsumptions%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
+							<div class="inputs" id="divmonthlyconsumptionw">Consum (May-Oct)(KWh/Mo)<input name="monthlyconsumptionw" value="<%=monthlyconsumptionw%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
 						</div>
 					</div>
 					
 					
 					<div class="systemstats">
 						<div class="tableHeader"><b>System Statistics</b></div>
-						<div class="labels">
-							<div class="inputs" id="divpaneloutput">Panel Output (W)<input name="paneloutput" value="<%=paneloutput%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
+						<div class="labels" id="hidden">
 							<div class="inputs" id="divpaneldensity">Panel Density (W/m^2)<input name="paneldensity" value="<%=paneldensity%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
 							<div class="inputs" id="divpanelpanelefficiency">Panel Efficiency (%)<input name="panelefficiency" value="<%=panelefficiency%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
 							<div class="inputs" id="divpaneldegradation">Panel Degradation (%PA)<input name="paneldegradation" value="<%=paneldegradation%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
-							<div class="inputs" id="divsolarinsolations">Av. Insolation (Nov-Apr) (KWh/Day/m^2)<input name="solarinsolations" value="<%=solarinsolations%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
-							<div class="inputs" id="divsolarinsolationw">Av. Insolation (May-Oct) (KWh/Day/m^2)<input name="solarinsolationw" value="<%=solarinsolationw%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
 							<div class="inputs" id="divtempcoefficient">Temperature Coefficient<input name="tempcoefficient" value="<%=tempcoefficient%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
 							<div class="inputs" id="divinverterefficiency">Inverter Efficiency (%)<input name="inverterefficiency" value="<%=inverterefficiency%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
+						</div>
+						<div class="labels" id="unhidden2">
+							<div class="inputs"></div>
+							<div class="inputs"><i><b>To input advanced system statistics press advanced calculation</b></i></div>
+							<div class="inputs"></div>
+							<div class="inputs"></div>
+							<div class="inputs"></div>
 						</div>
 					</div>
 					<div class="location">
@@ -94,6 +99,8 @@ double solarinsolations = 5.85;
 							<div class="inputs" id="divdaylighthoursw">Av. Direct Sunlight (May-Oct)<input name="daylighthoursw" value="<%=daylighthoursw%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"  onkeyup="validateOnKeyDown(this);"/></div>
 							<div class="inputs" id="divrooftemps">Roof Temp. (Nov-Apr)(&deg;C)<input name="rooftemps" value="<%=rooftemps%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"  onkeyup="validateOnKeyDown(this);"/></div>
 							<div class="inputs" id="divrooftempw">Roof Temp. (May-Oct)(&deg;C)<input name="rooftempw" value="<%=rooftempw%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();"  onkeyup="validateOnKeyDown(this);"/></div>
+							<div class="inputs" id="divsolarinsolations">Av. Insolation (Nov-Apr)<input name="solarinsolations" value="<%=solarinsolations%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
+							<div class="inputs" id="divsolarinsolationw">Av. Insolation (May-Oct)<input name="solarinsolationw" value="<%=solarinsolationw%>" class="text" onmouseover="toolTipPopUp(this);" onmouseout="toolTipPopDown();" onkeyup="validateOnKeyDown(this);"/></div>
 						</div>
 					</div>
 					<div class="rates">

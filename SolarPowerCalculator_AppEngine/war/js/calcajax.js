@@ -55,12 +55,12 @@ function postPowerCalc() {
 					
 					
 					
-					document.getElementById("divgrossmonthlyoutputs").innerHTML = "<b>Summer Generation: </b>" + grossmonthlyoutputs + " (Kwh)";
-					document.getElementById("divgrossmonthlyoutputw").innerHTML = "<b>Winter Generation: </b>" + grossmonthlyoutputw + " (Kwh)";
-					document.getElementById("divmonlthysavingss").innerHTML = "<b>Summer Monthly Savings: </b>$" + monlthysavingss;
-					document.getElementById("divmonlthysavingsw").innerHTML = "<b>Winter Monthly Savings: </b>$" + monlthysavingsw;
-					document.getElementById("divfirstyearoutput").innerHTML = "<b>First Year Generation: </b>" + firstyearoutput + " (Kwh)";
-					document.getElementById("divfirstyearsavings").innerHTML = "<b>First Year Savings: </b>$" + firstyearsavings;
+					document.getElementById("divgrossmonthlyoutputs").innerHTML = "<b>Monthly Generation (Nov-Apr): </b>" + grossmonthlyoutputs + " (Kwh)";
+					document.getElementById("divgrossmonthlyoutputw").innerHTML = "<b>Winter Generation (May-Oct): </b>" + grossmonthlyoutputw + " (Kwh)";
+					document.getElementById("divmonlthysavingss").innerHTML = "<b>Monthly Savings (Nov-Apr): </b>$" + monlthysavingss;
+					document.getElementById("divmonlthysavingsw").innerHTML = "<b>Winter Monthly (May-Oct): </b>$" + monlthysavingsw;
+					document.getElementById("divfirstyearoutput").innerHTML = "<b>Total Generation During 1st Year: </b>" + firstyearoutput + " (Kwh)";
+					document.getElementById("divfirstyearsavings").innerHTML = "<b>Total Savings During 1st Year: </b>$" + firstyearsavings;
 					document.getElementById("divsystemcost").innerHTML = "<b>System Cost: </b>$" + systemcost;
 					document.getElementById("divbreakeventime").innerHTML = "<b>Break Even Time: </b>" + breakeventime;
 					

@@ -276,3 +276,19 @@ h1 {
 	margin:auto;
 	text-align:center;
 }
+
+#hidden { 
+	display: none; 
+}
+
+#unhidden {
+	display: block;
+}
+
+#hidden2 { 
+	display: none; 
+}
+
+#unhidden2 {
+	display: block;
+}
