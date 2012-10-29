@@ -129,9 +129,9 @@
             this.grpCalculations.Controls.Add(this.chkSimpleSettings);
             this.grpCalculations.Controls.Add(this.btnCalculate);
             this.grpCalculations.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.grpCalculations.Location = new System.Drawing.Point(634, 101);
+            this.grpCalculations.Location = new System.Drawing.Point(634, 107);
             this.grpCalculations.Name = "grpCalculations";
-            this.grpCalculations.Size = new System.Drawing.Size(298, 106);
+            this.grpCalculations.Size = new System.Drawing.Size(298, 100);
             this.grpCalculations.TabIndex = 4;
             this.grpCalculations.TabStop = false;
             // 
@@ -205,9 +205,9 @@
             this.grpResults.Controls.Add(this.lblBreakEven);
             this.grpResults.Controls.Add(this.lblWinterSavings);
             this.grpResults.Controls.Add(this.lblSystemCost);
-            this.grpResults.Location = new System.Drawing.Point(518, 309);
+            this.grpResults.Location = new System.Drawing.Point(502, 309);
             this.grpResults.Name = "grpResults";
-            this.grpResults.Size = new System.Drawing.Size(402, 239);
+            this.grpResults.Size = new System.Drawing.Size(410, 239);
             this.grpResults.TabIndex = 57;
             this.grpResults.TabStop = false;
             this.grpResults.Text = "Results";
@@ -298,9 +298,9 @@
             this.groupBox2.Controls.Add(this.lblExportTariff);
             this.groupBox2.Controls.Add(this.numExportTariff);
             this.groupBox2.Controls.Add(this.lbl);
-            this.groupBox2.Location = new System.Drawing.Point(32, 334);
+            this.groupBox2.Location = new System.Drawing.Point(21, 334);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(464, 82);
+            this.groupBox2.Size = new System.Drawing.Size(475, 82);
             this.groupBox2.TabIndex = 56;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tariffs";
@@ -391,9 +391,9 @@
             this.grpSystemStatistics.Controls.Add(this.numTemperatureCoefficient);
             this.grpSystemStatistics.Controls.Add(this.numSolarInsolationWinter);
             this.grpSystemStatistics.Controls.Add(this.lblSolarInsolationWinter);
-            this.grpSystemStatistics.Location = new System.Drawing.Point(518, 16);
+            this.grpSystemStatistics.Location = new System.Drawing.Point(502, 16);
             this.grpSystemStatistics.Name = "grpSystemStatistics";
-            this.grpSystemStatistics.Size = new System.Drawing.Size(402, 287);
+            this.grpSystemStatistics.Size = new System.Drawing.Size(410, 287);
             this.grpSystemStatistics.TabIndex = 55;
             this.grpSystemStatistics.TabStop = false;
             this.grpSystemStatistics.Text = "System Statistics";
@@ -685,9 +685,9 @@
             this.grpLocation.Controls.Add(this.numRoofTempSummer);
             this.grpLocation.Controls.Add(this.numRoofTempWinter);
             this.grpLocation.Controls.Add(this.lblRoofTempWinter);
-            this.grpLocation.Location = new System.Drawing.Point(32, 159);
+            this.grpLocation.Location = new System.Drawing.Point(21, 144);
             this.grpLocation.Name = "grpLocation";
-            this.grpLocation.Size = new System.Drawing.Size(464, 169);
+            this.grpLocation.Size = new System.Drawing.Size(475, 184);
             this.grpLocation.TabIndex = 54;
             this.grpLocation.TabStop = false;
             this.grpLocation.Text = "Location";
@@ -842,9 +842,9 @@
             this.groSystemConfig.Controls.Add(this.numMonthlyWinterConsumption);
             this.groSystemConfig.Controls.Add(this.lblMonthlyWinterConsumption);
             this.groSystemConfig.Controls.Add(this.lblMonthlySummerConsumption);
-            this.groSystemConfig.Location = new System.Drawing.Point(32, 14);
+            this.groSystemConfig.Location = new System.Drawing.Point(21, 14);
             this.groSystemConfig.Name = "groSystemConfig";
-            this.groSystemConfig.Size = new System.Drawing.Size(464, 124);
+            this.groSystemConfig.Size = new System.Drawing.Size(475, 124);
             this.groSystemConfig.TabIndex = 53;
             this.groSystemConfig.TabStop = false;
             this.groSystemConfig.Text = "System Configuration";
