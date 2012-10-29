@@ -31,9 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.grpCalculations = new System.Windows.Forms.GroupBox();
+            this.btnAbout = new System.Windows.Forms.Button();
             this.chkSimpleSettings = new System.Windows.Forms.CheckBox();
             this.btnCalculate = new System.Windows.Forms.Button();
             this.panelContent = new System.Windows.Forms.Panel();
+            this.lblDisclaimer = new System.Windows.Forms.Label();
             this.grpResults = new System.Windows.Forms.GroupBox();
             this.lblFirstYearSavings = new System.Windows.Forms.Label();
             this.lblFirstYearGeneration = new System.Windows.Forms.Label();
@@ -85,8 +87,6 @@
             this.lblMonthlySummerConsumption = new System.Windows.Forms.Label();
             this.bkgLoadCity = new System.ComponentModel.BackgroundWorker();
             this.bkgCalculate = new System.ComponentModel.BackgroundWorker();
-            this.lblDisclaimer = new System.Windows.Forms.Label();
-            this.btnAbout = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grpCalculations.SuspendLayout();
             this.panelContent.SuspendLayout();
@@ -135,6 +135,16 @@
             this.grpCalculations.TabIndex = 4;
             this.grpCalculations.TabStop = false;
             // 
+            // btnAbout
+            // 
+            this.btnAbout.Location = new System.Drawing.Point(157, 71);
+            this.btnAbout.Name = "btnAbout";
+            this.btnAbout.Size = new System.Drawing.Size(135, 23);
+            this.btnAbout.TabIndex = 6;
+            this.btnAbout.Text = "About";
+            this.btnAbout.UseVisualStyleBackColor = true;
+            this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click_1);
+            // 
             // chkSimpleSettings
             // 
             this.chkSimpleSettings.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -162,6 +172,7 @@
             // panelContent
             // 
             this.panelContent.AutoScroll = true;
+            this.panelContent.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panelContent.Controls.Add(this.lblDisclaimer);
             this.panelContent.Controls.Add(this.grpResults);
             this.panelContent.Controls.Add(this.groupBox2);
@@ -171,9 +182,18 @@
             this.panelContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panelContent.Location = new System.Drawing.Point(12, 214);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(948, 551);
+            this.panelContent.Size = new System.Drawing.Size(948, 310);
             this.panelContent.TabIndex = 5;
             this.panelContent.Paint += new System.Windows.Forms.PaintEventHandler(this.panelContent_Paint);
+            // 
+            // lblDisclaimer
+            // 
+            this.lblDisclaimer.AutoSize = true;
+            this.lblDisclaimer.Location = new System.Drawing.Point(3, 530);
+            this.lblDisclaimer.Name = "lblDisclaimer";
+            this.lblDisclaimer.Size = new System.Drawing.Size(464, 18);
+            this.lblDisclaimer.TabIndex = 58;
+            this.lblDisclaimer.Text = "All values are pure estimates and hold no guaranteed real-world value.\r\n";
             // 
             // grpResults
             // 
@@ -928,34 +948,17 @@
             // 
             this.bkgCalculate.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkgCalculate_DoWork);
             // 
-            // lblDisclaimer
-            // 
-            this.lblDisclaimer.AutoSize = true;
-            this.lblDisclaimer.Location = new System.Drawing.Point(3, 530);
-            this.lblDisclaimer.Name = "lblDisclaimer";
-            this.lblDisclaimer.Size = new System.Drawing.Size(464, 18);
-            this.lblDisclaimer.TabIndex = 58;
-            this.lblDisclaimer.Text = "All values are pure estimates and hold no guaranteed real-world value.\r\n";
-            // 
-            // btnAbout
-            // 
-            this.btnAbout.Location = new System.Drawing.Point(157, 71);
-            this.btnAbout.Name = "btnAbout";
-            this.btnAbout.Size = new System.Drawing.Size(135, 23);
-            this.btnAbout.TabIndex = 6;
-            this.btnAbout.Text = "About";
-            this.btnAbout.UseVisualStyleBackColor = true;
-            this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click_1);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(967, 777);
+            this.ClientSize = new System.Drawing.Size(967, 538);
             this.Controls.Add(this.panelContent);
             this.Controls.Add(this.grpCalculations);
             this.Controls.Add(this.pictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Main";
             this.Text = "Solar Calculator";
             this.Load += new System.EventHandler(this.Main_Load);
