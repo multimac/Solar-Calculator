@@ -1,4 +1,4 @@
-<?xml version="1.0" ?><%@ page contentType="text/xml;charset=ISO-8859-1" %><%@ page import="powerCalculations.SolarOutput" %><%@ page import="environmentalSpecifications.LocationDetails"%><%@ page import="environmentalSpecifications.SystemConfiguration"%><%@ page import="validation.Validator"%><%
+<?xml version="1.0" ?><%@ page contentType="text/xml;charset=ISO-8859-1" %><%@ page import="powerCalculations.SolarOutput" %><%@ page import="environmentalSpecifications.LocationDetails"%><%@ page import="environmentalSpecifications.SystemConfiguration"%><%@ page import="validation.Validator"%><%@ page import="java.util.ArrayList;"%><%
 //Input
 //System
 int panelcount = 2;
@@ -36,7 +36,7 @@ double firstYearSavings = 0;
 double systemCost = 0;
 double revenue = 0;
 String breakEvenTime = ""; 
-java.util.List<Double> data = new java.util.ArrayList<Double>(50);
+java.util.List<Double> data = new java.util.ArrayList<Double>();
 
 
 String error = "noerror";
@@ -190,6 +190,12 @@ else {
 	<firstyearsavings><%out.print(firstYearSavings);%></firstyearsavings>
 	<systemcost><%out.print(systemCost);%></systemcost>
 	<breakeventime><%out.print(breakEvenTime);%></breakeventime>
-	<data><%out.print(data);%></data>
+	<datalist>
+		<%
+		for (Double d : data) {
+			%><data><%=d%></data><%
+		}
+		%>
+	</datalist>
 	<error><%out.print(error);%></error>
 </solarcalculator>

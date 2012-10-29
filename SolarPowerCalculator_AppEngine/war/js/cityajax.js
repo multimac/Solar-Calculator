@@ -36,7 +36,7 @@ function postCity() {
 					document.output.exporttariff.value = ExportTariff;
 				}
 				else {
-					alert(error);
+					//alert(error);
 				}
 			}
 		}

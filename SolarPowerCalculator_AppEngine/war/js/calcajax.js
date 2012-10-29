@@ -49,13 +49,13 @@ function postPowerCalc() {
 				
 				var breakeventime = x[0].getElementsByTagName('breakeventime')[0].firstChild.nodeValue;
 				
+				var data = x[0].getElementsByTagName("data");
+				
 				var error = x[0].getElementsByTagName('error')[0].firstChild.nodeValue;
 				
 				var chartData = x[0].getElementsByTagName('data')[0].firstChild.nodeValue;
 				
 				if (error == "noerror") {
-					
-					
 					
 					document.getElementById("divgrossmonthlyoutputs").innerHTML = "<b>Monthly Generation (Nov-Apr): </b>" + grossmonthlyoutputs + " (Kwh)";
 					document.getElementById("divgrossmonthlyoutputw").innerHTML = "<b>Winter Generation (May-Oct): </b>" + grossmonthlyoutputw + " (Kwh)";
@@ -65,31 +65,39 @@ function postPowerCalc() {
 					document.getElementById("divfirstyearsavings").innerHTML = "<b>Total Savings During 1st Year: </b>$" + firstyearsavings;
 					document.getElementById("divsystemcost").innerHTML = "<b>System Cost: </b>$" + systemcost;
 					document.getElementById("divbreakeventime").innerHTML = "<b>Break Even Time: </b>" + breakeventime;
-					var chart1; // globally available
-					window.addEvent('domready', function() {
-					      chart1 = new Highcharts.Chart({
-					         chart: {
-					            renderTo: 'chart',
-					            type: 'line'
-					         },
-					         title: {
-					            text: 'Total Savings Over 50 Years'
-					         },
-					         xAxis: {
-								title: {
-									text: 'Year'
-									}
-					         },
-					         yAxis: {
-					            title: {
-					               text: 'Dollars ($)'
-					            }
-					         },
-					         series: [{
-					            data: chartData;
-					         }]
-					      });
-					   });
+					
+					var dataList = new Array();
+					var j = 0;
+					for(var i=0; i<data.length; i+=12) {
+						dataList[j] = parseFloat(data[i].firstChild.nodeValue);
+						//document.getElementById("divbreakeventime").innerHTML += ", " + data[j].firstChild.nodeValue;
+						j++;
+					}
+					
+					//document.getElementById("divbreakeventime").innerHTML = dataList[0] + " " + dataList[1] + " " + dataList[2] + " " + dataList[3];
+					
+					var chart1 = new Highcharts.Chart({
+				         chart: {
+				            renderTo: 'chart',
+				            type: 'line'
+				         },
+				         title: {
+				            text: 'Total Savings'
+				         },
+				         xAxis: {
+							title: {
+								text: 'Months'
+								}
+				         },
+				         yAxis: {
+				            title: {
+				               text: 'Dollars ($)'
+				            }
+				         },
+				         series: [{
+				            data: dataList
+				         }]
+				      });
 					
 					
 					document.getElementById("diverroroutput").innerHTML = "";

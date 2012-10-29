@@ -172,6 +172,16 @@ div.rates {
 }
 
 
+div.chart {
+	margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+	width: 45%;
+	font-size: 100%;
+	float: right;
+	padding: 2px;
+}
+
 
 div.inputs {
 	width: 100%;
