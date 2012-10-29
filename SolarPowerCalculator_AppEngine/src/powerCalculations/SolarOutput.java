@@ -203,7 +203,6 @@ public class SolarOutput {
 		while (savings < cost) {
 			while (month < 12 && savings < cost) {
 				savings = savings + calculateAverageMonthlySavings(system, location, year);
-				data.add(savings); // Collects the accumulative savings each month in an array to be used for graphing.
 				month = month + 1;
 				finalMonth = month;
 			}
